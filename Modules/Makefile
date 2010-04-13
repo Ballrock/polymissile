@@ -6,13 +6,18 @@ CFLAGS=$(shell sdl-config --cflags)
 #Repertoire des Binaries
 DIRBIN=bin
 #Nom du programme
-OUT=PolyMissileInterface
+EXEC=PolyMissile
 
+SRC=Utiles/coordonnees.cpp Interface/main.cpp
+OBJ=$(SRC:.c=.o)
 
 all: ${EXEC}
 
-${EXEC}: 
-	${CPP} ./main.cpp -o ${DIRBIN}/${OUT} ${LDFLAGS} 
+%.o: %.c
+	${CPP} -o $@ -c $< ${CFLAGS}
+
+${EXEC}: ${OBJ}
+	${CPP} -o ${DIRBIN}/${EXEC} $^ ${LDFLAGS} ${CFLAGS}
 
 clean:	
 	rm -fr *.o
