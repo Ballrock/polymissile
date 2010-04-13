@@ -1,7 +1,8 @@
 #Commande du compilateur
 CPP=g++ 
 #Linker
-LDFLAGS=-lSDL 
+LDFLAGS=$(shell sdl-config --libs)
+CFLAGS=$(shell sdl-config --cflags)
 #Repertoire des Binaries
 DIRBIN=bin
 #Nom du programme
@@ -11,7 +12,7 @@ EXEC=PolyMissileInterface
 all: ${EXEC}
 
 ${EXEC}: 
-	${CPP} ./main.cpp -o ${DIRBIN}/${EXEC} ${LDFLAGS}
+	${CPP} ./main.cpp -o ${DIRBIN}/${EXEC} ${LDFLAGS} 
 
 clean:	
 	rm -fr *.o
