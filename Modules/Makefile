@@ -9,6 +9,7 @@ DIRBIN=bin
 EXEC=PolyMissile
 
 SRC=Utiles/coordonnees.cpp Interface/main.cpp Utiles/ObjetVolant.cpp Utiles/Missile.cpp Utiles/Vaisseau.cpp Utiles/Droite.cpp gestion/gestion.cpp
+
 OBJ=$(SRC:.c=.o)
 
 all: ${EXEC}
