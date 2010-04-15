@@ -11,6 +11,7 @@
 #include <stdio.h>
 #include </SDL/SDL.h>
 #include "../Utiles/Coordonnees.h"
+#include "../Utiles/ObjetVolant.h"
 
 class gestion
 {
@@ -19,13 +20,14 @@ protected:
 	int limSol;
 	int score;
 	static bool exist=false;	//résolution du singleton de la classe
+	ObjetVolant Obj[];
 public:
 	gestion();
 	~gestion();		//pas d'opérateur égal ou de constructeur par recopie car la class est unique
-	Coordonnees inline GetposSilo() {return this->posSilo};
-	int inline GetlimSol() {return this->limSol};
-	int inline Getscore() {return this->score};
-	bool gestionCollision();
+	Coordonnees inline GetposSilo() {return this->posSilo;};
+	int inline GetlimSol() {return this->limSol;};
+	int inline Getscore() {return this->score;};
+	int* gestionCollision();
 	Droite Tirer(Coordonnees point);
 	bool evoluer();
 };
