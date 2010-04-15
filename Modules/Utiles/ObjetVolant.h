@@ -9,8 +9,8 @@ public:
 	ObjetVolant(int, int);
 	ObjetVolant(const ObjetVolant&);
 	~ObjetVolant();
-	Coordonnees inline GetCentre() {return this->centre;};
-	int inline GetTailleCote() {return this->tailleCote;};
+	inline Coordonnees& getCentre() { return this->centre; }
+	inline int getTailleCote() { return this->tailleCote; }
 	ObjetVolant &operator=(const ObjetVolant&);
 	
 	virtual void avancer() = 0;
