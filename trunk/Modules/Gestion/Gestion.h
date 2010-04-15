@@ -8,28 +8,34 @@
 #ifndef GESTION_H_
 #define GESTION_H_
 
-#include <stdio.h>
-#include </SDL/SDL.h>
+#include <SDL/SDL.h>
 #include "../Utiles/Coordonnees.h"
 #include "../Utiles/ObjetVolant.h"
+#include "../Utiles/Droite.h"
 
-class gestion
+class Gestion
 {
 protected:
-	Coordonnees posSilo;
+	Coordonnees *posSilo;
 	int limSol;
 	int score;
-	static bool exist=false;	//résolution du singleton de la classe
-	ObjetVolant Obj[];
+	// Je te conseil d'utiliser la classe Vector de la STL, tu auras ainsi un tableau non contraint en taille et tu pourras facilement le parcourir :-)
+	ObjetVolant *obj;
 public:
-	gestion();
-	~gestion();		//pas d'opérateur égal ou de constructeur par recopie car la class est unique
-	Coordonnees inline GetposSilo() {return this->posSilo;};
-	int inline GetlimSol() {return this->limSol;};
-	int inline Getscore() {return this->score;};
+	Gestion &getInstance(); //méthode retournant l'instance de la classe (le singleton)
+	Gestion &operator=(const Gestion &); //Il faut que l'operateur égale renvoie la classe singleton sinon comportement indéfini...
+	~Gestion();		
+	inline Coordonnees* getposSilo() { return this->posSilo; }
+	int inline getlimSol() { return this->limSol; }
+	int inline getscore() { return this->score; }
 	int* gestionCollision();
-	Droite Tirer(Coordonnees point);
+	Droite &tirer(Coordonnees point);
 	bool evoluer();
+
+private:
+	Gestion();
+	Gestion *instance;
+
 };
 
 
