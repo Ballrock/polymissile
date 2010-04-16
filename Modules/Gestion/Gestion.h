@@ -12,6 +12,11 @@
 #include "../Utiles/Coordonnees.h"
 #include "../Utiles/ObjetVolant.h"
 #include "../Utiles/Droite.h"
+#include "../Utiles/Missile.h"
+#include "../Utiles/Vaisseau.h"
+#include <c++/4.3/vector>
+
+using namespace std;
 
 class Gestion
 {
@@ -19,8 +24,7 @@ protected:
 	Coordonnees *posSilo;
 	int limSol;
 	int score;
-	// Je te conseil d'utiliser la classe Vector de la STL, tu auras ainsi un tableau non contraint en taille et tu pourras facilement le parcourir :-)
-	ObjetVolant *obj;
+	vector<ObjetVolant*> obj;
 public:
 	Gestion &getInstance(); //méthode retournant l'instance de la classe (le singleton)
 	Gestion &operator=(const Gestion &); //Il faut que l'operateur égale renvoie la classe singleton sinon comportement indéfini...
@@ -29,6 +33,7 @@ public:
 	int inline getlimSol() { return this->limSol; }
 	int inline getscore() { return this->score; }
 	int* gestionCollision();
+	void inline addObjVol(ObjetVolant *nouv) {this->obj.push_back(nouv);}; //méthode d'ajout d'un nouvel Objet Volant
 	Droite &tirer(Coordonnees point);
 	bool evoluer();
 

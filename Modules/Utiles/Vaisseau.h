@@ -1,5 +1,5 @@
-#ifndef _DEF_MISSILE
-#define _DEF_MISSILE
+#ifndef _DEF_VAISSEAU
+#define _DEF_VAISSEAU
 
 #include "ObjetVolant.h"
 

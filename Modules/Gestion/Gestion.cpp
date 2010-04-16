@@ -11,7 +11,6 @@ Gestion::Gestion()
 	this->posSilo = new Coordonnees();  //il faut déterminer la position du silo
 	this->limSol = 20;
 	this->score = 0;
-	this->obj = NULL;
 }
 
 Gestion &Gestion::getInstance() {
@@ -36,37 +35,62 @@ Droite &Gestion::tirer(Coordonnees point)
 
 int* Gestion::gestionCollision()
 {
-	int *tab = new int[2];
+	int *tab;
+	int ind=0;
 	for(int i=0; i < 0; i++)
 	{
-		Coordonnees *curCoord = new Coordonnees(this->obj[i].getCentre());
-		int curTaille = this->obj[i].getTailleCote()/2;
+		Coordonnees *curCoord = new Coordonnees(this->obj[i]->getCentre());
+		int curTaille = this->obj[i]->getTailleCote()/2;
 		for(int j=0; i < 0; j++)
 		{
-			Coordonnees *oppCoord = new Coordonnees(this->obj[j].getCentre());
-			int oppTaille = this->obj[i].getTailleCote()/2;
+			Coordonnees *oppCoord = new Coordonnees(this->obj[j]->getCentre());
+			int oppTaille = this->obj[i]->getTailleCote()/2;
 			if(i!=j)
 			{
-				if(curCoord->getX()-curTaille > oppCoord->getX()+oppTaille)
+				if(curCoord->getX()-curTaille > oppCoord->getX()+oppTaille && curCoord->getX()+curTaille > oppCoord->getX()+oppTaille)
 				{
-					if((curCoord->getY() - curTaille) < (oppCoord->getY() + oppTaille) || (curCoord->getY() + curTaille) > (oppCoord->getY() - oppTaille))
+					if((curCoord->getY()-curTaille < oppCoord->getY()+oppTaille) && (curCoord->getY()-curTaille > oppCoord->getY()+oppTaille))
 					{
 						/* Comm de Benjamin :  
 						 *????? tu as voulu faire un table d'int et mettre les indices des objets qui se touchent ? 
 						 * pk faire des "new int" a chaque fois ???
 						 */
-						tab[0] = i;
-						tab[1] = j;
+						tab[ind] = i;
+						ind++;
+						tab[ind] = j;
+						ind++;
+					}
+					else
+					{
+						if((curCoord->getY()+curTaille > oppCoord->getY()-oppTaille) && (curCoord->getY()-curTaille < oppCoord->getY()-oppTaille))
+						{
+							tab[ind] = i;
+							ind++;
+							tab[ind] = j;
+							ind++;
+						}
 					}
 				}
 				else
 				{
-					if((curCoord->getX() + curTaille) > (oppCoord->getX() - oppTaille))
+					if((curCoord->getX()+curTaille > oppCoord->getX()-oppTaille) && (curCoord->getX()-curTaille < oppCoord->getX()-oppTaille))
 					{
-						if((curCoord->getY() - curTaille < oppCoord->getY() + oppTaille) || (curCoord->getY() + curTaille) > (oppCoord->getY() - oppTaille))
+						if((curCoord->getY()-curTaille < oppCoord->getY() + oppTaille) && (curCoord->getY()-curTaille > oppCoord->getY()+oppTaille))
 						{
-							tab[0] = i;
-							tab[1] = j;
+							tab[ind] = i;
+							ind++;
+							tab[ind] = j;
+							ind++;
+						}
+						else
+						{
+							if((curCoord->getY()+curTaille > oppCoord->getY()-curTaille) && (curCoord->getY()-curTaille < oppCoord->getY()-curTaille))
+							{
+								tab[ind] = i;
+								ind++;
+								tab[ind] = j;
+								ind++;
+							}
 						}
 					}
 				}

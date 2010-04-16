@@ -8,7 +8,7 @@ DIRBIN=bin
 #Nom du programme
 EXEC=PolyMissile
 
-SRC=Utiles/coordonnees.cpp Interface/main.cpp Utiles/ObjetVolant.cpp Utiles/Missile.cpp Utiles/Vaisseau.cpp Utiles/Droite.cpp gestion/gestion.cpp
+SRC=Utiles/Coordonnees.cpp Interface/main.cpp Utiles/ObjetVolant.cpp Utiles/Missile.cpp Utiles/Vaisseau.cpp Utiles/Droite.cpp Gestion/Gestion.cpp
 
 OBJ=$(SRC:.c=.o)
 
