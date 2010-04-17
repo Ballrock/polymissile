@@ -32,7 +32,7 @@ public:
 	inline Coordonnees* getposSilo() { return this->posSilo; }
 	int inline getlimSol() { return this->limSol; }
 	int inline getscore() { return this->score; }
-	int* gestionCollision();
+	vector<int> gestionCollision();
 	void inline addObjVol(ObjetVolant *nouv) {this->obj.push_back(nouv);}; //méthode d'ajout d'un nouvel Objet Volant
 	Droite &tirer(Coordonnees point);
 	bool evoluer();
