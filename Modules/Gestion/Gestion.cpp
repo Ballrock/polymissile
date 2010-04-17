@@ -5,6 +5,16 @@
  *      Author: Pierre Vigreux
  */
 #include "Gestion.h"
+#include <typeinfo>
+
+void newCollision(vector<int>* vec, ObjetVolant* cur, ObjetVolant* opp, int indcur, int indopp)
+{
+	if(typeid(*cur)!=typeid(*opp))
+	{
+		vec->push_back(indcur);
+		vec->push_back(indopp);
+	}
+}
 
 Gestion::Gestion()
 {
@@ -33,10 +43,10 @@ Droite &Gestion::tirer(Coordonnees point)
 	return *(new Droite(a,b));
 }
 
-int* Gestion::gestionCollision()
+vector<int> Gestion::gestionCollision()
 {
-	int *tab;
-	int ind=0;
+	vector<int> vec;
+
 	for(int i=0; i < 0; i++)
 	{
 		Coordonnees *curCoord = new Coordonnees(this->obj[i]->getCentre());
@@ -51,23 +61,13 @@ int* Gestion::gestionCollision()
 				{
 					if((curCoord->getY()-curTaille < oppCoord->getY()+oppTaille) && (curCoord->getY()-curTaille > oppCoord->getY()+oppTaille))
 					{
-						/* Comm de Benjamin :  
-						 *????? tu as voulu faire un table d'int et mettre les indices des objets qui se touchent ? 
-						 * pk faire des "new int" a chaque fois ???
-						 */
-						tab[ind] = i;
-						ind++;
-						tab[ind] = j;
-						ind++;
+						newCollision(&vec,this->obj[i],this->obj[j],i,j);
 					}
 					else
 					{
 						if((curCoord->getY()+curTaille > oppCoord->getY()-oppTaille) && (curCoord->getY()-curTaille < oppCoord->getY()-oppTaille))
 						{
-							tab[ind] = i;
-							ind++;
-							tab[ind] = j;
-							ind++;
+							newCollision(&vec,this->obj[i],this->obj[j],i,j);
 						}
 					}
 				}
@@ -77,19 +77,13 @@ int* Gestion::gestionCollision()
 					{
 						if((curCoord->getY()-curTaille < oppCoord->getY() + oppTaille) && (curCoord->getY()-curTaille > oppCoord->getY()+oppTaille))
 						{
-							tab[ind] = i;
-							ind++;
-							tab[ind] = j;
-							ind++;
+							newCollision(&vec,this->obj[i],this->obj[j],i,j);
 						}
 						else
 						{
 							if((curCoord->getY()+curTaille > oppCoord->getY()-curTaille) && (curCoord->getY()-curTaille < oppCoord->getY()-curTaille))
 							{
-								tab[ind] = i;
-								ind++;
-								tab[ind] = j;
-								ind++;
+								newCollision(&vec,this->obj[i],this->obj[j],i,j);
 							}
 						}
 					}
@@ -97,7 +91,7 @@ int* Gestion::gestionCollision()
 			}
 		}
 	}
-	return tab;
+	return vec;
 }
 
 bool Gestion::evoluer()
