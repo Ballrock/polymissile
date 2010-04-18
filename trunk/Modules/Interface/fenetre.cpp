@@ -1,9 +1,9 @@
-#include "Fenetre.h"
+#include "fenetre.h"
 #include <SDL/SDL.h>
 
 //-------------SINGLETON------------
 
-Fenetre & Fenetre::GetInstance()
+Fenetre & Fenetre::getInstance()
 {
  	if(window == NULL)
 	{	 // instance unique cachée dans la fonction. Ne pas oublier le static !
@@ -14,14 +14,20 @@ Fenetre & Fenetre::GetInstance()
 
 Fenetre::Fenetre()
 {
+	sdlInit();
 }
 
 //--------------Methodes-----------
-Fenetre::void SdlInit()
+void Fenetre::sdlInit()
 {
 	SDL_Init(SDL_INIT_VIDEO);
 }
-Fenetre::void NewWindows(int x=800, int y=600, int color=32)
+
+Fenetre::~Fenetre() {
+	SDL_VideoQuit();
+}
+
+void Fenetre::newWindows(int x=800, int y=600, int color=32)
 {
 	SDL_SetVideoMode(640, 480, 32, SDL_HWSURFACE);
 }

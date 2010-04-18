@@ -8,7 +8,7 @@ DIRBIN=bin
 #Nom du programme
 EXEC=PolyMissile
 
-SRC=Utiles/Coordonnees.cpp Interface/main.cpp Utiles/ObjetVolant.cpp Utiles/Missile.cpp Utiles/Vaisseau.cpp Utiles/Droite.cpp Gestion/Gestion.cpp
+SRC=Utiles/Coordonnees.cpp Utiles/ObjetVolant.cpp Utiles/Missile.cpp Utiles/Vaisseau.cpp Utiles/Droite.cpp Gestion/Gestion.cpp main.cpp Interface/fenetre.cpp
 
 OBJ=$(SRC:.c=.o)
 
@@ -18,7 +18,7 @@ all: ${EXEC}
 	@${CPP} -o $@ -c $< ${CFLAGS}
 
 PolyMissile: ${OBJ}
-	@${CPP} -o ${DIRBIN}/${EXEC} $^ ${LDFLAGS} ${CFLAGS}
+	@${CPP} -o ${DIRBIN}/${EXEC} $^ ${LDFLAGS} ${CFLAGS} -g
 
 clean:	
 	@rm -fr *.o
