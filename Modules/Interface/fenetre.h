@@ -1,13 +1,20 @@
+#ifndef _DEF_FENETRE
+#define _DEF_FENETRE
+
 class Fenetre
 {
 	public:
-	static Fenetre & GetInstance(); //On recupere l'instance unique de de la classe fenetre
-	void sdlinit();
-	
+	Fenetre();
+	~Fenetre();
+	Fenetre & getInstance(); //On recupere l'instance unique de de la classe fenetre
+	void sdlInit();
+	void newWindows(int, int, int);	
 	
 	private:
-	Fenetre();
-	static Fenetre* window;
-}
+	Fenetre* window;
+};
+
+
+#endif
 
 	
