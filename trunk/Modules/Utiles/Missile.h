@@ -6,7 +6,7 @@
 class Missile : public ObjetVolant {
 
 public:
-	Missile(int, int);
+	Missile(int, int, Droite);
 	Missile(const Missile&);
 	~Missile();
 	Missile &operator=(const Missile&);

@@ -1,11 +1,11 @@
 #include "Vaisseau.h"
 
 
-Vaisseau::Vaisseau(int tailleCote, int vitesse):ObjetVolant(tailleCote, vitesse) {
+Vaisseau::Vaisseau(int tailleCote, int vitesse, Droite pente):ObjetVolant(tailleCote, vitesse, pente) {
 
 }
 
-Vaisseau::Vaisseau(const Vaisseau &obj):ObjetVolant(obj.tailleCote, obj.vitesse) {
+Vaisseau::Vaisseau(const Vaisseau &obj):ObjetVolant(obj.tailleCote, obj.vitesse, obj.pente) {
 
 }
 

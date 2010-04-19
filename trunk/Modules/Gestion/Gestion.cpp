@@ -7,23 +7,24 @@
 #include "Gestion.h"
 #include <typeinfo>
 
-void newCollision(vector<int>* vec, ObjetVolant* cur, ObjetVolant* opp, int indcur, int indopp)
+void newCollision(vector<int>* vec, ObjetVolant* cur, ObjetVolant* opp)
 {
 	if(typeid(*cur)!=typeid(*opp))
 	{
-		vec->push_back(indcur);
-		vec->push_back(indopp);
+		vec->push_back(cur->getId());
+		vec->push_back(opp->getId());
 	}
 }
 
-Gestion::Gestion(Coordonnees &posSilo)
+Gestion::Gestion()
 {
-	this->posSilo = new Coordonnees(posSilo);
+	this->posSilo = new Coordonnees(Constante::xSilo,Constante::ySilo);
 	this->limSol = 20;
 	this->score = 0;
 }
 
-Gestion::Gestion(const Gestion &obj) {
+Gestion::Gestion(const Gestion &obj)
+{
 	this->posSilo = obj.posSilo;
 	this->limSol = obj.limSol;
 	this->score = obj.score;
@@ -34,12 +35,14 @@ Gestion::~Gestion()
 	free(this->posSilo);
 }
 
-Droite &Gestion::tirer(Coordonnees point)
+void Gestion::tirer(Coordonnees& point)
 {
 	int a,b;
 	a=(int) (point.getY()-this->posSilo->getY())/(point.getX()-this->posSilo->getX());
 	b=(int) (point.getY()-a*point.getX());
-	return *(new Droite(a,b));
+	Droite *tmp = new Droite(a,b);
+	ObjetVolant *nouv = new Missile(Constante::tailleMissile,Constante::vitesse, *tmp);
+	this->addObjVol(nouv);
 }
 
 vector<int> Gestion::gestionCollision()
@@ -60,13 +63,13 @@ vector<int> Gestion::gestionCollision()
 				{
 					if((curCoord->getY()-curTaille < oppCoord->getY()+oppTaille) && (curCoord->getY()-curTaille > oppCoord->getY()+oppTaille))
 					{
-						newCollision(&vec,this->obj[i],this->obj[j],i,j);
+						newCollision(&vec,this->obj[i],this->obj[j]);
 					}
 					else
 					{
 						if((curCoord->getY()+curTaille > oppCoord->getY()-oppTaille) && (curCoord->getY()-curTaille < oppCoord->getY()-oppTaille))
 						{
-							newCollision(&vec,this->obj[i],this->obj[j],i,j);
+							newCollision(&vec,this->obj[i],this->obj[j]);
 						}
 					}
 				}
@@ -76,13 +79,13 @@ vector<int> Gestion::gestionCollision()
 					{
 						if((curCoord->getY()-curTaille < oppCoord->getY() + oppTaille) && (curCoord->getY()-curTaille > oppCoord->getY()+oppTaille))
 						{
-							newCollision(&vec,this->obj[i],this->obj[j],i,j);
+							newCollision(&vec,this->obj[i],this->obj[j]);
 						}
 						else
 						{
 							if((curCoord->getY()+curTaille > oppCoord->getY()-curTaille) && (curCoord->getY()-curTaille < oppCoord->getY()-curTaille))
 							{
-								newCollision(&vec,this->obj[i],this->obj[j],i,j);
+								newCollision(&vec,this->obj[i],this->obj[j]);
 							}
 						}
 					}
@@ -95,7 +98,19 @@ vector<int> Gestion::gestionCollision()
 
 bool Gestion::evoluer()
 {
+	for (unsigned int var = 0; var < this->obj.size(); ++var)
+	{
+		this->obj[var]->avancer();
+		if(typeid(this->obj[var])==typeid(Vaisseau))
+		{
+			if(this->obj[var]->getCentre().getY() + this->obj[var]->getTailleCote()/2 <= this->posSilo->getY())
+			{
+				return true;
+			}
+		}
+	}
 
+	return false;
 }
 
 Gestion &Gestion::operator=(const Gestion &obj) {

@@ -6,7 +6,7 @@
 class Vaisseau : public ObjetVolant {
 
 public:
-	Vaisseau(int, int);
+	Vaisseau(int, int, Droite);
 	Vaisseau(const Vaisseau&);
 	~Vaisseau();
 	Vaisseau &operator=(const Vaisseau&);
