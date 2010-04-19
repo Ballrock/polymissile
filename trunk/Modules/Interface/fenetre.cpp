@@ -1,12 +1,13 @@
 #include "fenetre.h"
 #include <SDL/SDL.h>
 #include <iostream>
+#include <math.h>
 
 using namespace std;
 
 Fenetre::Fenetre(int longueur=600, int hauteur=400) : longueurFenetre(longueur), hauteurFenetre(hauteur)
 {
-	Coordonnees *temp = new Coordonnees(0, hauteur-20);
+	Coordonnees *temp = new Coordonnees(0, Constante::ySilo);
 	this->sol = new Sol(*(temp));
 	temp->setX(longueur/2);
 	temp->setY(this->sol->getCoordonnees().getY());
@@ -53,10 +54,17 @@ int Fenetre::newWindows()
 				gestionJeu->tirer(*click);
 				delete (click);
 				break;
+			case SDL_KEYDOWN:
+				switch(event.key.keysym.sym) {
+					case SDLK_ESCAPE:
+						continuer = 0;
+						break;
+				}
+				break;
 		}
 
 		SDL_FillRect(ecran, NULL, SDL_MapRGB(ecran->format, 255, 255, 255));
-		SDL_FillRect(sol, NULL, SDL_MapRGB(ecran->format, 0, 0, 255));
+		SDL_FillRect(sol, NULL, SDL_MapRGB(ecran->format, 223, 175, 44));
 		position.x = 0;
 		position.y = this->sol->getCoordonnees().getY();
 		SDL_BlitSurface(sol, NULL, ecran, &position); 
@@ -67,5 +75,4 @@ int Fenetre::newWindows()
 	SDL_Quit();
 	return this->gestionJeu->getScore();
 }
-
 

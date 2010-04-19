@@ -3,6 +3,7 @@
 
 #include "../Gestion/Gestion.h"
 #include "Sol.h"
+#include "../Constante.h"
 
 class Fenetre
 {
