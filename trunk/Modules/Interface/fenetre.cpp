@@ -10,7 +10,7 @@ Fenetre::Fenetre(int longueur=600, int hauteur=400) : longueurFenetre(longueur),
 	this->sol = new Sol(*(temp));
 	temp->setX(longueur/2);
 	temp->setY(this->sol->getCoordonnees().getY());
-	this->gestionJeu = new Gestion(*temp);
+	this->gestionJeu = new Gestion();
 	delete(temp);
 }
 
