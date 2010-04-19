@@ -1,11 +1,11 @@
 #include "Missile.h"
 
 
-Missile::Missile(int tailleCote, int vitesse):ObjetVolant(tailleCote, vitesse) {
+Missile::Missile(int tailleCote, int vitesse, Droite pente):ObjetVolant(tailleCote, vitesse, pente) {
 
 }
 
-Missile::Missile(const Missile &obj):ObjetVolant(obj.tailleCote, obj.vitesse) {
+Missile::Missile(const Missile &obj):ObjetVolant(obj.tailleCote, obj.vitesse, obj.pente) {
 
 }
 

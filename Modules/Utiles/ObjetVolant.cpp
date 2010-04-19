@@ -1,11 +1,13 @@
 #include "ObjetVolant.h"
 
 
-ObjetVolant::ObjetVolant(int tailleCote, int vitesse):tailleCote(tailleCote), vitesse(vitesse), id(idTotal) {
+ObjetVolant::ObjetVolant(int tailleCote, int vitesse, Droite pente):tailleCote(tailleCote), vitesse(vitesse), pente(pente), id(idTotal)
+{
 	idTotal++;
 }
 
-ObjetVolant::ObjetVolant(const ObjetVolant &obj):tailleCote(obj.tailleCote), vitesse(obj.vitesse), id(idTotal) {
+ObjetVolant::ObjetVolant(const ObjetVolant &obj):tailleCote(obj.tailleCote), vitesse(obj.vitesse), pente(obj.pente), id(idTotal)
+{
 	idTotal++;
 }
 
