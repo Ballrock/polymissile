@@ -1,33 +1,71 @@
 #include "fenetre.h"
 #include <SDL/SDL.h>
+#include <iostream>
 
-//-------------SINGLETON------------
+using namespace std;
 
-Fenetre & Fenetre::getInstance()
+Fenetre::Fenetre(int longueur=600, int hauteur=400) : longueurFenetre(longueur), hauteurFenetre(hauteur)
 {
- 	if(window == NULL)
-	{	 // instance unique cachée dans la fonction. Ne pas oublier le static !
-		window = new Fenetre();    		
-		return *window;
-	}
+	Coordonnees *temp = new Coordonnees(0, hauteur-20);
+	this->sol = new Sol(*(temp));
+	temp->setX(longueur/2);
+	temp->setY(this->sol->getCoordonnees().getY());
+	this->gestionJeu = new Gestion(*temp);
+	delete(temp);
 }
 
-Fenetre::Fenetre()
-{
-	sdlInit();
-}
-
-//--------------Methodes-----------
-void Fenetre::sdlInit()
-{
-	SDL_Init(SDL_INIT_VIDEO);
+Fenetre::Fenetre(const Fenetre &obj) {
 }
 
 Fenetre::~Fenetre() {
 	SDL_VideoQuit();
+	delete(this->sol);
+	delete(this->gestionJeu);
 }
 
-void Fenetre::newWindows(int x=800, int y=600, int color=32)
-{
-	SDL_SetVideoMode(640, 480, 32, SDL_HWSURFACE);
+Fenetre &Fenetre::operator=(const Fenetre &obj) {
+	
 }
+
+int Fenetre::newWindows()
+{
+	bool continuer = true;
+	SDL_Surface *ecran = NULL, *silo = NULL, *sol = NULL;
+	SDL_Event event;
+	SDL_Rect position;
+	Coordonnees *click;
+
+	SDL_Init(SDL_INIT_VIDEO);
+
+	ecran = SDL_SetVideoMode(this->longueurFenetre, this->hauteurFenetre, 32, SDL_SWSURFACE);
+	sol = SDL_CreateRGBSurface(SDL_SWSURFACE, this->longueurFenetre, this->hauteurFenetre - this->sol->getCoordonnees().getY(), 32, 0, 0, 0, 0);
+	SDL_WM_SetCaption("PolyMissile", NULL);	
+
+
+	while (continuer) {
+		SDL_PollEvent(&event);
+		switch (event.type) {
+			case SDL_QUIT:
+				continuer = 0;
+				break;
+			case SDL_MOUSEBUTTONUP:
+				click = new Coordonnees(event.button.x, event.button.y);
+				gestionJeu->tirer(*click);
+				delete (click);
+				break;
+		}
+
+		SDL_FillRect(ecran, NULL, SDL_MapRGB(ecran->format, 255, 255, 255));
+		SDL_FillRect(sol, NULL, SDL_MapRGB(ecran->format, 0, 0, 255));
+		position.x = 0;
+		position.y = this->sol->getCoordonnees().getY();
+		SDL_BlitSurface(sol, NULL, ecran, &position); 
+		SDL_Flip(ecran);
+	}
+
+	SDL_FreeSurface(sol);
+	SDL_Quit();
+	return this->gestionJeu->getScore();
+}
+
+

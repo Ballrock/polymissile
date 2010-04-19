@@ -16,18 +16,17 @@ void newCollision(vector<int>* vec, ObjetVolant* cur, ObjetVolant* opp, int indc
 	}
 }
 
-Gestion::Gestion()
+Gestion::Gestion(Coordonnees &posSilo)
 {
-	this->posSilo = new Coordonnees();  //il faut déterminer la position du silo
+	this->posSilo = new Coordonnees(posSilo);
 	this->limSol = 20;
 	this->score = 0;
 }
 
-Gestion &Gestion::getInstance() {
-	if (instance == NULL) {
-		instance = new Gestion();
-	}
-	return *instance;
+Gestion::Gestion(const Gestion &obj) {
+	this->posSilo = obj.posSilo;
+	this->limSol = obj.limSol;
+	this->score = obj.score;
 }
 
 Gestion::~Gestion()
@@ -100,5 +99,9 @@ bool Gestion::evoluer()
 }
 
 Gestion &Gestion::operator=(const Gestion &obj) {
-	return const_cast<Gestion&>(obj);
+	this->posSilo = obj.posSilo;
+	this->limSol = obj.limSol;
+	this->score = obj.score;
+	return *this;
 }
+

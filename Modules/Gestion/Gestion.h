@@ -14,6 +14,7 @@
 #include "../Utiles/Droite.h"
 #include "../Utiles/Missile.h"
 #include "../Utiles/Vaisseau.h"
+#include "../Interface/Affichable.h"
 #include <vector>
 
 using namespace std;
@@ -26,20 +27,19 @@ protected:
 	int score;
 	vector<ObjetVolant*> obj;
 public:
-	Gestion &getInstance(); //méthode retournant l'instance de la classe (le singleton)
-	Gestion &operator=(const Gestion &); //Il faut que l'operateur égale renvoie la classe singleton sinon comportement indéfini...
+	Gestion(Coordonnees&);
+	Gestion(const Gestion&);
+	Gestion &operator=(const Gestion &);
 	~Gestion();		
-	inline Coordonnees* getposSilo() { return this->posSilo; }
-	int inline getlimSol() { return this->limSol; }
-	int inline getscore() { return this->score; }
+	inline Coordonnees* getPosSilo() { return this->posSilo; }
+	int inline getLimSol() { return this->limSol; }
+	int inline getScore() { return this->score; }
 	vector<int> gestionCollision();
 	void inline addObjVol(ObjetVolant *nouv) {this->obj.push_back(nouv);}; //méthode d'ajout d'un nouvel Objet Volant
 	Droite &tirer(Coordonnees point);
 	bool evoluer();
 
 private:
-	Gestion();
-	Gestion *instance;
 
 };
 

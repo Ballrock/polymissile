@@ -3,6 +3,8 @@
 
 #include "Coordonnees.h"
 
+static int idTotal = 0;
+
 class ObjetVolant {
 
 public:
@@ -20,7 +22,7 @@ protected:
 	int tailleCote;
 	int vitesse;
 	Coordonnees centre;
-
+	int id;
 };
 
 #endif
