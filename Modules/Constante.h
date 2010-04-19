@@ -19,7 +19,7 @@ public:
 	static const int tailleMissile = 5;
 	static const int tailleVaisseau = 10;
 	static const int xSilo = 300;
-	static const int ySilo = 460;
+	static const int ySilo = 380;
 };
 
 
