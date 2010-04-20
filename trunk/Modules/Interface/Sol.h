@@ -3,18 +3,21 @@
 
 #include "Affichable.h"
 #include "../Utiles/Coordonnees.h"
+#include <SDL/SDL.h>
 
 class Sol : public Affichable {
 public:
-	Sol(Coordonnees &);
+	Sol(Coordonnees &, int, int);
 	Sol(const Sol&);
 	~Sol();
 	Sol &operator=(const Sol&);
-	Coordonnees &getCoordonnees();
-	void paint();
+	inline int getX() { return this->coordSol->getX(); }
+	inline int getY() { return this->coordSol->getY(); }
+	void paint(SDL_Surface *);
 
 private:
 	Coordonnees *coordSol;
+	int longueur, largeur;
 };
 
 

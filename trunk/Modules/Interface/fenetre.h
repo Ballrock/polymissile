@@ -4,6 +4,7 @@
 #include "../Gestion/Gestion.h"
 #include "Sol.h"
 #include "../Constante.h"
+#include "Silo.h"
 
 class Fenetre
 {
@@ -20,6 +21,7 @@ private:
 	int longueurFenetre, hauteurFenetre;
 	Gestion *gestionJeu;	
 	Sol *sol;
+	Silo *silo;
 
 };
 

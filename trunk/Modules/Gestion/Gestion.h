@@ -15,7 +15,6 @@
 #include "../Utiles/Missile.h"
 #include "../Utiles/Vaisseau.h"
 #include "../Interface/Affichable.h"
-#include "../Constante.h"
 #include <vector>
 
 using namespace std;
@@ -28,7 +27,7 @@ protected:
 	int score;
 	vector<ObjetVolant*> obj;
 public:
-	Gestion();
+	Gestion(Coordonnees &);
 	Gestion(const Gestion&);
 	Gestion &operator=(const Gestion &);
 	~Gestion();		
@@ -38,6 +37,7 @@ public:
 	vector<int> gestionCollision();
 	void inline addObjVol(ObjetVolant *nouv) {this->obj.push_back(nouv);}; //méthode d'ajout d'un nouvel Objet Volant
 	void tirer(Coordonnees& point);
+	inline vector<ObjetVolant*> *getObjetVolant() { return &(this->obj); }
 	bool evoluer();
 
 private:

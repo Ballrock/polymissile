@@ -3,10 +3,11 @@
 
 #include "Coordonnees.h"
 #include "Droite.h"
+#include "../Interface/Affichable.h"
 
 static int idTotal = 0;
 
-class ObjetVolant {
+class ObjetVolant : public Affichable {
 
 public:
 	ObjetVolant(int, int, Droite);

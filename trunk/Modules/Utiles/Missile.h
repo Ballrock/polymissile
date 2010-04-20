@@ -2,6 +2,7 @@
 #define _DEF_MISSILE
 
 #include "ObjetVolant.h"
+#include <SDL/SDL.h>
 
 class Missile : public ObjetVolant {
 
@@ -13,6 +14,7 @@ public:
 
 	void avancer();
 	bool isColision();
+	void paint(SDL_Surface *);
 
 };
 
