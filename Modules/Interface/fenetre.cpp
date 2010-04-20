@@ -1,7 +1,7 @@
 #include "fenetre.h"
 #include <SDL/SDL.h>
 #include <iostream>
-#include <math.h>
+#include <SDL/SDL_draw.h>
 
 using namespace std;
 
@@ -31,7 +31,7 @@ Fenetre &Fenetre::operator=(const Fenetre &obj) {
 int Fenetre::newWindows()
 {
 	bool continuer = true;
-	SDL_Surface *ecran = NULL, *silo = NULL, *sol = NULL;
+	SDL_Surface *ecran = NULL;
 	SDL_Event event;
 	SDL_Rect position;
 	Coordonnees *click;
@@ -39,7 +39,6 @@ int Fenetre::newWindows()
 	SDL_Init(SDL_INIT_VIDEO);
 
 	ecran = SDL_SetVideoMode(this->longueurFenetre, this->hauteurFenetre, 32, SDL_SWSURFACE);
-	sol = SDL_CreateRGBSurface(SDL_SWSURFACE, this->longueurFenetre, this->hauteurFenetre - this->sol->getCoordonnees().getY(), 32, 0, 0, 0, 0);
 	SDL_WM_SetCaption("PolyMissile", NULL);	
 
 
@@ -62,17 +61,19 @@ int Fenetre::newWindows()
 				}
 				break;
 		}
-
+		/*
+		 * Effacement de la fenetre
+		 */
 		SDL_FillRect(ecran, NULL, SDL_MapRGB(ecran->format, 255, 255, 255));
-		SDL_FillRect(sol, NULL, SDL_MapRGB(ecran->format, 223, 175, 44));
-		position.x = 0;
-		position.y = this->sol->getCoordonnees().getY();
-		SDL_BlitSurface(sol, NULL, ecran, &position); 
+		dessineAll(ecran);
 		SDL_Flip(ecran);
 	}
 
-	SDL_FreeSurface(sol);
 	SDL_Quit();
 	return this->gestionJeu->getScore();
 }
 
+void Fenetre::dessineAll(SDL_Surface *ecran) {
+	Draw_FillCircle(ecran, Constante::xSilo, Constante::ySilo, 20, SDL_MapRGB(ecran->format, 255, 0, 0));
+	Draw_FillRect(ecran, 0, Constante::ySilo, this->longueurFenetre, this->hauteurFenetre - Constante::ySilo, SDL_MapRGB(ecran->format, 223, 175, 44));
+}

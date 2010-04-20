@@ -14,6 +14,7 @@ public:
 	~Fenetre();
 	Fenetre &operator=(const Fenetre&);
 	int newWindows();	
+	void dessineAll(SDL_Surface *);
 
 private:
 	int longueurFenetre, hauteurFenetre;
