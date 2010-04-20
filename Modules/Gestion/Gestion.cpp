@@ -6,6 +6,7 @@
  */
 #include "Gestion.h"
 #include <typeinfo>
+#include "../Constante.h"
 
 void newCollision(vector<int>* vec, ObjetVolant* cur, ObjetVolant* opp)
 {
@@ -16,9 +17,9 @@ void newCollision(vector<int>* vec, ObjetVolant* cur, ObjetVolant* opp)
 	}
 }
 
-Gestion::Gestion()
+Gestion::Gestion(Coordonnees &posSilo)
 {
-	this->posSilo = new Coordonnees(Constante::xSilo,Constante::ySilo);
+	this->posSilo = new Coordonnees(posSilo);
 	this->limSol = 20;
 	this->score = 0;
 }
@@ -41,7 +42,7 @@ void Gestion::tirer(Coordonnees& point)
 	a=(int) (point.getY()-this->posSilo->getY())/(point.getX()-this->posSilo->getX());
 	b=(int) (point.getY()-a*point.getX());
 	Droite *tmp = new Droite(a,b);
-	ObjetVolant *nouv = new Missile(Constante::tailleMissile,Constante::vitesse, *tmp);
+	ObjetVolant *nouv = new Missile(Constante::TAILLEMISSILE, Constante::VITESSE, *tmp);
 	this->addObjVol(nouv);
 }
 

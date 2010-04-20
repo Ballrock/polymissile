@@ -2,16 +2,19 @@
 #include <SDL/SDL.h>
 #include <iostream>
 #include <SDL/SDL_draw.h>
+#include <vector>
+#include "../Utiles/ObjetVolant.h"
 
 using namespace std;
 
 Fenetre::Fenetre(int longueur=600, int hauteur=400) : longueurFenetre(longueur), hauteurFenetre(hauteur)
 {
-	Coordonnees *temp = new Coordonnees(0, Constante::ySilo);
-	this->sol = new Sol(*(temp));
+	Coordonnees *temp = new Coordonnees(0, hauteur - Constante::TAILLESOL);
+	this->sol = new Sol(*(temp), longueur, Constante::TAILLESOL);
 	temp->setX(longueur/2);
-	temp->setY(this->sol->getCoordonnees().getY());
-	this->gestionJeu = new Gestion();
+	temp->setY(hauteur - Constante::TAILLESOL);
+	this->silo = new Silo(*(temp));
+	this->gestionJeu = new Gestion(*(temp));
 	delete(temp);
 }
 
@@ -49,6 +52,7 @@ int Fenetre::newWindows()
 				continuer = 0;
 				break;
 			case SDL_MOUSEBUTTONUP:
+				cout << "tir : " << event.button.x << " " << event.button.y << endl;
 				click = new Coordonnees(event.button.x, event.button.y);
 				gestionJeu->tirer(*click);
 				delete (click);
@@ -74,6 +78,11 @@ int Fenetre::newWindows()
 }
 
 void Fenetre::dessineAll(SDL_Surface *ecran) {
-	Draw_FillCircle(ecran, Constante::xSilo, Constante::ySilo, 20, SDL_MapRGB(ecran->format, 255, 0, 0));
-	Draw_FillRect(ecran, 0, Constante::ySilo, this->longueurFenetre, this->hauteurFenetre - Constante::ySilo, SDL_MapRGB(ecran->format, 223, 175, 44));
+	vector<ObjetVolant*> *vectObj = this->gestionJeu->getObjetVolant();
+	vector<ObjetVolant*>::const_iterator it;
+	this->silo->paint(ecran);
+	this->sol->paint(ecran);
+	for (it = vectObj->begin(); it != vectObj->end(); it++) {
+		(*it)->paint(ecran);	
+	}
 }

@@ -15,11 +15,11 @@
 class Constante
 {
 public:
-	static const int vitesse = 5;
-	static const int tailleMissile = 5;
-	static const int tailleVaisseau = 10;
-	static const int xSilo = 300;
-	static const int ySilo = 380;
+	static const int VITESSE = 5;
+	static const int TAILLEMISSILE = 5;
+	static const int TAILLEVAISSEAU = 10;
+	static const int TAILLESILO = 20;
+	static const int TAILLESOL = 20;
 };
 
 

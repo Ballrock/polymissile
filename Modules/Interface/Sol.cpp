@@ -1,7 +1,9 @@
 #include "Sol.h"
+#include "../Constante.h"
+#include <SDL/SDL_draw.h>
 
 
-Sol::Sol(Coordonnees &coordSol) {
+Sol::Sol(Coordonnees &coordSol, int longueur, int largeur) : longueur(longueur), largeur(largeur) {
 	this->coordSol = new Coordonnees(coordSol);
 }
 
@@ -17,11 +19,7 @@ Sol &Sol::operator=(const Sol &obj) {
 	this->coordSol = new Coordonnees(*(obj.coordSol));
 }
 
-Coordonnees &Sol::getCoordonnees() {
-	return *(this->coordSol);
-}
-
-void Sol::paint() {
-
+void Sol::paint(SDL_Surface *ecran) {
+	Draw_FillRect(ecran, this->coordSol->getX(), this->coordSol->getY(), this->longueur, this->largeur, SDL_MapRGB(ecran->format, 223, 175, 44));
 }
 	
