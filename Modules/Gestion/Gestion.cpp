@@ -38,11 +38,8 @@ Gestion::~Gestion()
 
 void Gestion::tirer(Coordonnees& point)
 {
-	int a,b;
-	a=(int) (point.getY()-this->posSilo->getY())/(point.getX()-this->posSilo->getX());
-	b=(int) (point.getY()-a*point.getX());
-	Droite *tmp = new Droite(a,b);
-	ObjetVolant *nouv = new Missile(Constante::TAILLEMISSILE, Constante::VITESSE, *tmp);
+	Droite *tmp = new Droite(point, *(this->posSilo));
+	ObjetVolant *nouv = new Missile(Constante::TAILLEMISSILE, Constante::VITESSE, point, *tmp);
 	this->addObjVol(nouv);
 }
 

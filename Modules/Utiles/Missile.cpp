@@ -5,11 +5,11 @@
 
 using namespace std;
 
-Missile::Missile(int tailleCote, int vitesse, Droite pente):ObjetVolant(tailleCote, vitesse, pente) {
+Missile::Missile(int tailleCote, int vitesse, Coordonnees &centre, Droite &pente):ObjetVolant(tailleCote, vitesse, centre, pente) {
 
 }
 
-Missile::Missile(const Missile &obj):ObjetVolant(obj.tailleCote, obj.vitesse, obj.pente) {
+Missile::Missile(const Missile &obj):ObjetVolant(obj) {
 
 }
 

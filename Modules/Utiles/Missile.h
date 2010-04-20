@@ -3,11 +3,12 @@
 
 #include "ObjetVolant.h"
 #include <SDL/SDL.h>
+#include "Coordonnees.h"
 
 class Missile : public ObjetVolant {
 
 public:
-	Missile(int, int, Droite);
+	Missile(int, int, Coordonnees &, Droite &);
 	Missile(const Missile&);
 	~Missile();
 	Missile &operator=(const Missile&);

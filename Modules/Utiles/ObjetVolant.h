@@ -10,7 +10,7 @@ static int idTotal = 0;
 class ObjetVolant : public Affichable {
 
 public:
-	ObjetVolant(int, int, Droite);
+	ObjetVolant(int, int, Coordonnees&, Droite&);
 	ObjetVolant(const ObjetVolant&);
 	~ObjetVolant();
 	inline Coordonnees& getCentre() { return this->centre;};

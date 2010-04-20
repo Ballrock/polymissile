@@ -3,11 +3,12 @@
 
 #include "ObjetVolant.h"
 #include <SDL/SDL.h>
+#include "Coordonnees.h"
 
 class Vaisseau : public ObjetVolant {
 
 public:
-	Vaisseau(int, int, Droite);
+	Vaisseau(int, int, Coordonnees &, Droite &);
 	Vaisseau(const Vaisseau&);
 	~Vaisseau();
 	Vaisseau &operator=(const Vaisseau&);
