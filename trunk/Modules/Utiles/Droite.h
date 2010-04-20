@@ -1,19 +1,22 @@
 #ifndef _DEF_DROITE
 #define _DEF_DROITE
 
+#include "Coordonnees.h"
 
 class Droite {
 
 public:
-	Droite(int, int);
+	Droite(float, float);
+	Droite(Coordonnees &, Coordonnees&);
+	Droite(int, int, int, int);
 	Droite(const Droite &);
 	~Droite();
 	Droite &operator=(const Droite&);
 	int inline getXWithY(int y) { return ((y - this->b) / a); }
 
 private:
-	int a;
-	int b;
+	float a;
+	float b;
 };
 
 #endif

@@ -3,11 +3,11 @@
 #include "SDL/SDL_draw.h"
 
 
-Vaisseau::Vaisseau(int tailleCote, int vitesse, Droite pente):ObjetVolant(tailleCote, vitesse, pente) {
+Vaisseau::Vaisseau(int tailleCote, int vitesse, Coordonnees &centre, Droite &pente):ObjetVolant(tailleCote, vitesse, centre, pente) {
 
 }
 
-Vaisseau::Vaisseau(const Vaisseau &obj):ObjetVolant(obj.tailleCote, obj.vitesse, obj.pente) {
+Vaisseau::Vaisseau(const Vaisseau &obj):ObjetVolant(obj) {
 
 }
 
