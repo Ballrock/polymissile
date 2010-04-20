@@ -15,7 +15,6 @@ Droite::Droite(int x1, int y1, int x2, int y2) {
 Droite::Droite(Coordonnees &c1, Coordonnees &c2) { 
 	this->a = ((float)(c2.getY() - c1.getY())) / ((float)(c2.getX() - c1.getX()));
 	this->b = (float)(c1.getY()) - this->a * (float)(c1.getX());
-	cout << a << " " << b << endl;
 }
 
 Droite::Droite(const Droite &obj):a(obj.a), b(obj.b) {
