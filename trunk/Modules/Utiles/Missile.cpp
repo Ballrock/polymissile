@@ -38,6 +38,5 @@ bool Missile::isColision() {
 	 
 void Missile::paint(SDL_Surface *ecran) {
 	//TODO : voir paint() de Vaisseau
-	cout << this->centre.getX() << " " << this->centre.getY() << endl;
 	Draw_FillCircle(ecran, this->centre.getX(), this->centre.getY(), Constante::TAILLEMISSILE, SDL_MapRGB(ecran->format, 255, 255, 255));
 }

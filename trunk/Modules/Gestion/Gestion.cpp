@@ -39,7 +39,7 @@ Gestion::~Gestion()
 void Gestion::tirer(Coordonnees& point)
 {
 	Droite *tmp = new Droite(point, *(this->posSilo));
-	ObjetVolant *nouv = new Missile(Constante::TAILLEMISSILE, Constante::VITESSE, point, *tmp);
+	ObjetVolant *nouv = new Missile(Constante::TAILLEMISSILE, Constante::VITESSE, *(this->posSilo), *tmp);
 	this->addObjVol(nouv);
 }
 
@@ -96,7 +96,10 @@ vector<int> Gestion::gestionCollision()
 
 bool Gestion::evoluer()
 {
-	for (unsigned int var = 0; var < this->obj.size(); ++var)
+	/*
+	 * TODO : faire le parcour des vector avec des iterators c'est plus jolie :-)
+	 */
+	for (unsigned int var = 0; var < this->obj.size(); var++)
 	{
 		this->obj[var]->avancer();
 		if(typeid(this->obj[var])==typeid(Vaisseau))

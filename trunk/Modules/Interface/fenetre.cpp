@@ -38,6 +38,7 @@ int Fenetre::newWindows()
 	SDL_Event event;
 	SDL_Rect position;
 	Coordonnees *click;
+	bool mouseClick = false;
 
 	SDL_Init(SDL_INIT_VIDEO);
 
@@ -51,11 +52,17 @@ int Fenetre::newWindows()
 			case SDL_QUIT:
 				continuer = 0;
 				break;
+			case SDL_MOUSEBUTTONDOWN:
+				mouseClick = true;
+				break;
 			case SDL_MOUSEBUTTONUP:
-				cout << "tir : " << event.button.x << " " << event.button.y << endl << this->silo->getX() << " " << this->silo->getY() << endl;
-				click = new Coordonnees(event.button.x, event.button.y);
-				gestionJeu->tirer(*click);
-				delete (click);
+				if (mouseClick) {
+					cout << "tir : " << event.button.x << " " << event.button.y << endl << this->silo->getX() << " " << this->silo->getY() << endl;
+					click = new Coordonnees(event.button.x, event.button.y);
+					gestionJeu->tirer(*click);
+					delete (click);
+					mouseClick = false;
+				}
 				break;
 			case SDL_KEYDOWN:
 				switch(event.key.keysym.sym) {
@@ -65,10 +72,16 @@ int Fenetre::newWindows()
 				}
 				break;
 		}
+
+		/*
+		 * On fait evoluer le jeu
+		 */
+		this->gestionJeu->evoluer();
+
 		/*
 		 * Effacement de la fenetre
 		 */
-		SDL_FillRect(ecran, NULL, SDL_MapRGB(ecran->format, 255, 255, 255));
+		SDL_FillRect(ecran, NULL, SDL_MapRGB(ecran->format, 0, 0, 0));
 		dessineAll(ecran);
 		SDL_Flip(ecran);
 	}
@@ -80,9 +93,9 @@ int Fenetre::newWindows()
 void Fenetre::dessineAll(SDL_Surface *ecran) {
 	vector<ObjetVolant*> *vectObj = this->gestionJeu->getObjetVolant();
 	vector<ObjetVolant*>::const_iterator it;
-	this->silo->paint(ecran);
-	this->sol->paint(ecran);
 	for (it = vectObj->begin(); it != vectObj->end(); it++) {
 		(*it)->paint(ecran);	
 	}
+	this->silo->paint(ecran);
+	this->sol->paint(ecran);
 }
