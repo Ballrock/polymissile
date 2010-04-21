@@ -14,8 +14,17 @@ OBJ=$(SRC:.cpp=.o)
 
 all: ${EXEC}
 
-ScoreClient: ScoreClient/main.o ScoreClient/ScoreClient.o Constante.o TinyXml/tinystr.cpp TinyXml/tinyxml.cpp TinyXml/tinyxmlparser.cpp TinyXml/tinyxmlerror.cpp Utiles/GestionSockets.cpp 
+ScoreClient: ScoreClient/main.o ScoreClient/ScoreClient.o Constante.o ${TinyXml} ${Utiles}
 	${CPP} -o bin/testScoreClient $^ ${CFLAGS} -g 
+
+TinyXml=TinyXml/tinyxml.o TinyXml/tinyxmlerror.o TinyXml/tinyxmlparser.o TinyXml/tinystr.o
+
+Utiles=Utiles/Coordonnees.o Utiles/ObjetVolant.o Utiles/Missile.o Utiles/Vaisseau.o Utiles/Droite.o Utiles/GestionSockets.o 
+
+Gestion: Gestion/main.o Gestion/Gestion.o Constante.o ${Utiles} ${Interface}
+	${CPP} -o bin/testGestion $^ ${CFLAGS} ${LDFLAGS} -g
+
+Interface=Interface/Silo.o Interface/Sol.o Interface/fenetre.o 
 
 %.o: %.cpp
 	@${CPP} -o $@ -c $< ${CFLAGS}

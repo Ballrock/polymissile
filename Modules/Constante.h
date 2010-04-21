@@ -22,6 +22,7 @@ public:
 	static const int TAILLESOL = 20;
 	static const char ADRESSESERVEUR[];
 	static const int PORT = 54321;
+	static const char PATHBESTSCORE[];
 };
 
 
