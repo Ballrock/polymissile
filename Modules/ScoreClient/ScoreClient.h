@@ -1,7 +1,7 @@
 #ifndef _DEF_SCORE_CLIENT
 #define _DEF_SCORE_CLIENT
 
-#include "../TinyXml/tinyxml.h
+#include "../TinyXml/tinyxml.h"
 #include <string>
 #include <iostream>
 
