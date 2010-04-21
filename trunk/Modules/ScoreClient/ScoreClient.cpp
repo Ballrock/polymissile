@@ -6,7 +6,12 @@
 
 
 ScoreClient::ScoreClient(int score) : score(score) {
-	this->socket = GestionSockets::creeSocketEmission(Constante::ADRESSESERVEUR, Constante::PORT);
+	try {
+		this->socket = GestionSockets::creeSocketEmission(Constante::ADRESSESERVEUR, Constante::PORT);
+	}
+	catch (int *e) {
+		cout << *e << endl;
+	}
 	this->nomJoueur = new string();
 	
 }
@@ -16,7 +21,12 @@ ScoreClient::~ScoreClient() {
 }
 
 ScoreClient::ScoreClient(const ScoreClient &obj) : score(obj.score) {
-	this->socket = GestionSockets::creeSocketEmission(Constante::ADRESSESERVEUR, Constante::PORT);
+	try {
+		this->socket = GestionSockets::creeSocketEmission(Constante::ADRESSESERVEUR, Constante::PORT);
+	}
+	catch (int *e) {
+		cout << *e << endl;
+	}
 	this->nomJoueur = new string(*(obj.nomJoueur));
 }
 
@@ -74,7 +84,7 @@ void ScoreClient::envoiScore() {
 
 	is.str(string(buff));
 
-	cout << is.str() << endl;
+//	cout << is.str() << endl;
 	
 
 }

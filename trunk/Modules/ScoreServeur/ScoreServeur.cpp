@@ -23,7 +23,8 @@ ScoreServeur::~ScoreServeur() {
 }
 
 int ScoreServeur::acceptClient() {
-	return accept(this->socket, NULL, NULL);
+	socklen_t addrlen = sizeof(this->addr);
+	return accept(this->socket, (struct sockaddr *)&(this->addr), &addrlen);
 }
 
 int ScoreServeur::listenSocket() {
@@ -47,14 +48,16 @@ void ScoreServeur::startServer() {
 
 	memset(buff, '\0', 1024);
 	listenSocket();
-	socketEnvoi = accept(this->socket, NULL, NULL);
+	socketEnvoi = acceptClient();
 
+	cout << "ok " << socketEnvoi << endl;
 	charLu = recv(this->socket, buff, 1024, 0);	
 
+	cout << buff <<endl;
 	is.str(string(buff));
 	is >> doc;
 
-	score = atoi(doc.LastChild()->LastChild()->FirstChild()->Value());
+	//score = atoi(doc.LastChild()->LastChild()->FirstChild()->Value());
 	
 	cout << score << endl;
 

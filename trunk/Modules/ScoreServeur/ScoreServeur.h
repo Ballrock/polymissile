@@ -27,7 +27,8 @@ private:
 	int acceptClient();
 	int listenSocket();
 
-	SOCKET socket;
+	int socket;
+	struct sockaddr_in addr;
 	TiXmlDocument doc;
 
 };
