@@ -20,6 +20,8 @@ public:
 	static const int TAILLEVAISSEAU = 10;
 	static const int TAILLESILO = 20;
 	static const int TAILLESOL = 20;
+	static const char *ADRESSESERVEUR = "localhost"; 
+	static const int PORT = 54321;
 };
 
 
