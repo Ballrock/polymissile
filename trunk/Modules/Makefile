@@ -8,13 +8,16 @@ DIRBIN=bin
 #Nom du programme
 EXEC=PolyMissile
 
-SRC=Utiles/Coordonnees.cpp Utiles/ObjetVolant.cpp Utiles/Missile.cpp Utiles/Vaisseau.cpp Utiles/Droite.cpp Gestion/Gestion.cpp main.cpp Interface/fenetre.cpp Interface/Sol.cpp Interface/Silo.cpp ScoreClient/ScoreClient.cpp Utiles/GestionSockets.cpp TinyXml/tinystr.cpp TinyXml/tinyxmlerror.cpp TinyXml/tinyxmlparser.cpp TinyXml/tinyxml.cpp Constante.cpp
+SRC=Utiles/Coordonnees.cpp Utiles/ObjetVolant.cpp Utiles/Missile.cpp Utiles/Vaisseau.cpp Utiles/Droite.cpp Gestion/Gestion.cpp main.cpp Interface/fenetre.cpp Interface/Sol.cpp Interface/Silo.cpp ScoreClient/ScoreClient.cpp Utiles/GestionSockets.cpp TinyXml/tinystr.cpp TinyXml/tinyxmlerror.cpp TinyXml/tinyxmlparser.cpp TinyXml/tinyxml.cpp Constante.cpp ScoreClient/main.cpp
 
 OBJ=$(SRC:.cpp=.o)
 
 all: ${EXEC}
 
-%.o: %.c
+ScoreClient: ScoreClient/main.o ScoreClient/ScoreClient.o Constante.o TinyXml/tinystr.cpp TinyXml/tinyxml.cpp TinyXml/tinyxmlparser.cpp TinyXml/tinyxmlerror.cpp Utiles/GestionSockets.cpp 
+	${CPP} -o bin/testScoreClient $^ ${CFLAGS} -g 
+
+%.o: %.cpp
 	@${CPP} -o $@ -c $< ${CFLAGS}
 
 PolyMissile: ${OBJ}
