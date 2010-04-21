@@ -11,7 +11,7 @@ int GestionSockets::creeSocketEmission (const char *server, int port) {
     struct sockaddr_in	address;
     struct hostent *hp;
 
-    if ((sock = socket (AF_INET, SOCK_DGRAM, 0)) == -1)
+    if ((sock = socket (AF_INET, SOCK_STREAM, 0)) == -1)
     {
 		throw(new int(-1));
     }
@@ -19,7 +19,7 @@ int GestionSockets::creeSocketEmission (const char *server, int port) {
     hp = gethostbyname(server);
     if (hp == 0)
     {
-		throw(new int(-1));
+		throw(new int(-2));
     }
 
     memset (&address, 0, sizeof (address));
@@ -29,7 +29,7 @@ int GestionSockets::creeSocketEmission (const char *server, int port) {
 
     if (connect (sock, (struct sockaddr*) &address, sizeof (struct sockaddr_in)) == -1)
     {
-		throw(new int(-1));
+		throw(new int(-3));
     }
 
     return sock;
@@ -40,7 +40,7 @@ int GestionSockets::creeSocketReception(int port)
     int sock;
     struct sockaddr_in	address;
 
-    if ((sock = socket (PF_INET, SOCK_DGRAM, 0)) == -1)
+    if ((sock = socket (AF_INET, SOCK_STREAM, 0)) == -1)
     {
 		throw(new int(-1));
     }

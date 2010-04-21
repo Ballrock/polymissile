@@ -21,7 +21,7 @@ public:
 	static const int TAILLESILO = 20;
 	static const int TAILLESOL = 20;
 	static const char ADRESSESERVEUR[];
-	static const int PORT = 54321;
+	static const int PORT = 5321;
 	static const char PATHBESTSCORE[];
 };
 
