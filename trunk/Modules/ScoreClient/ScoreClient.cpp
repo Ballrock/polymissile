@@ -2,6 +2,7 @@
 #include "../Utiles/GestionSockets.h"
 #include "../Constante.h"
 #include <sstream>
+#include <arpa/inet.h>
 
 
 ScoreClient::ScoreClient(int score) : score(score) {
@@ -39,6 +40,9 @@ void ScoreClient::recuperationNomJoueur() {
 void ScoreClient::envoiScore() {
 	
 	ostringstream os;
+	istringstream is;
+	char buff[1024];
+	int charLu;
 
 	TiXmlDeclaration *decl = new TiXmlDeclaration("1.0", "", "");
 	TiXmlElement *enreg = new TiXmlElement ("enregistrement");
@@ -58,9 +62,20 @@ void ScoreClient::envoiScore() {
 	doc.LinkEndChild(decl);
 	doc.LinkEndChild(enreg);
 
-	os.flush();
-	os << doc.ToElement();
+	os.str("");
+	os << doc;
 	doc.Print();
+
+	send(this->socket, os.str().c_str(), strlen(os.str().c_str()), 0);
+
+
+	memset(buff, '\0', 1024);
+	charLu = recv(this->socket, buff, 1024, 0);
+
+	is.str(string(buff));
+
+	cout << is.str() << endl;
+	
 
 }
 
