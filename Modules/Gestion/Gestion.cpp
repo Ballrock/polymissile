@@ -95,7 +95,6 @@ void Gestion::gestionCollision(vector<ObjetVolant*>::iterator &curr)
 bool Gestion::evoluer()
 {
 	vector<ObjetVolant*>::iterator it;
-	int i=0;
 	it = this->obj.begin();
 	while(it != this->obj.end())
 	{
@@ -111,9 +110,7 @@ bool Gestion::evoluer()
 		{
 			this->gestionCollision(it);
 		}
-		i++;
 	}
-
 	return false;
 }
 
