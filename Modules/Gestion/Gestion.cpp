@@ -38,9 +38,12 @@ Gestion::~Gestion()
 
 void Gestion::tirer(Coordonnees& point)
 {
-	Droite *tmp = new Droite(point, *(this->posSilo));
-	ObjetVolant *nouv = new Missile(Constante::TAILLEMISSILE, Constante::VITESSE, *(this->posSilo), *tmp);
-	this->addObjVol(nouv);
+	if (point.getY() < this->posSilo->getY()) {
+		/* Le point est dans la zone de jeu (au dessus du sol) */
+		Droite *tmp = new Droite(point, *(this->posSilo));
+		ObjetVolant *nouv = new Missile(Constante::TAILLEMISSILE, Constante::VITESSE, *(this->posSilo), *tmp);
+		this->addObjVol(nouv);
+	}
 }
 
 vector<int> Gestion::gestionCollision()
