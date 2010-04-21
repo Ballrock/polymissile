@@ -57,7 +57,6 @@ int Fenetre::newWindows()
 				break;
 			case SDL_MOUSEBUTTONUP:
 				if (mouseClick) {
-					cout << "tir : " << event.button.x << " " << event.button.y << endl << this->silo->getX() << " " << this->silo->getY() << endl;
 					click = new Coordonnees(event.button.x, event.button.y);
 					gestionJeu->tirer(*click);
 					delete (click);
