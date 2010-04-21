@@ -26,6 +26,8 @@ protected:
 	int limSol;
 	int score;
 	vector<ObjetVolant*> obj;
+
+	void gestionCollision(vector<ObjetVolant*>::iterator &curr);
 public:
 	Gestion(Coordonnees &);
 	Gestion(const Gestion&);
@@ -35,7 +37,7 @@ public:
 	int inline getScore() { return this->score; }
 	inline Coordonnees* getPosSilo() { return this->posSilo; }
 	inline vector<ObjetVolant*> *getObjetVolant() { return &(this->obj); }
-	void gestionCollision(vector<ObjetVolant*>::iterator &curr);
+
 	void inline addObjVol(ObjetVolant *nouv) {this->obj.push_back(nouv);}; //méthode d'ajout d'un nouvel Objet Volant
 	void tirer(Coordonnees& point);
 	bool evoluer();
