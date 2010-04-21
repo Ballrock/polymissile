@@ -45,9 +45,9 @@ void ScoreClient::envoiScore() {
 	TiXmlElement *nom = new TiXmlElement ("nom");
 	TiXmlElement *score = new TiXmlElement ("score");
 	
-	TiXmlText *txtNom = TiXmlText (*(this->nomJoueur));
+	TiXmlText *txtNom = new TiXmlText (this->nomJoueur->c_str());
 	os << this->score;
-	TiXmlText *txtScore = new TiXmlText(os.str());
+	TiXmlText *txtScore = new TiXmlText(os.str().c_str());
 
 	score->LinkEndChild(txtScore);
 	nom->LinkEndChild(txtNom);
@@ -58,7 +58,8 @@ void ScoreClient::envoiScore() {
 	doc.LinkEndChild(decl);
 	doc.LinkEndChild(enreg);
 
-	doc.Print(this->socket);
+	os.flush();
+	os << doc.ToElement();
 	doc.Print();
 
 }
