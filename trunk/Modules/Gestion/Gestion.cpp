@@ -8,12 +8,12 @@
 #include <typeinfo>
 #include "../Constante.h"
 
-void newCollision(vector<int>* vec, ObjetVolant* cur, ObjetVolant* opp)
+void newCollision(vector<ObjetVolant*>* vec, vector<ObjetVolant*>::iterator cur, vector<ObjetVolant*>::iterator opp)
 {
 	if(typeid(*cur)!=typeid(*opp))
 	{
-		vec->push_back(cur->getId());
-		vec->push_back(opp->getId());
+		vec->erase(cur);
+		vec->erase(opp);
 	}
 }
 
@@ -46,72 +46,72 @@ void Gestion::tirer(Coordonnees& point)
 	}
 }
 
-vector<int> Gestion::gestionCollision()
+void Gestion::gestionCollision(vector<ObjetVolant*>::iterator &curr)
 {
-	vector<int> vec;
-
-	for(int i=0; i < 0; i++)
+	Coordonnees *curCoord = new Coordonnees((*curr)->getCentre());
+	int curTaille = (*curr)->getTailleCote()/2;
+	vector<ObjetVolant*>::iterator opp= this->obj.begin();
+	while(opp!=this->obj.end())
 	{
-		Coordonnees *curCoord = new Coordonnees(this->obj[i]->getCentre());
-		int curTaille = this->obj[i]->getTailleCote()/2;
-		for(int j=0; i < 0; j++)
+		Coordonnees *oppCoord = new Coordonnees((*opp)->getCentre());
+		int oppTaille = (*opp)->getTailleCote()/2;
+		if(curr!=opp)
 		{
-			Coordonnees *oppCoord = new Coordonnees(this->obj[j]->getCentre());
-			int oppTaille = this->obj[i]->getTailleCote()/2;
-			if(i!=j)
+			if(curCoord->getX()-curTaille > oppCoord->getX()+oppTaille && curCoord->getX()+curTaille > oppCoord->getX()+oppTaille)
 			{
-				if(curCoord->getX()-curTaille > oppCoord->getX()+oppTaille && curCoord->getX()+curTaille > oppCoord->getX()+oppTaille)
+				if((curCoord->getY()-curTaille < oppCoord->getY()+oppTaille) && (curCoord->getY()-curTaille > oppCoord->getY()+oppTaille))
 				{
-					if((curCoord->getY()-curTaille < oppCoord->getY()+oppTaille) && (curCoord->getY()-curTaille > oppCoord->getY()+oppTaille))
-					{
-						newCollision(&vec,this->obj[i],this->obj[j]);
-					}
-					else
-					{
-						if((curCoord->getY()+curTaille > oppCoord->getY()-oppTaille) && (curCoord->getY()-curTaille < oppCoord->getY()-oppTaille))
-						{
-							newCollision(&vec,this->obj[i],this->obj[j]);
-						}
-					}
+					newCollision(&this->obj,curr,opp);
 				}
 				else
 				{
-					if((curCoord->getX()+curTaille > oppCoord->getX()-oppTaille) && (curCoord->getX()-curTaille < oppCoord->getX()-oppTaille))
+					if((curCoord->getY()+curTaille > oppCoord->getY()-oppTaille) && (curCoord->getY()-curTaille < oppCoord->getY()-oppTaille))
 					{
-						if((curCoord->getY()-curTaille < oppCoord->getY() + oppTaille) && (curCoord->getY()-curTaille > oppCoord->getY()+oppTaille))
+						newCollision(&this->obj,curr,opp);
+					}
+				}
+			}
+			else
+			{
+				if((curCoord->getX()+curTaille > oppCoord->getX()-oppTaille) && (curCoord->getX()-curTaille < oppCoord->getX()-oppTaille))
+				{
+					if((curCoord->getY()-curTaille < oppCoord->getY() + oppTaille) && (curCoord->getY()-curTaille > oppCoord->getY()+oppTaille))
+					{
+						newCollision(&this->obj,curr,opp);
+					}
+					else
+					{
+						if((curCoord->getY()+curTaille > oppCoord->getY()-curTaille) && (curCoord->getY()-curTaille < oppCoord->getY()-curTaille))
 						{
-							newCollision(&vec,this->obj[i],this->obj[j]);
-						}
-						else
-						{
-							if((curCoord->getY()+curTaille > oppCoord->getY()-curTaille) && (curCoord->getY()-curTaille < oppCoord->getY()-curTaille))
-							{
-								newCollision(&vec,this->obj[i],this->obj[j]);
-							}
+							newCollision(&this->obj,curr,opp);
 						}
 					}
 				}
 			}
 		}
 	}
-	return vec;
 }
 
 bool Gestion::evoluer()
 {
-	/*
-	 * TODO : faire le parcour des vector avec des iterators c'est plus jolie :-)
-	 */
-	for (unsigned int var = 0; var < this->obj.size(); var++)
+	vector<ObjetVolant*>::iterator it;
+	int i=0;
+	it = this->obj.begin();
+	while(it != this->obj.end())
 	{
-		this->obj[var]->avancer();
-		if(typeid(this->obj[var])==typeid(Vaisseau))
+		(*it)->avancer();
+		if(typeid(*it)==typeid(Vaisseau))
 		{
-			if(this->obj[var]->getCentre().getY() + this->obj[var]->getTailleCote()/2 <= this->posSilo->getY())
+			if((*it)->getCentre().getY()+(*it)->getTailleCote()/2 <= this->posSilo->getY())
 			{
 				return true;
 			}
 		}
+		else
+		{
+			this->gestionCollision(it);
+		}
+		i++;
 	}
 
 	return false;
