@@ -30,14 +30,14 @@ public:
 	Gestion(Coordonnees &);
 	Gestion(const Gestion&);
 	Gestion &operator=(const Gestion &);
-	~Gestion();		
-	inline Coordonnees* getPosSilo() { return this->posSilo; }
+	~Gestion();
 	int inline getLimSol() { return this->limSol; }
 	int inline getScore() { return this->score; }
-	vector<int> gestionCollision();
+	inline Coordonnees* getPosSilo() { return this->posSilo; }
+	inline vector<ObjetVolant*> *getObjetVolant() { return &(this->obj); }
+	void gestionCollision(vector<ObjetVolant*>::iterator &curr);
 	void inline addObjVol(ObjetVolant *nouv) {this->obj.push_back(nouv);}; //méthode d'ajout d'un nouvel Objet Volant
 	void tirer(Coordonnees& point);
-	inline vector<ObjetVolant*> *getObjetVolant() { return &(this->obj); }
 	bool evoluer();
 
 private:
