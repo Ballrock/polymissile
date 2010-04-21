@@ -8,23 +8,30 @@ DIRBIN=bin
 #Nom du programme
 EXEC=PolyMissile
 
-SRC=Utiles/Coordonnees.cpp Utiles/ObjetVolant.cpp Utiles/Missile.cpp Utiles/Vaisseau.cpp Utiles/Droite.cpp Gestion/Gestion.cpp main.cpp Interface/fenetre.cpp Interface/Sol.cpp Interface/Silo.cpp ScoreClient/ScoreClient.cpp Utiles/GestionSockets.cpp TinyXml/tinystr.cpp TinyXml/tinyxmlerror.cpp TinyXml/tinyxmlparser.cpp TinyXml/tinyxml.cpp Constante.cpp ScoreClient/main.cpp
+SRC=Utiles/Coordonnees.cpp Utiles/ObjetVolant.cpp Utiles/Missile.cpp Utiles/Vaisseau.cpp Utiles/Droite.cpp Gestion/Gestion.cpp main.cpp Interface/fenetre.cpp Interface/Sol.cpp Interface/Silo.cpp ScoreClient/ScoreClient.cpp Utiles/GestionSockets.cpp TinyXml/tinystr.cpp TinyXml/tinyxmlerror.cpp TinyXml/tinyxmlparser.cpp TinyXml/tinyxml.cpp Constante.cpp ScoreClient/main.cpp ScoreServeur/main.cpp ScoreServeur/ScoreServeur.cpp
 
 OBJ=$(SRC:.cpp=.o)
-
-all: ${EXEC}
-
-ScoreClient: ScoreClient/main.o ScoreClient/ScoreClient.o Constante.o ${TinyXml} ${Utiles}
-	${CPP} -o bin/testScoreClient $^ ${CFLAGS} -g 
 
 TinyXml=TinyXml/tinyxml.o TinyXml/tinyxmlerror.o TinyXml/tinyxmlparser.o TinyXml/tinystr.o
 
 Utiles=Utiles/Coordonnees.o Utiles/ObjetVolant.o Utiles/Missile.o Utiles/Vaisseau.o Utiles/Droite.o Utiles/GestionSockets.o 
 
+Interface=Interface/Silo.o Interface/Sol.o Interface/fenetre.o 
+
+#all: ${EXEC}
+all: ScoreClient ScoreServeur Gestion
+
+ScoreClient: ScoreClient/main.o ScoreClient/ScoreClient.o Constante.o ${TinyXml} Utiles/GestionSockets.o 
+	${CPP} -o bin/testScoreClient $^ ${CFLAGS} -g 
+
+ScoreServeur: ScoreServeur/main.o ScoreServeur/ScoreServeur.o Constante.o ${TinyXml} Utiles/GestionSockets.o
+	${CPP} -o bin/testScoreServeur $^ ${CFLAGS} -g
+
+
+
 Gestion: Gestion/main.o Gestion/Gestion.o Constante.o ${Utiles} ${Interface}
 	${CPP} -o bin/testGestion $^ ${CFLAGS} ${LDFLAGS} -g
 
-Interface=Interface/Silo.o Interface/Sol.o Interface/fenetre.o 
 
 %.o: %.cpp
 	@${CPP} -o $@ -c $< ${CFLAGS}
