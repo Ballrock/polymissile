@@ -7,6 +7,11 @@
 
 using namespace std;
 
+/*
+ * Prototype de la fonction evoluer pour le timer (obligation d'etre en C donc pas membre de Fenetre)
+ */
+Uint32 evoluer(Uint32 interval, void *param);
+
 Fenetre::Fenetre(int longueur=600, int hauteur=400) : longueurFenetre(longueur), hauteurFenetre(hauteur)
 {
 	Coordonnees *temp = new Coordonnees(0, hauteur - Constante::TAILLESOL);
@@ -40,11 +45,14 @@ int Fenetre::newWindows()
 	Coordonnees *click;
 	bool mouseClick = false;
 
-	SDL_Init(SDL_INIT_VIDEO);
+	SDL_Init(SDL_INIT_VIDEO | SDL_INIT_TIMER);
+
+	SDL_TimerID timer;
 
 	ecran = SDL_SetVideoMode(this->longueurFenetre, this->hauteurFenetre, 32, SDL_SWSURFACE);
 	SDL_WM_SetCaption("PolyMissile", NULL);	
 
+	timer = SDL_AddTimer(Constante::TIMETICK, evoluer, this->gestionJeu);
 
 	while (continuer) {
 		SDL_PollEvent(&event);
@@ -72,10 +80,6 @@ int Fenetre::newWindows()
 				break;
 		}
 
-		/*
-		 * On fait evoluer le jeu
-		 */
-		this->gestionJeu->evoluer();
 
 		/*
 		 * Effacement de la fenetre
@@ -85,6 +89,7 @@ int Fenetre::newWindows()
 		SDL_Flip(ecran);
 	}
 
+	SDL_RemoveTimer(timer);
 	SDL_Quit();
 	return this->gestionJeu->getScore();
 }
@@ -97,4 +102,10 @@ void Fenetre::dessineAll(SDL_Surface *ecran) {
 	}
 	this->silo->paint(ecran);
 	this->sol->paint(ecran);
+}
+
+
+Uint32 evoluer(Uint32 interval, void *param) {
+	reinterpret_cast<Gestion *>(param)->evoluer();
+	return interval;
 }

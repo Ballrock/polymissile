@@ -17,11 +17,7 @@ int main(int argc, char *argv[]) {
 
 	delete(maFenetre);
 
-	cout << "Partie terminée !" << endl << "Votre score est de : " << scoreFinal << endl << endl << "Veuillez saisir votre nom" << endl;
 	
-	cin >> nomJoueur;
-
-	cout << endl << "Votre nom est : " << nomJoueur << endl;
 	return 0;
 
 

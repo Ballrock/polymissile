@@ -19,7 +19,7 @@ Utiles=Utiles/Coordonnees.o Utiles/ObjetVolant.o Utiles/Missile.o Utiles/Vaissea
 Interface=Interface/Silo.o Interface/Sol.o Interface/fenetre.o 
 
 #all: ${EXEC}
-all: ScoreClient ScoreServeur Gestion
+all: ScoreClient ScoreServeur Gestion TestInterface
 
 ScoreClient: ScoreClient/main.o ScoreClient/ScoreClient.o Constante.o ${TinyXml}
 	${CPP} -o bin/testScoreClient $^ ${CFLAGS} -g 
@@ -27,11 +27,11 @@ ScoreClient: ScoreClient/main.o ScoreClient/ScoreClient.o Constante.o ${TinyXml}
 ScoreServeur: ScoreServeur/main.o ScoreServeur/ScoreServeur.o Constante.o ${TinyXml}
 	${CPP} -o bin/testScoreServeur $^ ${CFLAGS} -g
 
-
-
 Gestion: Gestion/main.o Gestion/Gestion.o Constante.o ${Utiles} ${Interface}
 	${CPP} -o bin/testGestion $^ ${CFLAGS} ${LDFLAGS} -g
 
+TestInterface: main.o ${Interface} ${Utiles} Gestion/Gestion.o
+	${CPP} -o bin/testInterface $^ ${CLFAGS} ${LDFLAGS} -g
 
 %.o: %.cpp
 	@${CPP} -o $@ -c $< ${CFLAGS}
