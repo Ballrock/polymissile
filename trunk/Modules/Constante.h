@@ -23,6 +23,7 @@ public:
 	static const char ADRESSESERVEUR[];
 	static const int PORT = 5321;
 	static const char PATHBESTSCORE[];
+	static const int TIMETICK = 30;
 };
 
 

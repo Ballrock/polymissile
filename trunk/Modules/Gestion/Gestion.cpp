@@ -7,6 +7,7 @@
 #include "Gestion.h"
 #include <typeinfo>
 #include "../Constante.h"
+#include <iostream>
 
 void newCollision(vector<ObjetVolant*>* vec, vector<ObjetVolant*>::iterator cur, vector<ObjetVolant*>::iterator opp)
 {
@@ -94,6 +95,7 @@ void Gestion::gestionCollision(vector<ObjetVolant*>::iterator &curr)
 
 bool Gestion::evoluer()
 {
+	std::cout << "evoluer" << std::endl;	
 	vector<ObjetVolant*>::iterator it;
 	it = this->obj.begin();
 	while(it != this->obj.end())
