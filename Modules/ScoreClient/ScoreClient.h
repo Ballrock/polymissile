@@ -5,6 +5,12 @@
 #include <string>
 #include <iostream>
 
+#include <sys/types.h>
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <arpa/inet.h>
+#include <unistd.h>
+
 using namespace std;
 
 class ScoreClient {
@@ -17,13 +23,17 @@ public:
 	void gereScoreJoueur();
 
 private:
-	int socket;
+	int sock;
 	TiXmlDocument doc;
 	string *nomJoueur;	
 	int score;
 	void recuperationNomJoueur();
 	void envoiScore();
 	void recuperationTop(); 
+	int initSocket();
+	int ecrire(int, const char *);
+	int lire(int, char *);
+	sockaddr_in sin;
 
 };
 

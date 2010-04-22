@@ -2,7 +2,6 @@
 #define _DEF_SCORE_SERVEUR
 
 #include "../Constante.h"
-#include "../Utiles/GestionSockets.h"
 #include "../TinyXml/tinyxml.h"
 
 #include <sys/types.h>
@@ -10,8 +9,6 @@
 #include <netinet/in.h>
 #include <arpa/inet.h>
 #include <unistd.h>
-#include <stdio.h>
-#include <stdlib.h> 
 
 
 class ScoreServeur {
@@ -25,10 +22,14 @@ private:
 	ScoreServeur();
 	void chargeXml();
 	int acceptClient();
-	int listenSocket();
+	int initSocket();
+	int ecrire(int, const char*);
+	int lire(int, char *);
 
-	int socket;
+	int sock;
 	struct sockaddr_in addr;
+	struct sockaddr_in sin;
+	socklen_t addrlen;
 	TiXmlDocument doc;
 
 };
