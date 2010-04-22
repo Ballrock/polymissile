@@ -1,16 +1,13 @@
 #include "ScoreClient.h" 
-#include "../Utiles/GestionSockets.h"
 #include "../Constante.h"
 #include <sstream>
 #include <arpa/inet.h>
 
 
 ScoreClient::ScoreClient(int score) : score(score) {
-	try {
-		this->socket = GestionSockets::creeSocketEmission(Constante::ADRESSESERVEUR, Constante::PORT);
-	}
-	catch (int *e) {
-		cout << *e << endl;
+	if (initSocket() == -1) {
+		cout << "Erreur d'initialisation client" << endl;
+		throw(new int(-1));
 	}
 	this->nomJoueur = new string();
 	
@@ -18,22 +15,40 @@ ScoreClient::ScoreClient(int score) : score(score) {
 
 ScoreClient::~ScoreClient() {
 	delete this->nomJoueur;
+	close(this->sock);
 }
 
 ScoreClient::ScoreClient(const ScoreClient &obj) : score(obj.score) {
-	try {
-		this->socket = GestionSockets::creeSocketEmission(Constante::ADRESSESERVEUR, Constante::PORT);
-	}
-	catch (int *e) {
-		cout << *e << endl;
+	if (initSocket() == -1) {
+		cout << "Erreur d'initialisation client" << endl;
+		throw(new int(-1));
 	}
 	this->nomJoueur = new string(*(obj.nomJoueur));
 }
 
 ScoreClient &ScoreClient::operator=(const ScoreClient &obj) {
 	this->score = obj.score;
-	this->socket = GestionSockets::creeSocketEmission(Constante::ADRESSESERVEUR, Constante::PORT);
+	if (initSocket() == -1) {
+		cout << "Erreur d'initialisation client" << endl;
+		throw(new int(-1));
+	}
 	this->nomJoueur = new string(*(obj.nomJoueur));
+}
+
+int ScoreClient::initSocket() {
+	char buff[1024] = { '\0' };
+	this->sock = socket(AF_INET, SOCK_STREAM, 0);
+ 
+   sin.sin_addr.s_addr = inet_addr(Constante::ADRESSESERVEUR);
+   sin.sin_family = AF_INET;
+   sin.sin_port = htons(Constante::PORT);
+
+	memset(buff, '\0', 1024);
+ 
+   if(connect(this->sock, (struct sockaddr*)&sin, sizeof(sin)) == -1)
+		return -1;
+
+	return 0;
 }
 
 void ScoreClient::gereScoreJoueur() {
@@ -45,6 +60,22 @@ void ScoreClient::gereScoreJoueur() {
 void ScoreClient::recuperationNomJoueur() {
 	cout << "Entre votre pseudo : ";
 	cin >> *(this->nomJoueur);
+}
+
+int ScoreClient::ecrire(int sock, const char *buff) {
+	return send(sock, buff, strlen(buff), 0);
+}
+
+int ScoreClient::lire(int sock, char *buff) {
+	char c;
+   int i=0;
+   recv(sock, &c, 1, 0);
+   while (c != '\0') {
+      recv(sock, &c, 1, 0);
+      buff[i];
+      i++;
+   }
+	return 0;
 }
 
 void ScoreClient::envoiScore() {
@@ -76,11 +107,11 @@ void ScoreClient::envoiScore() {
 	os << doc;
 	doc.Print();
 
-	send(this->socket, os.str().c_str(), strlen(os.str().c_str()), 0);
+	ecrire(this->sock, os.str().c_str());
 
 
 	memset(buff, '\0', 1024);
-	charLu = recv(this->socket, buff, 1024, 0);
+	lire(this->sock, buff);
 
 	is.str(string(buff));
 
