@@ -13,8 +13,6 @@ public:
 	~Vaisseau();
 	Vaisseau &operator=(const Vaisseau&);
 
-	void avancer();
-	bool isColision();
 	void paint(SDL_Surface *);
 
 };

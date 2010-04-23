@@ -28,6 +28,7 @@ Droite::~Droite() {
 Droite &Droite::operator=(const Droite &obj) {
 	this->a = obj.a;
 	this->b = obj.b;
+	return *this;
 }
 
 

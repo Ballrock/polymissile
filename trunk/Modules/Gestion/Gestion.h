@@ -25,6 +25,7 @@ protected:
 	Coordonnees *posSilo;
 	int limSol;
 	int score;
+	int timer;
 	vector<ObjetVolant*> obj;
 
 	void gestionCollision(vector<ObjetVolant*>::iterator &curr);
@@ -35,6 +36,7 @@ public:
 	~Gestion();
 	int inline getLimSol() { return this->limSol; }
 	int inline getScore() { return this->score; }
+	int inline getTimer() { return this->timer; }
 	inline Coordonnees* getPosSilo() { return this->posSilo; }
 	inline vector<ObjetVolant*> *getObjetVolant() { return &(this->obj); }
 

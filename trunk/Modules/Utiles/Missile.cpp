@@ -20,6 +20,7 @@ Missile::~Missile() {
 Missile &Missile::operator=(const Missile &obj) {
 	this->tailleCote = obj.tailleCote;
 	this->vitesse = obj.vitesse;
+	return *this;
 }
 
 

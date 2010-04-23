@@ -23,6 +23,7 @@ Gestion::Gestion(Coordonnees &posSilo)
 	this->posSilo = new Coordonnees(posSilo);
 	this->limSol = 20;
 	this->score = 0;
+	this->timer = 0;
 }
 
 Gestion::Gestion(const Gestion &obj)
@@ -30,11 +31,13 @@ Gestion::Gestion(const Gestion &obj)
 	this->posSilo = obj.posSilo;
 	this->limSol = obj.limSol;
 	this->score = obj.score;
+	this->timer = obj.timer;
 }
 
 Gestion::~Gestion()
 {
 	free(this->posSilo);
+	this->obj.clear();
 }
 
 void Gestion::tirer(Coordonnees& point)
@@ -98,20 +101,19 @@ bool Gestion::evoluer()
 	std::cout << "evoluer" << std::endl;	
 	vector<ObjetVolant*>::iterator it;
 	it = this->obj.begin();
+	this->timer += Constante::TIMETICK;
 	while(it != this->obj.end())
 	{
 		(*it)->avancer();
 		if(typeid(*it)==typeid(Vaisseau))
 		{
+			std::cout << "Je suis un vaisseau" << endl;
 			if((*it)->getCentre().getY()+(*it)->getTailleCote()/2 <= this->posSilo->getY())
 			{
 				return true;
 			}
 		}
-		else
-		{
-			this->gestionCollision(it);
-		}
+		this->gestionCollision(it);
 	}
 	return false;
 }

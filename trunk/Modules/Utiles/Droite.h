@@ -12,7 +12,7 @@ public:
 	Droite(const Droite &);
 	~Droite();
 	Droite &operator=(const Droite&);
-	int inline getXWithY(int y) { return ((y - this->b) / a); }
+	float inline getXWithY(float y) { return ((y - this->b) / a); }
 
 private:
 	float a;
