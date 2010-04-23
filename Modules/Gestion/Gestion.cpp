@@ -13,6 +13,7 @@ void newCollision(vector<ObjetVolant*>* vec, vector<ObjetVolant*>::iterator cur,
 {
 	if(typeid(**cur)!=typeid(**opp))
 	{
+		std::cout << "Collision détecté" << endl;
 		vec->erase(cur);
 		vec->erase(opp);
 	}
