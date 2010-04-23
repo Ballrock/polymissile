@@ -7,33 +7,22 @@ Vaisseau::Vaisseau(int tailleCote, int vitesse, Coordonnees &centre, Droite &pen
 
 }
 
-Vaisseau::Vaisseau(const Vaisseau &obj):ObjetVolant(obj) {
+Vaisseau::Vaisseau(const Vaisseau &obj):ObjetVolant(obj)
+{
 
 }
 
-Vaisseau::~Vaisseau() {
+Vaisseau::~Vaisseau()
+{
 
 }
 
-Vaisseau &Vaisseau::operator=(const Vaisseau &obj) {
+Vaisseau &Vaisseau::operator=(const Vaisseau &obj)
+{
 	this->tailleCote = obj.tailleCote;
 	this->vitesse = obj.vitesse;
+	return *this;
 }
-
-
-void Vaisseau::avancer() {
-	/*
-	 * TODO
-	 */
-}
-
-bool Vaisseau::isColision() {
-	/*
-	 * TODO
-	 */
-	return false;
-}
-	 
 
 void Vaisseau::paint(SDL_Surface *ecran) {
 	//TODO : couleur ALEA (avec tableau de toutes les couleurs utilisées quelque part !
