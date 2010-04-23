@@ -17,11 +17,14 @@ int main(int argc, char **argv)
 	Coordonnees *tmp = new Coordonnees(30, 50);
 	Droite *tmpd = new Droite(*tir, *tmp);
 	Gestion *gest = new Gestion(*posSilo);
+	bool perdu=false;
 	gest->tirer(*tir);
 	gest->addObjVol(new Vaisseau(Constante::TAILLEVAISSEAU, Constante::VITESSE, *tmp, *tmpd));
+	while(!perdu)
 	{
-		gest->evoluer();
+		perdu = gest->evoluer();
 		cout << gest->getObjetVolant()->size() << endl;
 	}
+	cout << "Vous avez perdu" << endl;
 	cout << gest->getObjetVolant() <<endl;
 }

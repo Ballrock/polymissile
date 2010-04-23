@@ -11,7 +11,7 @@
 
 void newCollision(vector<ObjetVolant*>* vec, vector<ObjetVolant*>::iterator cur, vector<ObjetVolant*>::iterator opp)
 {
-	if(typeid(*cur)!=typeid(*opp))
+	if(typeid(**cur)!=typeid(**opp))
 	{
 		vec->erase(cur);
 		vec->erase(opp);
@@ -61,6 +61,7 @@ void Gestion::gestionCollision(vector<ObjetVolant*>::iterator &curr)
 		int oppTaille = (*opp)->getTailleCote()/2;
 		if(curr!=opp)
 		{
+			std::cout << "Je test ma collision avec un autre objet que moi" << endl;
 			if(curCoord->getX()-curTaille > oppCoord->getX()+oppTaille && curCoord->getX()+curTaille > oppCoord->getX()+oppTaille)
 			{
 				if((curCoord->getY()-curTaille < oppCoord->getY()+oppTaille) && (curCoord->getY()-curTaille > oppCoord->getY()+oppTaille))
@@ -93,27 +94,33 @@ void Gestion::gestionCollision(vector<ObjetVolant*>::iterator &curr)
 				}
 			}
 		}
+		else
+		{
+			std::cout << "L'opposant est moi" << endl;
+		}
+		opp++;
 	}
 }
 
 bool Gestion::evoluer()
 {
-	std::cout << "evoluer" << std::endl;	
+//	std::cout << "evoluer" << std::endl;
 	vector<ObjetVolant*>::iterator it;
 	it = this->obj.begin();
 	this->timer += Constante::TIMETICK;
 	while(it != this->obj.end())
 	{
 		(*it)->avancer();
-		if(typeid(*it)==typeid(Vaisseau))
+		if(typeid(**it)==typeid(Vaisseau))
 		{
 			std::cout << "Je suis un vaisseau" << endl;
-			if((*it)->getCentre().getY()+(*it)->getTailleCote()/2 <= this->posSilo->getY())
+			if((*it)->getCentre().getY()+(*it)->getTailleCote()/2 >= this->posSilo->getY())
 			{
 				return true;
 			}
 		}
 		this->gestionCollision(it);
+		it++;
 	}
 	return false;
 }
