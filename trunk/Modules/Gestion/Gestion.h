@@ -19,6 +19,11 @@
 
 using namespace std;
 /*!
+ * \file Gestion.h
+ * \brief Classe de gestion des règles du jeu
+ */
+
+/*!
  * \brief Classe de gestion des règles du jeu
  */
 class Gestion

@@ -81,7 +81,7 @@ void Gestion::gestionCollision(vector<ObjetVolant*>::iterator &curr)
 		int oppTaille = (*opp)->getTailleCote()/2;
 		if(curr!=opp)
 		{
-			//L'opposant est un autre objet que l'objet courant
+//			L'opposant est un autre objet que l'objet courant
 			if(curCoord->getX()-curTaille > oppCoord->getX()+oppTaille && curCoord->getX()+curTaille > oppCoord->getX()+oppTaille)
 			{
 				if((curCoord->getY()-curTaille > oppCoord->getY()+oppTaille) && (curCoord->getY()-curTaille > oppCoord->getY()+oppTaille))
@@ -139,7 +139,7 @@ bool Gestion::evoluer()
 		(*it)->avancer();
 		if(typeid(**it)==typeid(Vaisseau))
 		{
-			//L'objet est un vaisseau il test donc une éventuelle collision avec le sol
+//			L'objet est un vaisseau il test donc une éventuelle collision avec le sol
 			if((*it)->getCentre().getY()+(*it)->getTailleCote()/2 >= this->posSilo->getY())
 			{
 				std::cout << "Je suis un " << typeid(**it).name() << std::endl;
