@@ -1,0 +1,5 @@
+<area shape="rect" href="$classTiXmlNode.html#4508cc3a2d7a98e96a54cc09c37a78a4" title="TiXmlNode::Clone" alt="" coords="279,5,412,32">
+<area shape="rect" href="$classTiXmlNode.html#a66f4ebcd175204a168ed7c2d7b43071" title="TiXmlNode::GetDocument" alt="" coords="252,56,439,83">
+<area shape="rect" href="$classTiXmlDocument.html#735c23e318597b920c94eae77fa206de" title="TiXmlDocument::SetError" alt="" coords="253,107,437,133">
+<area shape="rect" href="$classTiXmlNode.html#57b99d5c97d67a42b9752f5210a1ba5e" title="TiXmlNode::Type" alt="" coords="283,157,408,184">
+<area shape="rect" href="$classTiXmlNode.html#8a4cda4b15c29f64cff419309aebed08" title="Cast to a more defined type. Will return null if not of the requested type." alt="" coords="489,56,665,83">

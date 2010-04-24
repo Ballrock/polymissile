@@ -1,0 +1,6 @@
+<area shape="rect" href="$Coordonnees_8h.html" title="Classe gerant les coordonnees des objets." alt="" coords="300,316,471,343">
+<area shape="rect" href="$ObjetVolant_8h.html" title="Classe définissant un objet volant de manière générale." alt="" coords="175,161,335,188">
+<area shape="rect" href="$Droite_8h.html" title="Classe gerant les droites." alt="" coords="460,239,532,265">
+<area shape="rect" href="$Affichable_8h.html" title="Interface pour tous les objets affichables dans la fenetre." alt="" coords="65,239,233,265">
+<area shape="rect" href="$Missile_8h.html" title="Classe gerant les missiles." alt="" coords="304,84,432,111">
+<area shape="rect" href="$Vaisseau_8h.html" title="Classe Vaisseau." alt="" coords="76,84,217,111">

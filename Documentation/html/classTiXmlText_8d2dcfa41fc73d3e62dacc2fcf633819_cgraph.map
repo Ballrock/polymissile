@@ -1,0 +1,14 @@
+<area shape="rect" href="$classTiXmlParsingData.html#56908a17d7d7a6b2e511e62cf1d40d05" title="TiXmlParsingData::Cursor" alt="" coords="424,259,605,285">
+<area shape="rect" href="$classTiXmlNode.html#a66f4ebcd175204a168ed7c2d7b43071" title="TiXmlNode::GetDocument" alt="" coords="180,56,367,83">
+<area shape="rect" href="$classTiXmlBase.html#a646c74921aa33156968b802bbf5566e" title="TiXmlBase::ReadText" alt="" coords="197,157,349,184">
+<area shape="rect" href="$classTiXmlBase.html#51631e6986179558b9e5850723ed165a" title="TiXmlBase::StringEqual" alt="" coords="431,208,599,235">
+<area shape="rect" href="$classTiXmlDocument.html#735c23e318597b920c94eae77fa206de" title="TiXmlDocument::SetError" alt="" coords="181,309,365,336">
+<area shape="rect" href="$classTiXmlParsingData.html#65cee8ab77a36c605db08c84b4c30a7d" title="TiXmlParsingData::Stamp" alt="" coords="423,360,607,387">
+<area shape="rect" href="$classTiXmlNode.html#8a4cda4b15c29f64cff419309aebed08" title="Cast to a more defined type. Will return null if not of the requested type." alt="" coords="427,5,603,32">
+<area shape="rect" href="$classTiXmlBase.html#5b0fde72d6f662ae1fd6303195d2159b" title="TiXmlBase::GetChar" alt="" coords="441,157,588,184">
+<area shape="rect" href="$classTiXmlBase.html#f56296d561c0bab4bc8e198cdcf5c48e" title="TiXmlBase::IsWhiteSpace" alt="" coords="663,81,841,108">
+<area shape="rect" href="$classTiXmlBase.html#c0c3d66d8a9e6996a1fa016275e16875" title="TiXmlBase::SkipWhiteSpace" alt="" coords="416,56,613,83">
+<area shape="rect" href="$classTiXmlBase.html#c5c08bf3deffcda0bf8ce2958372b584" title="TiXmlBase::GetEntity" alt="" coords="675,157,829,184">
+<area shape="rect" href="$classTiXmlBase.html#07c765e3a7f979d343e646ea797b180b" title="TiXmlBase::ConvertUTF32ToUTF8" alt="" coords="892,157,1121,184">
+<area shape="rect" href="$classTiXmlBase.html#799f17405a86a5c2029618e85f11a097" title="TiXmlBase::ToLower" alt="" coords="680,208,824,235">
+<area shape="rect" href="$structTiXmlCursor.html#1e6fa622b59dafb71b6efe595105dcdd" title="TiXmlCursor::Clear" alt="" coords="445,309,584,336">

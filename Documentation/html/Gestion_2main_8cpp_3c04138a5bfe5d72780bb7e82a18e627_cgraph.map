@@ -1,0 +1,10 @@
+<area shape="rect" href="$classGestion.html#1379750b7e8f49407e01ab9fdf021008" title="Fonction principale Cette fonction s&#39;occupe de la gestion globale du jeu elle..." alt="" coords="107,145,232,172">
+<area shape="rect" href="$classGestion.html#f9d0c25d3047a10777319f5ad9aeef8a" title="Fonction de tir La fonction reçoit en paramétres les coordonnées du clic et construit..." alt="" coords="317,56,421,83">
+<area shape="rect" href="$classGestion.html#60a6b8581578e43cc94d52849d6f1e0f" title="Fonction d&#39;ajout de vaisseau La fonction est appelé par la fonction evoluer..." alt="" coords="285,107,453,133">
+<area shape="rect" href="$classGestion.html#c2778e4358c428bafd637b8629e12a06" title="Fonction de gestion des collisions La fonction test les collisions entre l&#39;objet..." alt="" coords="281,208,457,235">
+<area shape="rect" href="$classCoordonnees.html#9fe9ff950cf5aee4778527854bc34e27" title="getY" alt="" coords="508,157,649,184">
+<area shape="rect" href="$classGestion.html#c5d5a4a148d274653fd6de36f4b8e5da" title="Fonction d&#39;ajout d&#39;objet volant La fonction reçoit un pointeur vers un objet..." alt="" coords="508,5,649,32">
+<area shape="rect" href="$classDroite.html#2d1a5b90e324aacab6f2d7f16cfb58df" title="getA" alt="" coords="529,56,628,83">
+<area shape="rect" href="$classDroite.html#aa083daa26adea5eae9e7c76410928d4" title="getB" alt="" coords="529,107,628,133">
+<area shape="rect" href="$classCoordonnees.html#52f2f1068d4c561598dc9f9234feccfd" title="getX" alt="" coords="507,208,651,235">
+<area shape="rect" href="$Gestion_8cpp.html#df980cec14281ed953c6fc7415b6c918" title="newCollision" alt="" coords="529,259,628,285">

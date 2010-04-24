@@ -1,0 +1,32 @@
+<area shape="rect" href="$classTiXmlAttributeSet.html#745e50ddaae3bee93e4589321e0b9c1a" title="TiXmlAttributeSet::Add" alt="" coords="227,76,392,103">
+<area shape="rect" href="$classTiXmlAttributeSet.html#f3675cc2bfd0aea153cda1cfcdd1f77e" title="TiXmlAttributeSet::Find" alt="" coords="505,39,671,65">
+<area shape="rect" href="$classTiXmlAttribute.html#298a57287d305904ba6bd96ae6f78d3d" title="Return the name of this attribute." alt="" coords="509,101,667,128">
+<area shape="rect" href="$classTiXmlParsingData.html#56908a17d7d7a6b2e511e62cf1d40d05" title="TiXmlParsingData::Cursor" alt="" coords="1008,253,1189,280">
+<area shape="rect" href="$classTiXmlNode.html#a66f4ebcd175204a168ed7c2d7b43071" title="TiXmlNode::GetDocument" alt="" coords="764,975,951,1001">
+<area shape="rect" href="$classTiXmlAttribute.html#64cee17bceb8232eb0736d26dd082d79" title="TiXmlAttribute::NameTStr" alt="" coords="217,1076,401,1103">
+<area shape="rect" href="$classTiXmlAttribute.html#d62774421b814894b995af3b5d231dda" title="TiXmlAttribute::Parse" alt="" coords="511,316,665,343">
+<area shape="rect" href="$classTiXmlBase.html#1c21a6ab5f7b503acd91f35f183734b3" title="TiXmlBase::ReadName" alt="" coords="775,924,940,951">
+<area shape="rect" href="$classTiXmlBase.html#c0c3d66d8a9e6996a1fa016275e16875" title="TiXmlBase::SkipWhiteSpace" alt="" coords="1000,493,1197,520">
+<area shape="rect" href="$classTiXmlBase.html#51631e6986179558b9e5850723ed165a" title="TiXmlBase::StringEqual" alt="" coords="1015,772,1183,799">
+<area shape="rect" href="$classTiXmlDocument.html#735c23e318597b920c94eae77fa206de" title="TiXmlDocument::SetError" alt="" coords="765,417,949,444">
+<area shape="rect" href="$classTiXmlParsingData.html#65cee8ab77a36c605db08c84b4c30a7d" title="TiXmlParsingData::Stamp" alt="" coords="1007,341,1191,368">
+<area shape="rect" href="$classTiXmlElement.html#c786bce103042d3837c4cc2ff6967d41" title="TiXmlElement::ReadValue" alt="" coords="219,620,400,647">
+<area shape="rect" href="$classTiXmlAttribute.html#c12a94d4548302afb12f488ba101f7d1" title="TiXmlAttribute::SetDocument" alt="" coords="205,1127,413,1153">
+<area shape="rect" href="$classTiXmlNode.html#8a4cda4b15c29f64cff419309aebed08" title="Cast to a more defined type. Will return null if not of the requested type." alt="" coords="1011,975,1187,1001">
+<area shape="rect" href="$classTiXmlBase.html#f56296d561c0bab4bc8e198cdcf5c48e" title="TiXmlBase::IsWhiteSpace" alt="" coords="1247,304,1425,331">
+<area shape="rect" href="$classTiXmlBase.html#a646c74921aa33156968b802bbf5566e" title="TiXmlBase::ReadText" alt="" coords="781,671,933,697">
+<area shape="rect" href="$classTiXmlBase.html#e22522b2e8e1ac43102d16394f639fc8" title="TiXmlBase::IsAlpha" alt="" coords="1028,873,1169,900">
+<area shape="rect" href="$classTiXmlBase.html#321919055c115c78ded17f85a793f368" title="TiXmlBase::IsAlphaNum" alt="" coords="1013,924,1184,951">
+<area shape="rect" href="$classTiXmlBase.html#5b0fde72d6f662ae1fd6303195d2159b" title="TiXmlBase::GetChar" alt="" coords="1025,671,1172,697">
+<area shape="rect" href="$classTiXmlBase.html#c5c08bf3deffcda0bf8ce2958372b584" title="TiXmlBase::GetEntity" alt="" coords="1259,671,1413,697">
+<area shape="rect" href="$classTiXmlBase.html#07c765e3a7f979d343e646ea797b180b" title="TiXmlBase::ConvertUTF32ToUTF8" alt="" coords="1476,671,1705,697">
+<area shape="rect" href="$classTiXmlBase.html#799f17405a86a5c2029618e85f11a097" title="TiXmlBase::ToLower" alt="" coords="1264,772,1408,799">
+<area shape="rect" href="$structTiXmlCursor.html#1e6fa622b59dafb71b6efe595105dcdd" title="TiXmlCursor::Clear" alt="" coords="1029,417,1168,444">
+<area shape="rect" href="$classTiXmlText.html#1c120428e3b3cf24d79706e6d2b65aa6" title="TiXmlText::Blank" alt="" coords="796,63,919,89">
+<area shape="rect" href="$classTiXmlNode.html#c1e3a8e7578be463b04617786120c2bb" title="TiXmlNode::Identify" alt="" coords="785,873,929,900">
+<area shape="rect" href="$classTiXmlBase.html#d4b1472531c647a25b1840a87ae42438" title="Return the current white space setting." alt="" coords="463,772,713,799">
+<area shape="rect" href="$classTiXmlNode.html#1a881212554b759865f6cac79a851d38" title="TiXmlNode::LinkEndChild" alt="" coords="500,721,676,748">
+<area shape="rect" href="$classTiXmlBase.html#00e4edb0219d00a1379c856e5a1d2025" title="TiXmlBase::Parse" alt="" coords="523,519,653,545">
+<area shape="rect" href="$classTiXmlText.html#8d2dcfa41fc73d3e62dacc2fcf633819" title="TiXmlText::Parse" alt="" coords="527,620,649,647">
+<area shape="rect" href="$classTiXmlText.html#cb17ff7c5d09b2c839393445a3de5ea9" title="Turns on or off a CDATA representation of text." alt="" coords="1023,823,1175,849">
+<area shape="rect" href="$classTiXmlNode.html#57b99d5c97d67a42b9752f5210a1ba5e" title="TiXmlNode::Type" alt="" coords="795,823,920,849">

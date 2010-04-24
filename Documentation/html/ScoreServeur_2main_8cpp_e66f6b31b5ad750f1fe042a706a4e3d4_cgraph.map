@@ -1,0 +1,8 @@
+<area shape="rect" href="$classScoreServeur.html#694ea782cb1352af50515e53418e6858" title="Retourne l&#39;instance unique de la classe (Singleton)." alt="" coords="107,56,299,83">
+<area shape="rect" href="$classScoreServeur.html#c4c61f6264d271851c7a356d8cd2c14a" title="Démarre le serveur Démarre le serveur en chargeant le fichier XML contenant les..." alt="" coords="109,107,296,133">
+<area shape="rect" href="$classScoreServeur.html#36b21744e06892c3c79af1699a785822" title="ScoreServeur::ScoreServeur" alt="" coords="348,56,551,83">
+<area shape="rect" href="$classScoreServeur.html#c6ada3e9980d75b1c32e506c7bf7efc2" title="ScoreServeur::chargeXml" alt="" coords="600,31,784,57">
+<area shape="rect" href="$classScoreServeur.html#c067ac5fa641c447b9186a5b527cfe91" title="ScoreServeur::initSocket" alt="" coords="603,81,781,108">
+<area shape="rect" href="$classTiXmlDocument.html#4c852a889c02cf251117fd1d9fe1845f" title="TiXmlDocument::LoadFile" alt="" coords="832,5,1013,32">
+<area shape="rect" href="$classTiXmlDocument.html#f08389ec70ee9b2de7f800e206a18510" title="TiXmlDocument::Print" alt="" coords="843,56,1003,83">
+<area shape="rect" href="$classTiXmlNode.html#77943eb90d12c2892b1337a9f5918b41" title="TiXmlNode::Value" alt="" coords="1063,5,1193,32">

@@ -1,0 +1,11 @@
+<area shape="rect" href="$classScoreClient.html#731b36216155f5e49cf2c4636d17adad" title="ScoreClient::ecrire" alt="" coords="247,31,385,57">
+<area shape="rect" href="$classTiXmlNode.html#1a881212554b759865f6cac79a851d38" title="TiXmlNode::LinkEndChild" alt="" coords="228,81,404,108">
+<area shape="rect" href="$classScoreClient.html#0bb47f6ae677dd0b9498d06c98ba4ccc" title="ScoreClient::lire" alt="" coords="256,132,376,159">
+<area shape="rect" href="$classTiXmlDocument.html#f08389ec70ee9b2de7f800e206a18510" title="TiXmlDocument::Print" alt="" coords="236,183,396,209">
+<area shape="rect" href="$classTiXmlNode.html#a66f4ebcd175204a168ed7c2d7b43071" title="TiXmlNode::GetDocument" alt="" coords="455,19,641,45">
+<area shape="rect" href="$classTiXmlDocument.html#735c23e318597b920c94eae77fa206de" title="TiXmlDocument::SetError" alt="" coords="456,81,640,108">
+<area shape="rect" href="$classTiXmlNode.html#57b99d5c97d67a42b9752f5210a1ba5e" title="TiXmlNode::Type" alt="" coords="485,132,611,159">
+<area shape="rect" href="$classTiXmlNode.html#8a4cda4b15c29f64cff419309aebed08" title="Cast to a more defined type. Will return null if not of the requested type." alt="" coords="695,5,871,32">
+<area shape="rect" href="$structTiXmlCursor.html#1e6fa622b59dafb71b6efe595105dcdd" title="TiXmlCursor::Clear" alt="" coords="713,56,852,83">
+<area shape="rect" href="$classTiXmlParsingData.html#56908a17d7d7a6b2e511e62cf1d40d05" title="TiXmlParsingData::Cursor" alt="" coords="692,107,873,133">
+<area shape="rect" href="$classTiXmlParsingData.html#65cee8ab77a36c605db08c84b4c30a7d" title="TiXmlParsingData::Stamp" alt="" coords="691,157,875,184">

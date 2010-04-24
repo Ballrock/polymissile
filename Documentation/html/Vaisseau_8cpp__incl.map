@@ -1,0 +1,6 @@
+<area shape="rect" href="$Vaisseau_8h.html" title="Classe Vaisseau." alt="" coords="255,84,345,111">
+<area shape="rect" href="$Constante_8h.html" title="Définie les constantes du programme." alt="" coords="415,161,527,188">
+<area shape="rect" href="$ObjetVolant_8h.html" title="Classe définissant un objet volant de manière générale." alt="" coords="217,161,324,188">
+<area shape="rect" href="$Coordonnees_8h.html" title="Classe gerant les coordonnees des objets." alt="" coords="317,316,435,343">
+<area shape="rect" href="$Droite_8h.html" title="Classe gerant les droites." alt="" coords="217,239,289,265">
+<area shape="rect" href="$Affichable_8h.html" title="Interface pour tous les objets affichables dans la fenetre." alt="" coords="25,239,193,265">

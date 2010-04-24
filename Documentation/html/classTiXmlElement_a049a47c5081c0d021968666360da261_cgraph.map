@@ -1,0 +1,4 @@
+<area shape="rect" href="$classTiXmlElement.html#5670933ec2d7d9763b9891acc05d7f7d" title="TiXmlElement::ClearThis" alt="" coords="271,56,444,83">
+<area shape="rect" href="$classTiXmlNode.html#708e7f953df61d4d2d12f73171550a4b" title="Delete all the children of this node. Does not affect &#39;this&#39;." alt="" coords="524,5,655,32">
+<area shape="rect" href="$classTiXmlAttributeSet.html#e0636e88cedd4b09d61c451860f68598" title="TiXmlAttributeSet::First" alt="" coords="505,56,673,83">
+<area shape="rect" href="$classTiXmlAttributeSet.html#924a73d071f2573f9060f0be57879c57" title="TiXmlAttributeSet::Remove" alt="" coords="493,107,685,133">

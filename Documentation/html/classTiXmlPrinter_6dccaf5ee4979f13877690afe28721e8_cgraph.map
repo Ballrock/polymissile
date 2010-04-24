@@ -1,0 +1,9 @@
+<area shape="rect" href="$classTiXmlText.html#d1a6a6b83fa2271022dd97c072a2b586" title="Queries whether this represents text using a CDATA section." alt="" coords="249,5,380,32">
+<area shape="rect" href="$classTiXmlPrinter.html#348ad6527b1d43ddeb51454cddeb6a1d" title="TiXmlPrinter::DoIndent" alt="" coords="233,56,396,83">
+<area shape="rect" href="$classTiXmlPrinter.html#252a0e13e06def9a06b2eb30a04677a0" title="TiXmlPrinter::DoLineBreak" alt="" coords="221,107,408,133">
+<area shape="rect" href="$classTiXmlNode.html#44c8eee26bbe2d1b2762038df9dde2f0" title="The first child of this node. Will be null if there are no children." alt="" coords="237,157,392,184">
+<area shape="rect" href="$classTiXmlNode.html#6d671107e00cca1d28cb2d7f3a87a21e" title="TiXmlNode::LastChild" alt="" coords="237,208,392,235">
+<area shape="rect" href="$classTiXmlAttribute.html#776478980776a024f7c2846eec640f65" title="Get the next sibling attribute in the DOM. Returns null at end." alt="" coords="240,259,389,285">
+<area shape="rect" href="$classTiXmlAttribute.html#cc04956c1d5c4c31fe74f7a7528d109a" title="TiXmlAttribute::Print" alt="" coords="241,309,388,336">
+<area shape="rect" href="$classTiXmlNode.html#95a46a52c525992d6b4ee08beb14cd69" title="Cast to a more defined type. Will return null if not of the requested type." alt="" coords="247,360,383,387">
+<area shape="rect" href="$classTiXmlNode.html#77943eb90d12c2892b1337a9f5918b41" title="TiXmlNode::Value" alt="" coords="249,411,380,437">

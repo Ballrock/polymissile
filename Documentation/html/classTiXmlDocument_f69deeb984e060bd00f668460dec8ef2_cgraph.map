@@ -1,0 +1,12 @@
+<area shape="rect" href="$classTiXmlNode.html#4508cc3a2d7a98e96a54cc09c37a78a4" title="TiXmlNode::Clone" alt="" coords="252,5,385,32">
+<area shape="rect" href="$classTiXmlNode.html#b6056978923ad8350fb5164af32d8038" title="TiXmlNode::CopyTo" alt="" coords="248,56,389,83">
+<area shape="rect" href="$classTiXmlNode.html#1a881212554b759865f6cac79a851d38" title="TiXmlNode::LinkEndChild" alt="" coords="231,107,407,133">
+<area shape="rect" href="$classTiXmlNode.html#f854baeba384f5fe9859f5aee03b548e" title="Navigate to a sibling node." alt="" coords="235,157,403,184">
+<area shape="rect" href="$classTiXmlNode.html#2a38329ca5d3f28f98ce932b8299ae90" title="TiXmlNode::SetValue" alt="" coords="473,31,628,57">
+<area shape="rect" href="$classTiXmlNode.html#a66f4ebcd175204a168ed7c2d7b43071" title="TiXmlNode::GetDocument" alt="" coords="457,81,644,108">
+<area shape="rect" href="$classTiXmlDocument.html#735c23e318597b920c94eae77fa206de" title="TiXmlDocument::SetError" alt="" coords="459,132,643,159">
+<area shape="rect" href="$classTiXmlNode.html#57b99d5c97d67a42b9752f5210a1ba5e" title="TiXmlNode::Type" alt="" coords="488,183,613,209">
+<area shape="rect" href="$classTiXmlNode.html#8a4cda4b15c29f64cff419309aebed08" title="Cast to a more defined type. Will return null if not of the requested type." alt="" coords="697,56,873,83">
+<area shape="rect" href="$structTiXmlCursor.html#1e6fa622b59dafb71b6efe595105dcdd" title="TiXmlCursor::Clear" alt="" coords="716,107,855,133">
+<area shape="rect" href="$classTiXmlParsingData.html#56908a17d7d7a6b2e511e62cf1d40d05" title="TiXmlParsingData::Cursor" alt="" coords="695,157,876,184">
+<area shape="rect" href="$classTiXmlParsingData.html#65cee8ab77a36c605db08c84b4c30a7d" title="TiXmlParsingData::Stamp" alt="" coords="693,208,877,235">

@@ -1,0 +1,5 @@
+<area shape="rect" href="$classTiXmlNode.html#b1f8d8e70d88aea4c5efedfe00862d55" title="Convenience function to get through elements." alt="" coords="272,56,480,83">
+<area shape="rect" href="$classTiXmlHandle.html#ba18fd7bdefb942ecdea4bf4b8e29ec8" title="Create a handle from any node (at any depth of the tree.) This can be a null pointer..." alt="" coords="283,107,469,133">
+<area shape="rect" href="$classTiXmlNode.html#44c8eee26bbe2d1b2762038df9dde2f0" title="The first child of this node. Will be null if there are no children." alt="" coords="536,5,691,32">
+<area shape="rect" href="$classTiXmlNode.html#f854baeba384f5fe9859f5aee03b548e" title="Navigate to a sibling node." alt="" coords="529,56,697,83">
+<area shape="rect" href="$classTiXmlNode.html#72abed96dc9667ab9e0a2a275301bb1c" title="Cast to a more defined type. Will return null if not of the requested type." alt="" coords="532,107,695,133">

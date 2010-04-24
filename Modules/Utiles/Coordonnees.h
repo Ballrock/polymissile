@@ -2,12 +2,12 @@
 #define _DEF_COORDONNEES
 
 /*!
- * \file Coordonees.h
+ * \file Coordonnees.h
  * \brief Classe gerant les coordonnees des objets
 */
 
 /*!
- * \class Coordonees
+ * \class Coordonnees
  * \brief Classe gerant les coordonnees des objets
 */
 class Coordonnees {

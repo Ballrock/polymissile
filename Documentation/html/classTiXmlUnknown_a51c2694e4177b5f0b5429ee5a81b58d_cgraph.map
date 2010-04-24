@@ -1,0 +1,8 @@
+<area shape="rect" href="$classTiXmlParsingData.html#56908a17d7d7a6b2e511e62cf1d40d05" title="TiXmlParsingData::Cursor" alt="" coords="457,56,639,83">
+<area shape="rect" href="$classTiXmlNode.html#a66f4ebcd175204a168ed7c2d7b43071" title="TiXmlNode::GetDocument" alt="" coords="216,5,403,32">
+<area shape="rect" href="$classTiXmlDocument.html#735c23e318597b920c94eae77fa206de" title="TiXmlDocument::SetError" alt="" coords="217,107,401,133">
+<area shape="rect" href="$classTiXmlParsingData.html#65cee8ab77a36c605db08c84b4c30a7d" title="TiXmlParsingData::Stamp" alt="" coords="456,157,640,184">
+<area shape="rect" href="$classTiXmlBase.html#c0c3d66d8a9e6996a1fa016275e16875" title="TiXmlBase::SkipWhiteSpace" alt="" coords="211,208,408,235">
+<area shape="rect" href="$classTiXmlNode.html#8a4cda4b15c29f64cff419309aebed08" title="Cast to a more defined type. Will return null if not of the requested type." alt="" coords="460,5,636,32">
+<area shape="rect" href="$structTiXmlCursor.html#1e6fa622b59dafb71b6efe595105dcdd" title="TiXmlCursor::Clear" alt="" coords="479,107,617,133">
+<area shape="rect" href="$classTiXmlBase.html#f56296d561c0bab4bc8e198cdcf5c48e" title="TiXmlBase::IsWhiteSpace" alt="" coords="459,208,637,235">

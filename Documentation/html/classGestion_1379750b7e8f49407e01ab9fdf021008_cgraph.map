@@ -1,0 +1,8 @@
+<area shape="rect" href="$classGestion.html#60a6b8581578e43cc94d52849d6f1e0f" title="Fonction d&#39;ajout de vaisseau La fonction est appelé par la fonction evoluer..." alt="" coords="184,107,352,133">
+<area shape="rect" href="$classGestion.html#c2778e4358c428bafd637b8629e12a06" title="Fonction de gestion des collisions La fonction test les collisions entre l&#39;objet..." alt="" coords="180,208,356,235">
+<area shape="rect" href="$classCoordonnees.html#9fe9ff950cf5aee4778527854bc34e27" title="getY" alt="" coords="407,259,548,285">
+<area shape="rect" href="$classGestion.html#c5d5a4a148d274653fd6de36f4b8e5da" title="Fonction d&#39;ajout d&#39;objet volant La fonction reçoit un pointeur vers un objet..." alt="" coords="407,5,548,32">
+<area shape="rect" href="$classDroite.html#2d1a5b90e324aacab6f2d7f16cfb58df" title="getA" alt="" coords="428,56,527,83">
+<area shape="rect" href="$classDroite.html#aa083daa26adea5eae9e7c76410928d4" title="getB" alt="" coords="428,107,527,133">
+<area shape="rect" href="$classCoordonnees.html#52f2f1068d4c561598dc9f9234feccfd" title="getX" alt="" coords="405,157,549,184">
+<area shape="rect" href="$Gestion_8cpp.html#df980cec14281ed953c6fc7415b6c918" title="newCollision" alt="" coords="428,208,527,235">
