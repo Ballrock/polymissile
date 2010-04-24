@@ -26,9 +26,12 @@ protected:
 	int limSol;
 	int score;
 	int timer;
+	float nbVpS;  //variable donnant le nombre de vaisseau apparraissant par seconde
 	vector<ObjetVolant*> obj;
 
 	void gestionCollision(vector<ObjetVolant*>::iterator &curr);
+	void inline addObjVol(ObjetVolant *nouv) {this->obj.push_back(nouv);}; //méthode d'ajout d'un nouvel Objet Volant
+	void ajoutVaisseau();
 public:
 	Gestion(Coordonnees &);
 	Gestion(const Gestion&);
@@ -40,7 +43,6 @@ public:
 	inline Coordonnees* getPosSilo() { return this->posSilo; }
 	inline vector<ObjetVolant*> *getObjetVolant() { return &(this->obj); }
 
-	void inline addObjVol(ObjetVolant *nouv) {this->obj.push_back(nouv);}; //méthode d'ajout d'un nouvel Objet Volant
 	void tirer(Coordonnees& point);
 	bool evoluer();
 
