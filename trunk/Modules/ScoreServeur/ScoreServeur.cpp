@@ -54,26 +54,52 @@ int ScoreServeur::acceptClient() {
 }
 
 void ScoreServeur::chargeXml() {
+	FILE *f = fopen(Constante::PATHBESTSCORE, "r");
+	if (f == NULL) {
+		fclose(f);
+		FILE *fout = fopen(Constante::PATHBESTSCORE, "w+");
+		TiXmlDeclaration *decl = new TiXmlDeclaration("1.0", "", "");
+		TiXmlElement *en = new TiXmlElement("enregistrements");
+		this->doc.LinkEndChild(decl);
+		this->doc.LinkEndChild(en);
+		this->doc.SaveFile(fout);
+		fclose(fout);
+	}
 	this->doc = TiXmlDocument(Constante::PATHBESTSCORE);
 	this->doc.LoadFile();
 	this->doc.Print();
 }
 
 void ScoreServeur::startServer() {
-	int score;
 	istringstream is;
 	ostringstream os;
-	TiXmlDocument doc;
+	TiXmlDocument *docScore = new TiXmlDocument();
 
-	is >> doc;
+	is >> *docScore;
 
-	score = atoi(doc.LastChild()->LastChild()->FirstChild()->Value());
-	
-	cout << score << endl;
+	ajouteScore(*docScore);
 
-	os << score;
-
+	cout << "Meilleurs Scores : " << this->doc;
 }	
+
+void ScoreServeur::ajouteScore(TiXmlNode &score) {
+	TiXmlNode *child;
+	int i = 0;
+	/* 
+	 * Parcours de tous les enregistrements de score et test du score courant avec le score à insérer, on l'insère lorsqu'on arrive à la bonne position
+	 */
+	while ((child = doc.LastChild()->IterateChildren( child )) && (atoi(score.LastChild()->LastChild()->FirstChild()->Value()) > atoi(child->LastChild()->LastChild()->FirstChild()->Value()))) {
+		i++;	
+	}
+
+	/* 
+	 * On n'est pas à la fin des scores, on ajoute alors le score 
+	 */
+	if (child || (!child && i<20)) {
+		doc.LastChild()->LinkEndChild(&score);
+	}
+
+}
 
 int ScoreServeur::ecrire(int sock, const char *buff) {
 	return send(sock, buff, strlen(buff), 0);
