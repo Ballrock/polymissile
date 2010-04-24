@@ -10,6 +10,11 @@
  * \brief Classe gerant le silo
 */
 
+/*!
+ * \class Silo.h
+ * \brief Classe gerant le silo
+*/
+
 class Silo : public Affichable {
 
 public:

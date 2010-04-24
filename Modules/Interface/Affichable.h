@@ -5,8 +5,12 @@
 
 /*!
  * \file Affichable.h
+ * \brief Interface pour tous les objets affichables dans la fenetre.
+*/
+
+/*!
+ * \class Affichable
  * \brief Interface pour tous les objets affichables dans la fenetre
- * Interface definissant la methode paint
 */
 
 class Affichable {
