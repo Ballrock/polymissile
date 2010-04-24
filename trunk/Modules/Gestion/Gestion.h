@@ -29,16 +29,16 @@ using namespace std;
 class Gestion
 {
 protected:
-	Coordonnees *posSilo;
-	int limSol;
-	int score;
-	int timer;
-	float nbVpS;  //variable donnant le nombre de vaisseau apparraissant par seconde
-	vector<ObjetVolant*> obj;
+	Coordonnees *posSilo; /*!<Coordonnees du silo */
+	int limSol; /*!< Epaisseur du sol */
+	int score; /*!< Score du joueur */
+	int timer; /*!< Compte du temps écoulé */
+	float nbVpS;  /*!< Nombre de vaisseau apparraissant par seconde */
+	vector<ObjetVolant*> obj; /*!< Vecteur contenant les objets volants */
 	/*!
 	 * \brief Fonction de gestion des collisions
-	 * La fonction reçoit le vector contenant tous les objets volants et un itérateur sur ce tableau
-	 * La fonction test ensuite les collisions entre l'objet référencé par l'itérateur et les autres objets du vector
+	 * La fonction test les collisions entre l'objet référencé par l'itérateur et les autres objets du vector
+	 * \param vector<ObjetVolant*>::iterator &curr : itérateur sur l'objet courant
 	 */
 	void gestionCollision(vector<ObjetVolant*>::iterator &curr);
 	/*!
