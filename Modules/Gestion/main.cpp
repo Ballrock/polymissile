@@ -23,7 +23,8 @@ int main(int argc, char **argv)
 	while(!perdu)
 	{
 		perdu = gest->evoluer();
-		cout << gest->getObjetVolant()->size() << endl;
+		cout << "tailleVect : " << gest->getObjetVolant()->size() << endl;
+		sleep(1);
 	}
 	cout << "Vous avez perdu" << endl;
 }
