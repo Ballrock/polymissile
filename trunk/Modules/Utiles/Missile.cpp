@@ -37,14 +37,7 @@ void Missile::avancer() {
 	this->yRestant -= floor(this->yRestant);
 }
 
-bool Missile::isColision() {
-	/*
-	 * TODO
-	 */
-	return false;
-}
 	 
 void Missile::paint(SDL_Surface *ecran) {
-	//TODO : voir paint() de Vaisseau
 	Draw_FillCircle(ecran, this->centre.getX(), this->centre.getY(), Constante::TAILLEMISSILE, SDL_MapRGB(ecran->format, 255, 255, 255));
 }
