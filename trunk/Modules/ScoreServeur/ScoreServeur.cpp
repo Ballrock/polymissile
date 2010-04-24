@@ -60,34 +60,18 @@ void ScoreServeur::chargeXml() {
 }
 
 void ScoreServeur::startServer() {
-	int socketEnvoi;
-	char buff[1024];
-	char c;
-	int charLu;
-	string hello = string ("Hello client !");
 	int score;
 	istringstream is;
 	ostringstream os;
 	TiXmlDocument doc;
 
-	memset(buff, '\0', 1024);
-	socketEnvoi = acceptClient();
-
-
-	lire(this->sock, buff);
-
-	cout << buff <<endl;
-	is.str(string(buff));
 	is >> doc;
 
-	//score = atoi(doc.LastChild()->LastChild()->FirstChild()->Value());
+	score = atoi(doc.LastChild()->LastChild()->FirstChild()->Value());
 	
 	cout << score << endl;
 
 	os << score;
-	ecrire(socketEnvoi, os.str().c_str());
-
-	shutdown(socketEnvoi, 2);
 
 }	
 
