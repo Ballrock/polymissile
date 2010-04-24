@@ -52,7 +52,9 @@ void Gestion::ajoutVaisseau()
 	Coordonnees *debut = new Coordonnees((int)(((double)rand() / ((double)RAND_MAX + 1))*600), 0);
 	Coordonnees *fin = new Coordonnees((int)((double)rand() / ((double)RAND_MAX + 1)*600), 400);
 	Droite *pente = new Droite(*debut, *fin);
-//	std::cout << "Debut X= " << debut->getX() << " Y= " << debut->getY() << endl;
+	cout << "\t Ceci est un ajout de vaisseau" << endl;
+	cout << "Debut X= " << debut->getX() << "fin X= " << fin->getX() << endl;
+	cout << "Valeur des coef a : " << pente->getA() << " b : " << pente->getB() << endl;
 	this->addObjVol(new Vaisseau(Constante::TAILLEVAISSEAU, Constante::VITESSE, *debut, *pente));
 }
 
@@ -153,7 +155,8 @@ bool Gestion::evoluer()
 //		std::cout << "Y=" << (*it)->getCentre().getY() << " X=" << (*it)->getCentre().getX() << endl;
 		if((*it)->getCentre().getY() < 0 || (*it)->getCentre().getX() <=0 || (*it)->getCentre().getX() >= 600)
 		{
-			std::cout << "\t Je ne suis plus sur l'écran je dois disparaitre et je suis un" << typeid(**it).name() << endl;
+			cout << "\t Je ne suis plus sur l'écran je dois disparaitre et je suis un" << typeid(**it).name() << endl;
+			cout << "X : " << (*it)->getCentre().getX() << " X : " << (*it)->getCentre().getY() << endl;
 			std::cout << this->obj.size() << endl;
 			this->obj.erase(it);
 		}
