@@ -1,0 +1,5 @@
+<area shape="rect" href="$classObjetVolant.html" title="Classe ObjetVolant." alt="" coords="36,84,132,111">
+<area shape="rect" href="$classSilo.html" title="Classe gerant le silo." alt="" coords="156,84,199,111">
+<area shape="rect" href="$classSol.html" title="Classe gerant le sol." alt="" coords="223,84,263,111">
+<area shape="rect" href="$classMissile.html" title="Classe gerant les missiles." alt="" coords="5,161,69,188">
+<area shape="rect" href="$classVaisseau.html" title="Classe de l&#39;objet volant Vaisseau." alt="" coords="93,161,171,188">

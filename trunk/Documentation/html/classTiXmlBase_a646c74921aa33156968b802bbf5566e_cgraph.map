@@ -1,0 +1,7 @@
+<area shape="rect" href="$classTiXmlBase.html#5b0fde72d6f662ae1fd6303195d2159b" title="TiXmlBase::GetChar" alt="" coords="231,5,377,32">
+<area shape="rect" href="$classTiXmlBase.html#f56296d561c0bab4bc8e198cdcf5c48e" title="TiXmlBase::IsWhiteSpace" alt="" coords="452,81,631,108">
+<area shape="rect" href="$classTiXmlBase.html#c0c3d66d8a9e6996a1fa016275e16875" title="TiXmlBase::SkipWhiteSpace" alt="" coords="205,107,403,133">
+<area shape="rect" href="$classTiXmlBase.html#51631e6986179558b9e5850723ed165a" title="TiXmlBase::StringEqual" alt="" coords="220,157,388,184">
+<area shape="rect" href="$classTiXmlBase.html#c5c08bf3deffcda0bf8ce2958372b584" title="TiXmlBase::GetEntity" alt="" coords="464,5,619,32">
+<area shape="rect" href="$classTiXmlBase.html#07c765e3a7f979d343e646ea797b180b" title="TiXmlBase::ConvertUTF32ToUTF8" alt="" coords="681,5,911,32">
+<area shape="rect" href="$classTiXmlBase.html#799f17405a86a5c2029618e85f11a097" title="TiXmlBase::ToLower" alt="" coords="469,157,613,184">

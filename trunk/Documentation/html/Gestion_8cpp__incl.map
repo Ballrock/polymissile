@@ -1,0 +1,8 @@
+<area shape="rect" href="$Gestion_8h.html" title="Classe de gestion des règles du jeu." alt="" coords="567,84,649,111">
+<area shape="rect" href="$Constante_8h.html" title="Définie les constantes du programme." alt="" coords="5,239,117,265">
+<area shape="rect" href="$Coordonnees_8h.html" title="Classe gerant les coordonnees des objets." alt="" coords="197,393,368,420">
+<area shape="rect" href="$ObjetVolant_8h.html" title="Classe définissant un objet volant de manière générale." alt="" coords="427,239,587,265">
+<area shape="rect" href="$Droite_8h.html" title="Classe gerant les droites." alt="" coords="689,316,761,343">
+<area shape="rect" href="$Affichable_8h.html" title="Interface pour tous les objets affichables dans la fenetre." alt="" coords="447,316,615,343">
+<area shape="rect" href="$Missile_8h.html" title="Classe gerant les missiles." alt="" coords="443,161,571,188">
+<area shape="rect" href="$Vaisseau_8h.html" title="Classe Vaisseau." alt="" coords="277,161,419,188">

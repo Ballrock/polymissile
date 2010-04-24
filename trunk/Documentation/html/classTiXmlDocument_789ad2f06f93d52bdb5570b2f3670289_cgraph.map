@@ -1,0 +1,9 @@
+<area shape="rect" href="$classTiXmlDocument.html#c66b8c28db86363315712a3574e87c35" title="TiXmlDocument::ClearError" alt="" coords="219,5,413,32">
+<area shape="rect" href="$classTiXmlDeclaration.html#5d974231f9e9a2f0542f15f3a46cdb76" title="Encoding. Will return an empty string if none was found." alt="" coords="219,56,413,83">
+<area shape="rect" href="$classTiXmlNode.html#1a881212554b759865f6cac79a851d38" title="TiXmlNode::LinkEndChild" alt="" coords="228,107,404,133">
+<area shape="rect" href="$classTiXmlBase.html#00e4edb0219d00a1379c856e5a1d2025" title="TiXmlBase::Parse" alt="" coords="251,157,381,184">
+<area shape="rect" href="$classTiXmlNode.html#9f43e6984fc7d4afd6eb32714c6b7b72" title="Cast to a more defined type. Will return null if not of the requested type." alt="" coords="224,208,408,235">
+<area shape="rect" href="$classTiXmlNode.html#a66f4ebcd175204a168ed7c2d7b43071" title="TiXmlNode::GetDocument" alt="" coords="463,56,649,83">
+<area shape="rect" href="$classTiXmlDocument.html#735c23e318597b920c94eae77fa206de" title="TiXmlDocument::SetError" alt="" coords="464,107,648,133">
+<area shape="rect" href="$classTiXmlNode.html#57b99d5c97d67a42b9752f5210a1ba5e" title="TiXmlNode::Type" alt="" coords="493,157,619,184">
+<area shape="rect" href="$classTiXmlNode.html#8a4cda4b15c29f64cff419309aebed08" title="Cast to a more defined type. Will return null if not of the requested type." alt="" coords="700,56,876,83">

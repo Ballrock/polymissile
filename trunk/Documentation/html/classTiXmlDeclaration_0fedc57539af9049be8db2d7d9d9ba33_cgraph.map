@@ -1,0 +1,4 @@
+<area shape="rect" href="$classTiXmlNode.html#708e7f953df61d4d2d12f73171550a4b" title="Delete all the children of this node. Does not affect &#39;this&#39;." alt="" coords="281,5,412,32">
+<area shape="rect" href="$classTiXmlDeclaration.html#9d08959f935421a593032bd3efb30c38" title="TiXmlDeclaration::CopyTo" alt="" coords="256,56,437,83">
+<area shape="rect" href="$classTiXmlNode.html#b6056978923ad8350fb5164af32d8038" title="TiXmlNode::CopyTo" alt="" coords="487,56,628,83">
+<area shape="rect" href="$classTiXmlNode.html#2a38329ca5d3f28f98ce932b8299ae90" title="TiXmlNode::SetValue" alt="" coords="677,56,832,83">

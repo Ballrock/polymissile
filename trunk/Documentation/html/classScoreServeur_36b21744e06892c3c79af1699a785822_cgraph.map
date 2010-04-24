@@ -1,0 +1,5 @@
+<area shape="rect" href="$classScoreServeur.html#c6ada3e9980d75b1c32e506c7bf7efc2" title="ScoreServeur::chargeXml" alt="" coords="259,31,443,57">
+<area shape="rect" href="$classScoreServeur.html#c067ac5fa641c447b9186a5b527cfe91" title="ScoreServeur::initSocket" alt="" coords="261,81,440,108">
+<area shape="rect" href="$classTiXmlDocument.html#4c852a889c02cf251117fd1d9fe1845f" title="TiXmlDocument::LoadFile" alt="" coords="491,5,672,32">
+<area shape="rect" href="$classTiXmlDocument.html#f08389ec70ee9b2de7f800e206a18510" title="TiXmlDocument::Print" alt="" coords="501,56,661,83">
+<area shape="rect" href="$classTiXmlNode.html#77943eb90d12c2892b1337a9f5918b41" title="TiXmlNode::Value" alt="" coords="721,5,852,32">
