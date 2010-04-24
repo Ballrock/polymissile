@@ -15,7 +15,7 @@
 class Constante
 {
 public:
-	static const int VITESSE = 30;
+	static const float VITESSE = 30.0;
 	static const int TAILLEMISSILE = 5;
 	static const int TAILLEVAISSEAU = 10;
 	static const int TAILLESILO = 20;
@@ -23,7 +23,7 @@ public:
 	static const char ADRESSESERVEUR[];
 	static const int PORT = 5321;
 	static const char PATHBESTSCORE[];
-	static const int TIMETICK = 30;
+	static const float TIMETICK = 30.0;
 };
 
 

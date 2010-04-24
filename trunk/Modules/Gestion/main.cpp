@@ -18,7 +18,7 @@ int main(int argc, char **argv)
 	Gestion *gest = new Gestion(*posSilo);
 	int nb =0;
 	bool perdu=false;
-	gest->tirer(*tir);
+	//gest->tirer(*tir);
 	gest->tirer(*tir2);
 	while(!perdu)
 	{
