@@ -11,6 +11,8 @@
 #include <time.h>
 #include <math.h>
 
+using namespace std;
+
 void newCollision(vector<ObjetVolant*>* vec, vector<ObjetVolant*>::iterator cur, vector<ObjetVolant*>::iterator opp)
 {
 	if(typeid(**cur)!=typeid(**opp))
@@ -46,7 +48,7 @@ Gestion::~Gestion()
 void Gestion::ajoutVaisseau()
 {
 	Coordonnees *debut = new Coordonnees((int)(((double)rand() / ((double)RAND_MAX + 1))*600), 0);
-	Coordonnees *fin = new Coordonnees((int)(400,((double)rand() / ((double)RAND_MAX + 1))*600), 400);
+	Coordonnees *fin = new Coordonnees((int)((double)rand() / ((double)RAND_MAX + 1)*600), 400);
 	Droite *pente = new Droite(*debut, *fin);
 //	std::cout << "Debut X= " << debut->getX() << " Y= " << debut->getY() << endl;
 	this->addObjVol(new Vaisseau(Constante::TAILLEVAISSEAU, Constante::VITESSE, *debut, *pente));
@@ -57,6 +59,8 @@ void Gestion::tirer(Coordonnees& point)
 	if (point.getY() < this->posSilo->getY()) {
 		/* Le point est dans la zone de jeu (au dessus du sol) */
 		Droite *tmp = new Droite(*(this->posSilo), point);
+		std::cout << "\tVoici un tir sa pente est :" << std::endl;
+		std::cout << "a= " << tmp->getA() << " b= " << tmp->getB() << std::endl;
 		ObjetVolant *nouv = new Missile(Constante::TAILLEMISSILE, Constante::VITESSE, *(this->posSilo), *tmp);
 		this->addObjVol(nouv);
 	}

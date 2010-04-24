@@ -15,6 +15,8 @@ cout << "x1 : " << x1 << " x2 : " << x2 << " y1 " << y1 << " y2 " << y2 << endl;
     */ 
 	if(x1!=x2)
 	{
+		std::cout << "X1 != X2" << std::endl;
+		std::cout << "a= " << ((float)(y2 - y1)) / ((float)(x2 - x1)) << std::endl;
 		this->a = ((float)(y2 - y1)) / ((float)(x2 - x1));
 		this->b = (float)(y1+y2- this->a*(x1+x2))/2;
 	}
