@@ -11,6 +11,7 @@
 
 /*!
  * \brief Classe de l'objet volant Vaisseau
+ * \class Vaisseau
  */
 
 class Vaisseau : public ObjetVolant {
