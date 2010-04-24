@@ -8,7 +8,7 @@ DIRBIN=bin
 #Nom du programme
 EXEC=PolyMissile
 
-SRC=Utiles/Coordonnees.cpp Utiles/ObjetVolant.cpp Utiles/Missile.cpp Utiles/Vaisseau.cpp Utiles/Droite.cpp Gestion/Gestion.cpp main.cpp Interface/fenetre.cpp Interface/Sol.cpp Interface/Silo.cpp ScoreClient/ScoreClient.cpp TinyXml/tinystr.cpp TinyXml/tinyxmlerror.cpp TinyXml/tinyxmlparser.cpp TinyXml/tinyxml.cpp Constante.cpp ScoreClient/main.cpp ScoreServeur/main.cpp ScoreServeur/ScoreServeur.cpp
+SRC=Utiles/Coordonnees.cpp Utiles/ObjetVolant.cpp Utiles/Missile.cpp Utiles/Vaisseau.cpp Utiles/Droite.cpp Gestion/Gestion.cpp main.cpp Interface/fenetre.cpp Interface/Sol.cpp Interface/Silo.cpp ScoreClient/ScoreClient.cpp TinyXml/tinystr.cpp TinyXml/tinyxmlerror.cpp TinyXml/tinyxmlparser.cpp TinyXml/tinyxml.cpp Constante.cpp ScoreClient/main.cpp ScoreServeur/main.cpp ScoreServeur/ScoreServeur.cpp Interface/main.cpp
 
 OBJ=$(SRC:.cpp=.o)
 
@@ -30,7 +30,7 @@ ScoreServeur: ScoreServeur/main.o ScoreServeur/ScoreServeur.o Constante.o ${Tiny
 Gestion: Gestion/main.o Gestion/Gestion.o Constante.o ${Utiles} ${Interface}
 	${CPP} -o bin/testGestion $^ ${CFLAGS} ${LDFLAGS} -g
 
-TestInterface: main.o ${Interface} ${Utiles} Gestion/Gestion.o
+TestInterface: Interface/main.o ${Interface} ${Utiles} Gestion/Gestion.o
 	${CPP} -o bin/testInterface $^ ${CLFAGS} ${LDFLAGS} -g
 
 %.o: %.cpp

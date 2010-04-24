@@ -51,7 +51,7 @@ void Gestion::ajoutVaisseau()
 {
 	Coordonnees *debut = new Coordonnees((int)(((double)rand() / ((double)RAND_MAX + 1))*600), 0);
 	Coordonnees *fin = new Coordonnees((int)((double)rand() / ((double)RAND_MAX + 1)*600), 400);
-	Droite *pente = new Droite(*debut, *fin);
+	Droite *pente = new Droite(*fin, *debut);
 	cout << "\t Ceci est un ajout de vaisseau" << endl;
 	cout << "Debut X= " << debut->getX() << "fin X= " << fin->getX() << endl;
 	cout << "Valeur des coef a : " << pente->getA() << " b : " << pente->getB() << endl;
@@ -132,12 +132,9 @@ bool Gestion::evoluer()
 		}
 	}
 	vector<ObjetVolant*>::iterator it;
-	it = this->obj.begin();
-	int i=0;
-	while(it != this->obj.end())
+	for (it = this->obj.begin(); it != this->obj.end(); it++)	
 	{
 //		std::cout << "Je suis l'objet " << i << " de type " << typeid(**it).name() << std::endl;
-		i++;
 //		std::cout << "Mes coordonnees sont X= " << (*it)->getCentre().getX() << " Y=" << (*it)->getCentre().getY() << endl;
 		(*it)->avancer();
 		if(typeid(**it)==typeid(Vaisseau))
@@ -160,7 +157,6 @@ bool Gestion::evoluer()
 			std::cout << this->obj.size() << endl;
 			this->obj.erase(it);
 		}
-		it++;
 	}
 	return false;
 }
