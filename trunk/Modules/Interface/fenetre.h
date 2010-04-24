@@ -8,8 +8,12 @@
 
 /*!
  * \file Fenetre.h
- * \brief Classe gerant la fenetre
- * Initialise, cree la fenetre et dessine tous les objets dedans
+ * \brief Classe gerant la fenetre. Initialise, cree la fenetre et dessine tous les objets dedans
+*/
+
+/*!
+ * \class Fenetre.h
+ * \brief Classe gerant la fenetre. Initialise, cree la fenetre et dessine tous les objets dedans
 */
 
 class Fenetre
