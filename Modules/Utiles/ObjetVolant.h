@@ -34,8 +34,17 @@ public:
 	 * \brief Destructeur
 	 */
 	~ObjetVolant();
+	/*!
+	 * \brief Getteur de l'attribut Centre
+	 */
 	inline Coordonnees& getCentre() { return this->centre;};
+	/*!
+	 * \brief Getteur de l'attribut TailleCote
+	 */
 	inline int getTailleCote() { return this->tailleCote;};
+	/*!
+	 * \brief Getteur de l'attribut Pente
+	 */
 	inline Droite getPente() { return this->pente;}
 	/*!
 	 * \brief Redéfinition de l'opérateur égal

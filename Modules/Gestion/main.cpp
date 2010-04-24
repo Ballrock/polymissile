@@ -23,10 +23,11 @@ int main(int argc, char **argv)
 	while(!perdu)
 	{
 		perdu = gest->evoluer();
-		cout << "tailleVect : " << gest->getObjetVolant()->size() << endl;
+		nb++;
+//		cout << "TailleVect : " << gest->getObjetVolant()->size() << endl;
 		sleep(1);
 //		cout << "ci-dessous le X du premier tir" << endl;
 //		cout << gest->getObjetVolant()->front()->getCentre().getX() << endl;
 	}
-	cout << "Vous avez perdu et il y a eu "<< nb <<" appel de évoluer" << endl;
+//	cout << "Vous avez perdu et il y a eu "<< nb <<" appel de évoluer" << endl;
 }
