@@ -8,12 +8,13 @@
 #include <typeinfo>
 #include "../Constante.h"
 #include <iostream>
+#include <time.h>
+#include <math.h>
 
 void newCollision(vector<ObjetVolant*>* vec, vector<ObjetVolant*>::iterator cur, vector<ObjetVolant*>::iterator opp)
 {
 	if(typeid(**cur)!=typeid(**opp))
 	{
-		std::cout << "Collision détecté" << endl;
 		vec->erase(cur);
 		vec->erase(opp);
 	}
@@ -25,6 +26,7 @@ Gestion::Gestion(Coordonnees &posSilo)
 	this->limSol = 20;
 	this->score = 0;
 	this->timer = 0;
+	this->nbVpS = 1;
 }
 
 Gestion::Gestion(const Gestion &obj)
@@ -41,11 +43,19 @@ Gestion::~Gestion()
 	this->obj.clear();
 }
 
+void Gestion::ajoutVaisseau()
+{
+	Coordonnees *debut = new Coordonnees(0, (int)(((double)rand() / ((double)RAND_MAX + 1))*600));
+	Coordonnees *fin = new Coordonnees(400, (int)(400,((double)rand() / ((double)RAND_MAX + 1))*600) );
+	Droite *pente = new Droite(*debut, *fin);
+	this->addObjVol(new Vaisseau(Constante::TAILLEVAISSEAU, Constante::VITESSE, *debut, *pente));
+}
+
 void Gestion::tirer(Coordonnees& point)
 {
 	if (point.getY() < this->posSilo->getY()) {
 		/* Le point est dans la zone de jeu (au dessus du sol) */
-		Droite *tmp = new Droite(point, *(this->posSilo));
+		Droite *tmp = new Droite(*(this->posSilo), point);
 		ObjetVolant *nouv = new Missile(Constante::TAILLEMISSILE, Constante::VITESSE, *(this->posSilo), *tmp);
 		this->addObjVol(nouv);
 	}
@@ -62,7 +72,7 @@ void Gestion::gestionCollision(vector<ObjetVolant*>::iterator &curr)
 		int oppTaille = (*opp)->getTailleCote()/2;
 		if(curr!=opp)
 		{
-			std::cout << "Je test ma collision avec un autre objet que moi" << endl;
+			//L'opposant est un autre objet que l'objet courant
 			if(curCoord->getX()-curTaille > oppCoord->getX()+oppTaille && curCoord->getX()+curTaille > oppCoord->getX()+oppTaille)
 			{
 				if((curCoord->getY()-curTaille < oppCoord->getY()+oppTaille) && (curCoord->getY()-curTaille > oppCoord->getY()+oppTaille))
@@ -95,10 +105,6 @@ void Gestion::gestionCollision(vector<ObjetVolant*>::iterator &curr)
 				}
 			}
 		}
-		else
-		{
-			std::cout << "L'opposant est moi" << endl;
-		}
 		opp++;
 	}
 }
@@ -106,21 +112,39 @@ void Gestion::gestionCollision(vector<ObjetVolant*>::iterator &curr)
 bool Gestion::evoluer()
 {
 //	std::cout << "evoluer" << std::endl;
+	this->timer += Constante::TIMETICK;
+	if((this->timer - 1000)>0)
+	{
+		this->nbVpS += 0.1;
+		this->timer -= 1000;
+		for (int i = 0; i < floor(this->nbVpS); i++)
+		{
+			this->ajoutVaisseau();
+			cout << "J'ai ajouté un vaisseau la preuve :" << this->obj.size() << endl;
+		}
+	}
 	vector<ObjetVolant*>::iterator it;
 	it = this->obj.begin();
-	this->timer += Constante::TIMETICK;
 	while(it != this->obj.end())
 	{
 		(*it)->avancer();
 		if(typeid(**it)==typeid(Vaisseau))
 		{
-			std::cout << "Je suis un vaisseau" << endl;
+			//L'objet est un vaisseau il test donc une éventuelle collision avec le sol
 			if((*it)->getCentre().getY()+(*it)->getTailleCote()/2 >= this->posSilo->getY())
 			{
 				return true;
 			}
 		}
 		this->gestionCollision(it);
+		std::cout << "L'objet a-t-il disparu ?" << endl;
+		std::cout << "Y=" << (*it)->getCentre().getY() << " X=" << (*it)->getCentre().getX() << endl;
+		if((*it)->getCentre().getY() <= 0 || (*it)->getCentre().getX() <=0 || (*it)->getCentre().getX() >= 600)
+		{
+			std::cout << "Je ne suis plus sur l'écran je dois disparaitre et je suis un" << typeid(**it).name() << endl;
+			std::cout << this->obj.size() << endl;
+			this->obj.erase(it);
+		}
 		it++;
 	}
 	return false;

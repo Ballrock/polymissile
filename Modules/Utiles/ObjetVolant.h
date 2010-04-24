@@ -13,6 +13,7 @@ public:
 	~ObjetVolant();
 	inline Coordonnees& getCentre() { return this->centre;};
 	inline int getTailleCote() { return this->tailleCote;};
+	inline Droite getPente() { return this->pente;}
 	ObjetVolant &operator=(const ObjetVolant&);
 	
 	void avancer();

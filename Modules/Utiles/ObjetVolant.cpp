@@ -22,11 +22,11 @@ void ObjetVolant::avancer()
 {
 	this->xRestant += this->pente.getXWithY((float)(this->vitesse)*((float)Constante::TIMETICK/1000.0));
 	this->yRestant += (float)(this->vitesse)*((float)Constante::TIMETICK/1000.0);
-	std::cout << "Avancement X = " << this->pente.getXWithY((float)(this->vitesse)*(Constante::TIMETICK/1000)) << " Y = " << (float)this->vitesse*Constante::TIMETICK/1000;
-	std::cout << "Avant déplacement X = " << this->centre.getX() << " Y = " << this->centre.getY();
+	std::cout << "L'objet avance suivant x -> " << this->xRestant << std::endl;
+	std::cout << "L'objet avance suivant y -> " << this->yRestant << std::endl;
+	std::cout << "a= " << this->pente.getA() << " b= " << this->pente.getB() << std::endl;
 	this->centre.setX(this->centre.getX()+floor(this->xRestant));
 	this->centre.setY(floor(this->centre.getY()+this->yRestant));
-	std::cout << "Après déplacement X = " << this->centre.getX() << " Y = " << this->centre.getY();
 	this->xRestant -= floor(this->xRestant);
 	this->yRestant -= floor(this->yRestant);
 }
