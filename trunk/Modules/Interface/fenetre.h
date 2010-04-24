@@ -51,6 +51,7 @@ public:
  	 * \brief Tout dessiner
 	 * Dessine tous les objets affichables
 	 * \param SDL_Surface * : Pointeur vers la surface de dessin
+	 * \return Retourne le score final du joueur 
 	*/	
 	void dessineAll(SDL_Surface *);
 
