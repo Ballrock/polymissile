@@ -5,10 +5,6 @@
 
 
 ScoreClient::ScoreClient(int score) : score(score) {
-	if (initSocket() == -1) {
-		cout << "Erreur d'initialisation client" << endl;
-		throw(new int(-1));
-	}
 	this->nomJoueur = new string();
 }
 
@@ -18,19 +14,11 @@ ScoreClient::~ScoreClient() {
 }
 
 ScoreClient::ScoreClient(const ScoreClient &obj) : score(obj.score) {
-	if (initSocket() == -1) {
-		cout << "Erreur d'initialisation client" << endl;
-		throw(new int(-1));
-	}
 	this->nomJoueur = new string(*(obj.nomJoueur));
 }
 
 ScoreClient &ScoreClient::operator=(const ScoreClient &obj) {
 	this->score = obj.score;
-	if (initSocket() == -1) {
-		cout << "Erreur d'initialisation client" << endl;
-		throw(new int(-1));
-	}
 	this->nomJoueur = new string(*(obj.nomJoueur));
 }
 
@@ -105,12 +93,6 @@ void ScoreClient::envoiScore() {
 	os.str("");
 	os << doc;
 	doc.Print();
-
-	ecrire(this->sock, os.str().c_str());
-
-
-	memset(buff, '\0', 1024);
-	lire(this->sock, buff);
 
 	is.str(string(buff));
 
