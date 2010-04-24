@@ -10,7 +10,6 @@ ScoreClient::ScoreClient(int score) : score(score) {
 		throw(new int(-1));
 	}
 	this->nomJoueur = new string();
-	
 }
 
 ScoreClient::~ScoreClient() {
