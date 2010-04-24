@@ -84,7 +84,7 @@ void Gestion::gestionCollision(vector<ObjetVolant*>::iterator &curr)
 			//L'opposant est un autre objet que l'objet courant
 			if(curCoord->getX()-curTaille > oppCoord->getX()+oppTaille && curCoord->getX()+curTaille > oppCoord->getX()+oppTaille)
 			{
-				if((curCoord->getY()-curTaille < oppCoord->getY()+oppTaille) && (curCoord->getY()-curTaille > oppCoord->getY()+oppTaille))
+				if((curCoord->getY()-curTaille > oppCoord->getY()+oppTaille) && (curCoord->getY()-curTaille > oppCoord->getY()+oppTaille))
 				{
 					newCollision(&this->obj,curr,opp);
 				}
