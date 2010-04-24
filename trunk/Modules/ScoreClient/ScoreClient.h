@@ -13,6 +13,16 @@
 
 using namespace std;
 
+
+/*!
+ * \file ScoreClient.h
+ * \brief Classe de gestion des scores
+ */
+
+/*!
+ * \class ScoreClient
+ * \brief Classe de gestion des scores
+ */
 class ScoreClient {
 
 public:
