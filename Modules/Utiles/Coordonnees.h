@@ -79,8 +79,8 @@ public:
 
 private:
 
-	int x; /*!< X de la coordonnée*/
-	int y; /*!< Y de la coordonnée*/
+	int x;
+	int y;
 
 
 };

@@ -57,12 +57,12 @@ public:
 	virtual void avancer() = 0;
 
 protected:
-	int tailleCote; /*!< Taille de l'ObjetVolant*/
-	int vitesse; /*!< Vitesse de l'ObjetVolant*/
-	Coordonnees centre; /*!< Coordonnees du centre de l'ObjetVolant*/
-	Droite pente; /*!< Pente de déplacement de l'ObjetVolant */
-	float xRestant; /*!< Partie décimale du déplacement de l'ObjetVolant suivant x */
-	float yRestant; /*!< Partie décimale du déplacement de l'ObjetVolant suivant y */
+	int tailleCote;
+	int vitesse;
+	Coordonnees centre;
+	Droite pente;
+	float xRestant;
+	float yRestant;
 
 };
 

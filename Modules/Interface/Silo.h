@@ -66,7 +66,7 @@ public:
 	void paint(SDL_Surface *);
 
 private:
-	Coordonnees *coordSilo; /*!< Pointeur sur les Coordonnées du Silo*/
+	Coordonnees *coordSilo;
 };
 
 #endif

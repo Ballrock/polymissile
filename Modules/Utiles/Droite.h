@@ -88,8 +88,8 @@ public:
 	float inline getB() {return this->b;}
 
 private:
-	float a; /*!< A de l'equation de la droite*/
-	float b; /*!< B de l'equation de la droite*/
+	float a;
+	float b;
 };
 
 #endif

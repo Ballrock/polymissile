@@ -68,8 +68,8 @@ public:
 	void paint(SDL_Surface *);
 
 private:
-	Coordonnees *coordSol; /*!< Pointeur sur les Coordonnées du Silo*/
-	int longueur, largeur; /*!< Longueur et Largueur du Silo*/
+	Coordonnees *coordSol;
+	int longueur, largeur;
 };
 
 
