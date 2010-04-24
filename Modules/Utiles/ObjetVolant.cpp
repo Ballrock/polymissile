@@ -22,9 +22,7 @@ ObjetVolant::~ObjetVolant() {
 
 void ObjetVolant::avancer()
 {
-	cout << "vitesse : " << this->vitesse << " timeTick : " << (float)(Constante::TIMETICK)/1000.0 << endl;
-	cout << "envoie : " << (float)(this->vitesse)*((float)(Constante::TIMETICK)/1000.0); 
-	this->xRestant += this->pente.getXWithY((float)(this->vitesse)*((float)Constante::TIMETICK/1000.0));
+	this->xRestant += this->pente.getXWithY((float)(this->vitesse)*(float)Constante::TIMETICK/1000.0);
 	this->yRestant += (float)(this->vitesse)*((float)Constante::TIMETICK/1000.0);
 	cout << "xRestant : " << xRestant << " y restant : " << yRestant << endl;
 //	std::cout << "L'objet avance suivant x -> " << this->xRestant << std::endl;

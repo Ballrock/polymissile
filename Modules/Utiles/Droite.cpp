@@ -18,18 +18,26 @@ cout << "x1 : " << x1 << " x2 : " << x2 << " y1 " << y1 << " y2 " << y2 << endl;
 		std::cout << "X1 != X2" << std::endl;
 		std::cout << "a= " << ((float)(y2 - y1)) / ((float)(x2 - x1)) << std::endl;
 		this->a = ((float)(y2 - y1)) / ((float)(x2 - x1));
-		this->b = (float)(y1+y2- this->a*(x1+x2))/2;
+		this->b = (float)(y1+y2- this->a*(x1+x2))/2.0;
 	}
 	else
 	{
-		this->a = 0;
-		this->b = x1;
+		this->a = 0.0;
+		this->b = (float)x1;
 	}
 	cout << "a : " << a << " b : " << b << endl;
 }
 
 Droite::Droite(Coordonnees &c1, Coordonnees &c2) { 
-	Droite(c1.getX(), c1.getY(), c2.getX(), c2.getY());
+	if(c1.getX() != c2.getX()) {
+		this->a = ((float)(c2.getY() - c1.getY()) / ((float)(c2.getX() - c1.getX())));
+		this->b = (float)(c1.getY() + c2.getY() - this->a * (c1.getX() + c2.getX()))/2.0;
+	}
+	else {
+		this->a = 0.0;
+		this->b = (float)c1.getX();
+	}
+	cout << "a : " << a << " b : " << b << endl;
 }
 
 Droite::Droite(const Droite &obj):a(obj.a), b(obj.b) {

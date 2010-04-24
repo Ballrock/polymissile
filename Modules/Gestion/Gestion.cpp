@@ -24,6 +24,7 @@ void newCollision(vector<ObjetVolant*>* vec, vector<ObjetVolant*>::iterator cur,
 
 Gestion::Gestion(Coordonnees &posSilo)
 {
+	srand(time(NULL));
 	this->posSilo = new Coordonnees(posSilo);
 	this->limSol = 20;
 	this->score = 0;
@@ -33,6 +34,7 @@ Gestion::Gestion(Coordonnees &posSilo)
 
 Gestion::Gestion(const Gestion &obj)
 {
+	srand(time(NULL));
 	this->posSilo = obj.posSilo;
 	this->limSol = obj.limSol;
 	this->score = obj.score;
@@ -117,7 +119,6 @@ void Gestion::gestionCollision(vector<ObjetVolant*>::iterator &curr)
 bool Gestion::evoluer()
 {
 //	std::cout << "evoluer" << std::endl;
-	srand(time(NULL));
 	this->timer += Constante::TIMETICK;
 	if((this->timer - 1000)>0)
 	{
