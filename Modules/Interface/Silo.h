@@ -59,7 +59,7 @@ public:
 	/*!
  	 * \brief Dessiner
 	 *
-	 * Methode dessinant l'objet dans SDL_Surface 
+	 * Methode dessinant le silo dans SDL_Surface 
 	 * 
 	 * \param SDL_Surface * : Pointeur vers la surface de dessin
 	*/
