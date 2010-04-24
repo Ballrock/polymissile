@@ -88,7 +88,8 @@ void ScoreServeur::ajouteScore(TiXmlNode &score) {
 	/* 
 	 * Parcours de tous les enregistrements de score et test du score courant avec le score à insérer, on l'insère lorsqu'on arrive à la bonne position
 	 */
-	while ((child = doc.LastChild()->IterateChildren( child )) && (atoi(score.LastChild()->LastChild()->FirstChild()->Value()) > atoi(child->LastChild()->LastChild()->FirstChild()->Value()))) {
+	for( child = parent->FirstChild(); child; child = child->NextSibling() )	
+ (atoi(score.LastChild()->LastChild()->FirstChild()->Value()) > atoi(child->LastChild()->LastChild()->FirstChild()->Value()))) {
 		i++;	
 	}
 
