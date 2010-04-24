@@ -14,6 +14,7 @@ public:
 	Vaisseau &operator=(const Vaisseau&);
 
 	void paint(SDL_Surface *);
+	void avancer();
 
 };
 
