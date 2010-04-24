@@ -16,7 +16,7 @@ public:
 	inline Droite getPente() { return this->pente;}
 	ObjetVolant &operator=(const ObjetVolant&);
 	
-	void avancer();
+	virtual void avancer() = 0;
 
 protected:
 	int tailleCote;
