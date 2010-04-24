@@ -13,7 +13,7 @@ using namespace std;
 int main(int argc, char **argv)
 {
 	Coordonnees *posSilo = new Coordonnees(300,380);
-	Coordonnees *tir = new Coordonnees(10,370);
+	//Coordonnees *tir = new Coordonnees(10,370);
 	Coordonnees *tir2 = new Coordonnees(400,10);
 	Gestion *gest = new Gestion(*posSilo);
 	int nb =0;
