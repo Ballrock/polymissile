@@ -22,13 +22,13 @@ ObjetVolant::~ObjetVolant() {
 
 void ObjetVolant::avancer()
 {
-	this->xRestant += this->pente.getXWithY((float)(this->vitesse)*(float)Constante::TIMETICK/1000.0);
 	this->yRestant += (float)(this->vitesse)*((float)Constante::TIMETICK/1000.0);
+	this->xRestant += this->pente.getXWithY(this->centre.getY()+this->yRestant);
 	cout << "xRestant : " << xRestant << " y restant : " << yRestant << endl;
 //	std::cout << "L'objet avance suivant x -> " << this->xRestant << std::endl;
 //	std::cout << "L'objet avance suivant y -> " << this->yRestant << std::endl;
-	this->centre.setX(this->centre.getX()+floor(this->xRestant));
-	this->centre.setY(floor(this->centre.getY()+this->yRestant));
+	this->centre.setX(floor(this->xRestant));
+	this->centre.setY(floor(this->centre.getY()-this->yRestant));
 	this->xRestant -= floor(this->xRestant);
 	this->yRestant -= floor(this->yRestant);
 }

@@ -28,12 +28,15 @@ cout << "x1 : " << x1 << " x2 : " << x2 << " y1 " << y1 << " y2 " << y2 << endl;
 	cout << "a : " << a << " b : " << b << endl;
 }
 
-Droite::Droite(Coordonnees &c1, Coordonnees &c2) { 
-	if(c1.getX() != c2.getX()) {
+Droite::Droite(Coordonnees &c1, Coordonnees &c2)
+{
+	if(c1.getX() != c2.getX())
+	{
 		this->a = ((float)(c2.getY() - c1.getY()) / ((float)(c2.getX() - c1.getX())));
 		this->b = (float)(c1.getY() + c2.getY() - this->a * (c1.getX() + c2.getX()))/2.0;
 	}
-	else {
+	else
+	{
 		this->a = 0.0;
 		this->b = (float)c1.getX();
 	}
