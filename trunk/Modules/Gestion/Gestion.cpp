@@ -45,9 +45,10 @@ Gestion::~Gestion()
 
 void Gestion::ajoutVaisseau()
 {
-	Coordonnees *debut = new Coordonnees(0, (int)(((double)rand() / ((double)RAND_MAX + 1))*600));
-	Coordonnees *fin = new Coordonnees(400, (int)(400,((double)rand() / ((double)RAND_MAX + 1))*600) );
+	Coordonnees *debut = new Coordonnees((int)(((double)rand() / ((double)RAND_MAX + 1))*600), 0);
+	Coordonnees *fin = new Coordonnees((int)(400,((double)rand() / ((double)RAND_MAX + 1))*600), 400);
 	Droite *pente = new Droite(*debut, *fin);
+//	std::cout << "Debut X= " << debut->getX() << " Y= " << debut->getY() << endl;
 	this->addObjVol(new Vaisseau(Constante::TAILLEVAISSEAU, Constante::VITESSE, *debut, *pente));
 }
 
@@ -112,6 +113,7 @@ void Gestion::gestionCollision(vector<ObjetVolant*>::iterator &curr)
 bool Gestion::evoluer()
 {
 //	std::cout << "evoluer" << std::endl;
+	srand(time(NULL));
 	this->timer += Constante::TIMETICK;
 	if((this->timer - 1000)>0)
 	{
@@ -120,28 +122,33 @@ bool Gestion::evoluer()
 		for (int i = 0; i < floor(this->nbVpS); i++)
 		{
 			this->ajoutVaisseau();
-			cout << "J'ai ajouté un vaisseau la preuve :" << this->obj.size() << endl;
 		}
 	}
 	vector<ObjetVolant*>::iterator it;
 	it = this->obj.begin();
+	int i=0;
 	while(it != this->obj.end())
 	{
+//		std::cout << "Je suis l'objet " << i << " de type " << typeid(**it).name() << std::endl;
+		i++;
+//		std::cout << "Mes coordonnees sont X= " << (*it)->getCentre().getX() << " Y=" << (*it)->getCentre().getY() << endl;
 		(*it)->avancer();
 		if(typeid(**it)==typeid(Vaisseau))
 		{
 			//L'objet est un vaisseau il test donc une éventuelle collision avec le sol
 			if((*it)->getCentre().getY()+(*it)->getTailleCote()/2 >= this->posSilo->getY())
 			{
+				std::cout << "Je suis un " << typeid(**it).name() << std::endl;
+				std::cout << "Je rencontre le sol mon Y est " << (*it)->getCentre().getY() << std::endl;
 				return true;
 			}
 		}
 		this->gestionCollision(it);
-		std::cout << "L'objet a-t-il disparu ?" << endl;
-		std::cout << "Y=" << (*it)->getCentre().getY() << " X=" << (*it)->getCentre().getX() << endl;
-		if((*it)->getCentre().getY() <= 0 || (*it)->getCentre().getX() <=0 || (*it)->getCentre().getX() >= 600)
+//		std::cout << "L'objet a-t-il disparu ?" << endl;
+//		std::cout << "Y=" << (*it)->getCentre().getY() << " X=" << (*it)->getCentre().getX() << endl;
+		if((*it)->getCentre().getY() < 0 || (*it)->getCentre().getX() <=0 || (*it)->getCentre().getX() >= 600)
 		{
-			std::cout << "Je ne suis plus sur l'écran je dois disparaitre et je suis un" << typeid(**it).name() << endl;
+			std::cout << "\t Je ne suis plus sur l'écran je dois disparaitre et je suis un" << typeid(**it).name() << endl;
 			std::cout << this->obj.size() << endl;
 			this->obj.erase(it);
 		}
