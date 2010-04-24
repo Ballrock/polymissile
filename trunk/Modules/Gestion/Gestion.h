@@ -29,27 +29,14 @@ using namespace std;
 class Gestion
 {
 protected:
-	Coordonnees *posSilo; /*!<Coordonnees du silo */
-	int limSol; /*!< Epaisseur du sol */
-	int score; /*!< Score du joueur */
-	int timer; /*!< Compte du temps écoulé */
-	float nbVpS;  /*!< Nombre de vaisseau apparraissant par seconde */
-	vector<ObjetVolant*> obj; /*!< Vecteur contenant les objets volants */
-	/*!
-	 * \brief Fonction de gestion des collisions
-	 * La fonction test les collisions entre l'objet référencé par l'itérateur et les autres objets du vector
-	 * \param vector<ObjetVolant*>::iterator &curr : itérateur sur l'objet courant
-	 */
+	Coordonnees *posSilo;
+	int limSol;
+	int score;
+	int timer;
+	float nbVpS;
+	vector<ObjetVolant*> obj;
 	void gestionCollision(vector<ObjetVolant*>::iterator &curr);
-	/*!
-	 * \brief Fonction d'ajout d'objet volant
-	 * La fonction reçoit un pointeur vers un objet volant et l'ajoute de le vector de la classe gestion
-	 */
 	void inline addObjVol(ObjetVolant *nouv) {this->obj.push_back(nouv);}; //méthode d'ajout d'un nouvel Objet Volant
-	/*!
-	 * \brief Fonction d'ajout de vaisseau
-	 * La fonction est appelé par la fonction evoluer et génére un nouveau vaisseau avec une pente tiré aléatoirement
-	 */
 	void ajoutVaisseau();
 public:
 	/*!

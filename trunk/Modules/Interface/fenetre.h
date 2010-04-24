@@ -61,10 +61,10 @@ public:
 
 private:
 		
-	int longueurFenetre, hauteurFenetre; /*!< Longueur et Largeur de la Fenetre*/
+	int longueurFenetre, hauteurFenetre;
 	//Gestion *gestionJeu; 
-	Sol *sol; /*!< Sol de la Fenetre*/
-	Silo *silo; /*!< Silo de la Fenetre*/
+	Sol *sol;
+	Silo *silo;
 	int continuer;
 
 };
