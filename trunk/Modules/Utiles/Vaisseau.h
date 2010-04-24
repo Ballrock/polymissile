@@ -38,12 +38,16 @@ public:
 	 */
 	Vaisseau &operator=(const Vaisseau&);
 	/*!
-	 * \brief Fonction d'affichage du vaisseau
-	 * \param SDL_Surface * : surface de destination de l'affichage
-	 */
+ 	 * \brief Dessiner
+	 *
+	 * Methode dessinant le vaisseau dans SDL_Surface 
+	 * 
+	 * \param SDL_Surface * : Pointeur vers la surface de dessin
+	*/
 	void paint(SDL_Surface *);
 	/*!
-	 * \brief Fonction servant à déplacer le vaisseau
+	 * \brief Avancer
+	 * Fonction servant à déplacer le missile
 	 */
 	void avancer();
 
