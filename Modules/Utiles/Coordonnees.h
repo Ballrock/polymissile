@@ -7,7 +7,7 @@
 */
 
 /*!
- * \class Coordonees.h
+ * \class Coordonees
  * \brief Classe gerant les coordonnees des objets
 */
 class Coordonnees {

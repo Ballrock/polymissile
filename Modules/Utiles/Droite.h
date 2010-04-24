@@ -10,7 +10,7 @@
 */
 
 /*!
- * \class Droite.h
+ * \class Droite
  * \brief Classe gerant les droites
 */
 using namespace std;
