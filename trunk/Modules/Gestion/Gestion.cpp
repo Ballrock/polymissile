@@ -82,36 +82,16 @@ void Gestion::gestionCollision(vector<ObjetVolant*>::iterator &curr)
 		if(curr!=opp)
 		{
 //			L'opposant est un autre objet que l'objet courant
-			if(curCoord->getX()-curTaille > oppCoord->getX()+oppTaille && curCoord->getX()+curTaille > oppCoord->getX()+oppTaille)
+			if(((curCoord->getY() + curTaille > oppCoord->getY() - oppTaille)
+					&& (curCoord->getY() + curTaille < oppCoord->getY() + oppTaille))
+				|| ((curCoord->getX() - curTaille < oppCoord->getX() + oppTaille)
+					&& (curCoord->getX() - curTaille > oppCoord->getX() - oppTaille))
+				|| ((curCoord->getX() + curTaille < oppCoord->getX() + oppTaille)
+					&& (curCoord->getX() + curTaille > oppCoord->getX() - oppTaille))
+				|| ((curCoord->getY() - curTaille < oppCoord->getY() + oppTaille)
+					&& (curCoord->getY() - curTaille > oppCoord->getY() - oppTaille)))
 			{
-				if((curCoord->getY()-curTaille > oppCoord->getY()+oppTaille) && (curCoord->getY()-curTaille > oppCoord->getY()+oppTaille))
-				{
-					newCollision(&this->obj,curr,opp);
-				}
-				else
-				{
-					if((curCoord->getY()+curTaille > oppCoord->getY()-oppTaille) && (curCoord->getY()-curTaille < oppCoord->getY()-oppTaille))
-					{
-						newCollision(&this->obj,curr,opp);
-					}
-				}
-			}
-			else
-			{
-				if((curCoord->getX()+curTaille > oppCoord->getX()-oppTaille) && (curCoord->getX()-curTaille < oppCoord->getX()-oppTaille))
-				{
-					if((curCoord->getY()-curTaille < oppCoord->getY() + oppTaille) && (curCoord->getY()-curTaille > oppCoord->getY()+oppTaille))
-					{
-						newCollision(&this->obj,curr,opp);
-					}
-					else
-					{
-						if((curCoord->getY()+curTaille > oppCoord->getY()-curTaille) && (curCoord->getY()-curTaille < oppCoord->getY()-curTaille))
-						{
-							newCollision(&this->obj,curr,opp);
-						}
-					}
-				}
+				newCollision(&this->obj, curr, opp);
 			}
 		}
 		opp++;
