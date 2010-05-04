@@ -19,7 +19,7 @@ Fenetre::Fenetre(int longueur=600, int hauteur=400) : longueurFenetre(longueur),
 	temp->setX(longueur/2);
 	temp->setY(hauteur - Constante::TAILLESOL);
 	this->silo = new Silo(*(temp));
-	//this->gestionJeu = new Gestion(*(temp));
+	this->gestionJeu = new Gestion(*(temp));
 	this->continuer = 1;
 	delete(temp);
 }
@@ -30,7 +30,7 @@ Fenetre::Fenetre(const Fenetre &obj) {
 Fenetre::~Fenetre() {
 	SDL_VideoQuit();
 	delete(this->sol);
-	//delete(this->gestionJeu);
+	delete(this->gestionJeu);
 }
 
 Fenetre &Fenetre::operator=(const Fenetre &obj) {
@@ -52,7 +52,7 @@ int Fenetre::newWindows()
 	ecran = SDL_SetVideoMode(this->longueurFenetre, this->hauteurFenetre, 32, SDL_SWSURFACE);
 	SDL_WM_SetCaption("PolyMissile", NULL);	
 
-	//timer = SDL_AddTimer(Constante::TIMETICK, evoluer, this->gestionJeu);
+	timer = SDL_AddTimer(Constante::TIMETICK, evoluer, this->gestionJeu);
 
 	while (this->continuer) {
 		SDL_PollEvent(&event);
@@ -66,7 +66,7 @@ int Fenetre::newWindows()
 			case SDL_MOUSEBUTTONUP:
 				if (mouseClick) {
 					click = new Coordonnees(event.button.x, event.button.y);
-					//gestionJeu->tirer(*click);
+					gestionJeu->tirer(*click);
 					delete (click);
 					mouseClick = false;
 				}
@@ -92,15 +92,15 @@ int Fenetre::newWindows()
 	SDL_RemoveTimer(timer);
 	SDL_Quit();
 	return 0;
-	//return this->gestionJeu->getScore();
+	return this->gestionJeu->getScore();
 }
 
 void Fenetre::dessineAll(SDL_Surface *ecran) {
-	//vector<ObjetVolant*> *vectObj = this->gestionJeu->getObjetVolant();
+	vector<ObjetVolant*> *vectObj = this->gestionJeu->getObjetVolant();
 	vector<ObjetVolant*>::const_iterator it;
-	//for (it = vectObj->begin(); it != vectObj->end(); it++) {
-	//	(*it)->paint(ecran);	
-	//}
+	for (it = vectObj->begin(); it != vectObj->end(); it++) {
+		(*it)->paint(ecran);	
+	}
 	this->silo->paint(ecran);
 	this->sol->paint(ecran);
 }
