@@ -2,6 +2,7 @@
 #include <string.h>
 #include <iostream>
 #include <sstream>
+#include <SDL/SDL_net.h>
 
 using namespace std;
 

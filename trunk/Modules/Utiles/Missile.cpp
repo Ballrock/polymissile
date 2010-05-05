@@ -28,9 +28,6 @@ Missile &Missile::operator=(const Missile &obj) {
 void Missile::avancer() {
 	this->yRestant += (float)(this->vitesse)*((float)Constante::TIMETICK/1000.0);
 	this->xRestant += this->pente.getXWithY(this->centre.getY()+this->yRestant);
-	cout << "xRestant : " << xRestant << " y restant : " << yRestant << endl;
-//	std::cout << "L'objet avance suivant x -> " << this->xRestant << std::endl;
-//	std::cout << "L'objet avance suivant y -> " << this->yRestant << std::endl;
 	this->centre.setX(floor(this->xRestant));
 	this->centre.setY(floor(this->centre.getY()-this->yRestant));
 	this->xRestant -= floor(this->xRestant);
@@ -39,5 +36,6 @@ void Missile::avancer() {
 
 	 
 void Missile::paint(SDL_Surface *ecran) {
-	Draw_FillCircle(ecran, this->centre.getX(), this->centre.getY(), Constante::TAILLEMISSILE, SDL_MapRGB(ecran->format, 255, 255, 255));
+	if (this->centre.getX() > this->tailleCote && this->centre.getY() > this->tailleCote && this->centre.getX() < 600 - this->tailleCote)
+		Draw_FillCircle(ecran, this->centre.getX(), this->centre.getY(), Constante::TAILLEMISSILE, SDL_MapRGB(ecran->format, 255, 255, 255));
 }

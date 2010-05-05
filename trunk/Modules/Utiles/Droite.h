@@ -71,7 +71,7 @@ public:
 	 * Obtenir x à partir de y
 	 * \return Retourne x pour le y donnée avec cette equation de droite 
 	*/	
-	float inline getXWithY(float y) { cout << "y : " << y << " a : " << this->a << endl;return ((this->a!=0) ? ((y - this->b) / this->a) : this->b); }
+	float inline getXWithY(float y) { return ((this->a!=0) ? ((y - this->b) / this->a) : this->b); }
 	
 	/*!
  	 * \brief getA
