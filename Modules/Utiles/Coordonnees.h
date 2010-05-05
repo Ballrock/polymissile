@@ -66,7 +66,7 @@ public:
 	 * 
 	 * \param int x : X de la coordonnée
 	*/
-	void inline setX(int x) { if (x > 0) this->x = x; }
+	void inline setX(int x) { this->x = x; }
 	
 	/*!
  	 * \brief setY
@@ -75,7 +75,7 @@ public:
 	 * 
 	 * \param int y : Y de la coordonnée
 	*/
-	void inline setY(int y) { if (y > 0) this->y = y; }
+	void inline setY(int y) { this->y = y; }
 
 private:
 

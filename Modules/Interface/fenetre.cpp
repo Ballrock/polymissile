@@ -6,6 +6,7 @@
 #include "../Utiles/ObjetVolant.h"
 
 using namespace std;
+int continuer = 1;
 
 /*
  * Prototype de la fonction evoluer pour le timer (obligation d'etre en C donc pas membre de Fenetre)
@@ -20,7 +21,6 @@ Fenetre::Fenetre(int longueur=600, int hauteur=400) : longueurFenetre(longueur),
 	temp->setY(hauteur - Constante::TAILLESOL);
 	this->silo = new Silo(*(temp));
 	this->gestionJeu = new Gestion(*(temp));
-	this->continuer = 1;
 	delete(temp);
 }
 
@@ -54,11 +54,11 @@ int Fenetre::newWindows()
 
 	timer = SDL_AddTimer(Constante::TIMETICK, evoluer, this->gestionJeu);
 
-	while (this->continuer) {
+	while (continuer) {
 		SDL_PollEvent(&event);
 		switch (event.type) {
 			case SDL_QUIT:
-				this->continuer = 0;
+				continuer = 0;
 				break;
 			case SDL_MOUSEBUTTONDOWN:
 				mouseClick = true;
@@ -80,7 +80,6 @@ int Fenetre::newWindows()
 				break;
 		}
 
-
 		/*
 		 * Effacement de la fenetre
 		 */
@@ -91,7 +90,6 @@ int Fenetre::newWindows()
 
 	SDL_RemoveTimer(timer);
 	SDL_Quit();
-	return 0;
 	return this->gestionJeu->getScore();
 }
 
@@ -107,6 +105,6 @@ void Fenetre::dessineAll(SDL_Surface *ecran) {
 
 
 Uint32 evoluer(Uint32 interval, void *param) {
-	reinterpret_cast<Gestion *>(param)->evoluer();
+	continuer = !(reinterpret_cast<Gestion *>(param)->evoluer());
 	return interval;
 }

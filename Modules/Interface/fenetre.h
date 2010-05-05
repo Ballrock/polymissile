@@ -65,7 +65,6 @@ private:
 	Gestion *gestionJeu; 
 	Sol *sol;
 	Silo *silo;
-	int continuer;
 
 };
 

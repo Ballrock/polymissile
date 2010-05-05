@@ -52,9 +52,6 @@ void Gestion::ajoutVaisseau()
 	Coordonnees *debut = new Coordonnees((int)(((double)rand() / ((double)RAND_MAX + 1))*600), 0);
 	Coordonnees *fin = new Coordonnees((int)((double)rand() / ((double)RAND_MAX + 1)*600), 400);
 	Droite *pente = new Droite(*fin, *debut);
-	cout << "\t Ceci est un ajout de vaisseau" << endl;
-	cout << "Debut X= " << debut->getX() << "fin X= " << fin->getX() << endl;
-	cout << "Valeur des coef a : " << pente->getA() << " b : " << pente->getB() << endl;
 	this->addObjVol(new Vaisseau(Constante::TAILLEVAISSEAU, Constante::VITESSE, *debut, *pente));
 }
 
@@ -63,8 +60,6 @@ void Gestion::tirer(Coordonnees& point)
 	if (point.getY() < this->posSilo->getY()) {
 		/* Le point est dans la zone de jeu (au dessus du sol) */
 		Droite *tmp = new Droite(*(this->posSilo), point);
-		std::cout << "\tVoici un tir sa pente est :" << std::endl;
-		std::cout << "a= " << tmp->getA() << " b= " << tmp->getB() << std::endl;
 		ObjetVolant *nouv = new Missile(Constante::TAILLEMISSILE, Constante::VITESSE, *(this->posSilo), *tmp);
 		this->addObjVol(nouv);
 	}
@@ -111,7 +106,6 @@ void Gestion::gestionCollision(vector<ObjetVolant*>::iterator &curr)
 
 bool Gestion::evoluer()
 {
-//	std::cout << "evoluer" << std::endl;
 	this->timer += Constante::TIMETICK;
 	if((this->timer - 1000)>0)
 	{
@@ -125,8 +119,6 @@ bool Gestion::evoluer()
 	vector<ObjetVolant*>::iterator it;
 	for (it = this->obj.begin(); it != this->obj.end(); it++)	
 	{
-//		std::cout << "Je suis l'objet " << i << " de type " << typeid(**it).name() << std::endl;
-//		std::cout << "Mes coordonnees sont X= " << (*it)->getCentre().getX() << " Y=" << (*it)->getCentre().getY() << endl;
 		(*it)->avancer();
 		if(typeid(**it)==typeid(Vaisseau))
 		{
@@ -138,9 +130,6 @@ bool Gestion::evoluer()
 				return true;
 			}
 		}
-		this->gestionCollision(it);
-//		std::cout << "L'objet a-t-il disparu ?" << endl;
-//		std::cout << "Y=" << (*it)->getCentre().getY() << " X=" << (*it)->getCentre().getX() << endl;
 		if((*it)->getCentre().getY() < 0 || (*it)->getCentre().getX() <=0 || (*it)->getCentre().getX() >= 600)
 		{
 			cout << "\t Je ne suis plus sur l'écran je dois disparaitre et je suis un" << typeid(**it).name() << endl;
@@ -148,6 +137,7 @@ bool Gestion::evoluer()
 			std::cout << this->obj.size() << endl;
 			this->obj.erase(it);
 		}
+		this->gestionCollision(it);
 	}
 	return false;
 }
