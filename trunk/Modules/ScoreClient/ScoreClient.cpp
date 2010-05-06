@@ -105,6 +105,10 @@ void ScoreClient::envoiScore() {
 	vector<string>::iterator it2;
 	
 
+	cout << "La partie est terminée, votre score est de : " << this->score << endl << endl;
+
+	recuperationNomJoueur();
+
 	TiXmlDeclaration *decl = new TiXmlDeclaration("1.0", "", "");
 	TiXmlElement *enreg = new TiXmlElement ("enregistrement");
 	TiXmlElement *nom = new TiXmlElement ("nom");
@@ -126,9 +130,6 @@ void ScoreClient::envoiScore() {
 	os.str("");
 	os << doc;
 
-	cout << "La partie est terminée, votre score est de : " << this->score << endl << endl;
-
-	recuperationNomJoueur();
 	cout << endl;
 	initSocket();
 	Communication::ecrire(sock, os.str().c_str());
