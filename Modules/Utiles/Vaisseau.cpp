@@ -6,6 +6,17 @@
 
 Vaisseau::Vaisseau(int tailleCote, int vitesse, Coordonnees &centre, Droite &pente):ObjetVolant(tailleCote, vitesse, centre, pente) {
 	srand (time(NULL));
+	int rdmcouleur = rand()%2;
+	if (rdmcouleur == 0)
+	{
+		this->couleurvaisseau=Constante::couleurs[Constante::C_ROUGE];
+		this->couleurtrainee=Constante::couleurs[Constante::C_ROUGE_FONCE];
+	}
+	else
+	{
+		this->couleurvaisseau=Constante::couleurs[Constante::C_VERT];
+		this->couleurtrainee=Constante::couleurs[Constante::C_VERT_FONCE];
+	}
 }
 
 Vaisseau::Vaisseau(const Vaisseau &obj):ObjetVolant(obj)
@@ -37,18 +48,6 @@ Vaisseau &Vaisseau::operator=(const Vaisseau &obj)
 }
 
 void Vaisseau::paint(SDL_Surface *ecran) {
-	int rdmcouleur = rand()%1;
-	Uint32 couleurvaisseau, couleurtrainee;
-	if (rdmcouleur >= 0 && rdmcouleur < 5)
-	{
-		couleurvaisseau=Constante::couleurs[Constante::C_ROUGE];
-		couleurtrainee=Constante::couleurs[Constante::C_ROUGE_FONCE];
-	}
-	else
-	{
-		couleurvaisseau=Constante::couleurs[Constante::C_VERT];
-		couleurtrainee=Constante::couleurs[Constante::C_VERT_FONCE];
-	}
 	if (this->centre.getX() > this->tailleCote && this->centre.getY() > this->tailleCote && this->centre.getX() < 600 - this->tailleCote)
-		Draw_FillRect(ecran, (this->centre.getX() - (this->tailleCote/2)), (this->centre.getY() - (this->tailleCote/2)), Constante::TAILLEVAISSEAU, Constante::TAILLEVAISSEAU, couleurvaisseau);
+		Draw_FillRect(ecran, (this->centre.getX() - (this->tailleCote/2)), (this->centre.getY() - (this->tailleCote/2)), Constante::TAILLEVAISSEAU, Constante::TAILLEVAISSEAU, this->couleurvaisseau);
 }

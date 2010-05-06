@@ -51,6 +51,9 @@ public:
 	 */
 	void avancer();
 
+private:
+	Uint32 couleurvaisseau;
+	Uint32 couleurtrainee;
 };
 
 
