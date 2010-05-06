@@ -10,6 +10,10 @@
 #include <arpa/inet.h>
 #include <unistd.h>
 
+#include "../Utiles/Communication.h"
+#include <SDL/SDL.h>
+#include <SDL/SDL_net.h>
+
 
 /*!
  * \file ScoreServeur.h
@@ -50,18 +54,11 @@ private:
 	 */
 	void ajouteScore(TiXmlNode &score);
 
-	/*
-	 * Accepte une connection client
-	 */
-	int acceptClient();
 	int initSocket();
-	int ecrire(int, const char*);
-	int lire(int, char *);
+	static int ecrire(int, const char*);
+	static int lire(int, char *);
 
-	int sock;
-	struct sockaddr_in addr;
-	struct sockaddr_in sin;
-	socklen_t addrlen;
+	TCPsocket server;
 	TiXmlDocument doc; //Document XML
 
 };
