@@ -23,19 +23,7 @@ ScoreClient &ScoreClient::operator=(const ScoreClient &obj) {
 }
 
 int ScoreClient::initSocket() {
-	char buff[1024] = { '\0' };
-	this->sock = socket(AF_INET, SOCK_STREAM, 0);
- 
-   sin.sin_addr.s_addr = inet_addr(Constante::ADRESSESERVEUR);
-   sin.sin_family = AF_INET;
-   sin.sin_port = htons(Constante::PORT);
 
-	memset(buff, '\0', 1024);
- 
-   if(connect(this->sock, (struct sockaddr*)&sin, sizeof(sin)) == -1)
-		return -1;
-
-	return 0;
 }
 
 void ScoreClient::gereScoreJoueur() {
@@ -47,22 +35,6 @@ void ScoreClient::gereScoreJoueur() {
 void ScoreClient::recuperationNomJoueur() {
 	cout << "Entre votre pseudo : ";
 	cin >> *(this->nomJoueur);
-}
-
-int ScoreClient::ecrire(int sock, const char *buff) {
-	return send(sock, buff, strlen(buff), 0);
-}
-
-int ScoreClient::lire(int sock, char *buff) {
-	char c;
-   int i=0;
-   recv(sock, &c, 1, 0);
-   while (c != '\0') {
-      recv(sock, &c, 1, 0);
-      buff[i];
-      i++;
-   }
-	return 0;
 }
 
 void ScoreClient::envoiScore() {

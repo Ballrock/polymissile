@@ -22,8 +22,8 @@ Interface=Interface/Silo.o Interface/Sol.o Interface/fenetre.o
 #all: ${EXEC}
 all:  Gestion TestInterface ScoreClient ScoreServeur
 
-ScoreClient: ScoreClient/main.o ScoreClient/ScoreClient.o Constante.o ${TinyXml}
-	${CPP} -o bin/testScoreClient $^ ${CFLAGS} -g 
+ScoreClient: ScoreClient/main.o ScoreClient/ScoreClient.o Constante.o ${TinyXml} Utiles/Communication.o
+	${CPP} -o bin/testScoreClient $^ ${CFLAGS} ${LDFLAGS} -g 
 
 ScoreServeur: ScoreServeur/main.o ScoreServeur/ScoreServeur.o Constante.o ${TinyXml} Utiles/Communication.o 
 	${CPP} -o bin/testScoreServeur $^ ${CFLAGS} ${LDFLAGS} -g
@@ -31,11 +31,11 @@ ScoreServeur: ScoreServeur/main.o ScoreServeur/ScoreServeur.o Constante.o ${Tiny
 Gestion: Gestion/main.o Gestion/Gestion.o Constante.o ${Utiles} ${Interface}
 	${CPP} -o bin/testGestion $^ ${CFLAGS} ${LDFLAGS} -g
 
-TestInterface: Interface/main.o ${Interface} ${Utiles} Gestion/Gestion.o
+TestInterface: Interface/main.o ${Interface} ${Utiles} Gestion/Gestion.o Constante.o
 	${CPP} -o bin/testInterface $^ ${CLFAGS} ${LDFLAGS} -g
 
 %.o: %.cpp
-	@${CPP} -o $@ -c $< ${CFLAGS}
+	${CPP} -o $@ -c $< ${CFLAGS}
 
 PolyMissile: ${OBJ}
 	${CPP} -o ${DIRBIN}/${EXEC} $^ ${LDFLAGS} ${CFLAGS} -g

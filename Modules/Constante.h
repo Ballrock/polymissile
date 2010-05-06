@@ -35,15 +35,15 @@ public:
 	static const int PORT = 5321;
 	static const char PATHBESTSCORE[];
 	static const int TIMETICK = 30;
+	static void setTableColor(SDL_Surface *ecran);
 	enum {
- 		C_NOIR, C_BLEU_FONCE, C_VERT_FONCE, C_CYAN_FONCE, C_ROUGE_FONCE,
-  		C_MAGENTA_FONCE, C_OCRE, C_GRIS_CLAIR, C_GRIS, C_BLEU, C_VERT,
-  		C_CYAN, C_ROUGE, C_MAGENTA, C_JAUNE, C_BLANC,
+ 		C_NOIR=0, C_BLEU_FONCE=1, C_VERT_FONCE=2, C_CYAN_FONCE=3, C_ROUGE_FONCE=4,
+  		C_MAGENTA_FONCE=5, C_OCRE=6, C_GRIS_CLAIR=7, C_GRIS=8, C_BLEU=9, C_VERT=10,
+  		C_CYAN=11, C_ROUGE=12, C_MAGENTA=13, C_JAUNE=14, C_BLANC=15,
 		
-		NB_COULEURS  	
+		NB_COULEURS=16  	
 	};
-	static Uint32 couleurs[NB_COULEURS];
-	static void setTableColor(SDL_Surface*);
+	static Uint32 couleurs[];
 };
 
 
