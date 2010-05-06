@@ -11,7 +11,11 @@ EXEC=PolyMissile
 
 SRC=Utiles/Coordonnees.cpp Utiles/ObjetVolant.cpp Utiles/Missile.cpp Utiles/Vaisseau.cpp Utiles/Droite.cpp Gestion/Gestion.cpp main.cpp Interface/fenetre.cpp Interface/Sol.cpp Interface/Silo.cpp ScoreClient/ScoreClient.cpp TinyXml/tinystr.cpp TinyXml/tinyxmlerror.cpp TinyXml/tinyxmlparser.cpp TinyXml/tinyxml.cpp Constante.cpp ScoreClient/main.cpp ScoreServeur/main.cpp ScoreServeur/ScoreServeur.cpp Interface/main.cpp Utiles/Communication.cpp
 
+SRCWITHOUTMAIN=Utiles/Coordonnees.cpp Utiles/ObjetVolant.cpp Utiles/Missile.cpp Utiles/Vaisseau.cpp Utiles/Droite.cpp Gestion/Gestion.cpp main.cpp Interface/fenetre.cpp Interface/Sol.cpp Interface/Silo.cpp ScoreClient/ScoreClient.cpp TinyXml/tinystr.cpp TinyXml/tinyxmlerror.cpp TinyXml/tinyxmlparser.cpp TinyXml/tinyxml.cpp Constante.cpp ScoreServeur/ScoreServeur.cpp Utiles/Communication.cpp
+
 OBJ=$(SRC:.cpp=.o)
+
+OBJWITHOUTMAIN=$(SRCWITHOUTMOIN:.cpp=.o)
 
 TinyXml=TinyXml/tinyxml.o TinyXml/tinyxmlerror.o TinyXml/tinyxmlparser.o TinyXml/tinystr.o
 
@@ -20,7 +24,7 @@ Utiles=Utiles/Coordonnees.o Utiles/ObjetVolant.o Utiles/Missile.o Utiles/Vaissea
 Interface=Interface/Silo.o Interface/Sol.o Interface/fenetre.o 
 
 #all: ${EXEC}
-all:  Gestion TestInterface ScoreClient ScoreServeur
+all: ${EXEC}  Gestion TestInterface ScoreClient ScoreServeur
 
 ScoreClient: ScoreClient/main.o ScoreClient/ScoreClient.o Constante.o ${TinyXml} Utiles/Communication.o
 	${CPP} -o bin/testScoreClient $^ ${CFLAGS} ${LDFLAGS} -g 
@@ -35,9 +39,9 @@ TestInterface: Interface/main.o ${Interface} ${Utiles} Gestion/Gestion.o Constan
 	${CPP} -o bin/testInterface $^ ${CLFAGS} ${LDFLAGS} -g
 
 %.o: %.cpp
-	${CPP} -o $@ -c $< ${CFLAGS}
+	@${CPP} -o $@ -c $< ${CFLAGS}
 
-PolyMissile: ${OBJ}
+${EXEC} : ${SRCWITHOUTMAIN} ${OBJWITHOUTMAIN}
 	${CPP} -o ${DIRBIN}/${EXEC} $^ ${LDFLAGS} ${CFLAGS} -g
 
 clean:	

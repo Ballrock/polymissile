@@ -75,6 +75,7 @@ private:
 	 * Diverses fonctions gérant les sockets (pour l'intégration)
 	 */
 	int initSocket();
+	TCPsocket sock;
 
 };
 

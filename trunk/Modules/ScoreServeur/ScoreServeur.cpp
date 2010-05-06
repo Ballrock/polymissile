@@ -109,7 +109,7 @@ void ScoreServeur::startServer() {
 	SDLNet_SocketSet set;
 	TCPsocket sock;
 	ostringstream os;
-	char *buff;
+	char *buff = (char *) malloc(sizeof(char)*1024);
 	TiXmlDocument *docScore = new TiXmlDocument();
 
 	while(1)
@@ -127,21 +127,22 @@ void ScoreServeur::startServer() {
 			continue;
 		if(SDLNet_SocketReady(server))
 		{
-			os.str("");
 			numready--;
-			/*printf("Connection...\n"); */
+			printf("Connection...\n"); 
 			sock=SDLNet_TCP_Accept(server);
 			if(sock)
 			{
+				cout << "oksock" << endl;
 				if(Communication::lire(sock, &buff))
 				{
+					os.str("");
 					os << buff;	
-					cout << os << endl;
+					cout << os.str() << endl;
 					is.str(os.str());
 					is >> *docScore;
 					ajouteScore(*docScore);
 					os.str("");
-					os << *docScore;
+					os << doc;
 					if (!Communication::ecrire(sock, os.str().c_str())) {
 						cout << "Erreur d'écriture !" << endl;
 					}
@@ -152,49 +153,27 @@ void ScoreServeur::startServer() {
 		}
 	}
 	
+	free(buff);
 }	
 
 void ScoreServeur::ajouteScore(TiXmlNode &score) {
 	TiXmlNode *child = NULL;
 	int scoreInt, scoreInt2 = 0;
 	int i = 0;
-	TiXmlDocument doci;
    
    ostringstream os;
-
-   TiXmlDeclaration *decl = new TiXmlDeclaration("1.0", "", "");
-   TiXmlElement *enreg = new TiXmlElement ("enregistrement");
-   TiXmlElement *nom = new TiXmlElement ("nom");
-   TiXmlElement *scorei = new TiXmlElement ("score");
-   
-   TiXmlText *txtNom = new TiXmlText ("doubi");
-   os << 3000;
-   TiXmlText *txtScore = new TiXmlText(os.str().c_str());
-
-   scorei->LinkEndChild(txtScore);
-   nom->LinkEndChild(txtNom);
-
-   enreg->LinkEndChild(nom);
-   enreg->LinkEndChild(scorei);
-   
-   doci.LinkEndChild(decl);
-   doci.LinkEndChild(enreg);
-
-   os.str("");
-   os << doci;
 
 	/* 
 	 * Parcours de tous les enregistrements de score et test du score courant avec le score à insérer, on l'insère lorsqu'on arrive à la bonne position
 	 */
 	os.str("");
-	os << *(doci.LastChild()->LastChild()->FirstChild());
+	os << *(score.LastChild()->LastChild()->FirstChild());
 	scoreInt = atoi(os.str().c_str());
 	if (this->doc.LastChild()->FirstChild()) {
-		while( child = this->doc.LastChild()->IterateChildren( child ) ) {
+		while( (child = this->doc.LastChild()->IterateChildren( child )) && i < 20 ) {
 			os.str("");
 			os << *(child->LastChild()->FirstChild());
 			scoreInt2 = atoi(os.str().c_str());
-			cout << "sc 1 : " << scoreInt << " sc 2 : " << scoreInt2 << endl;
 			if (scoreInt > scoreInt2) {
 				break;
 			}
@@ -202,11 +181,13 @@ void ScoreServeur::ajouteScore(TiXmlNode &score) {
 		}
 
 	}
-	if (child)
-		doc.LastChild()->InsertBeforeChild(child, *(doci.LastChild()));	
-	else
-		doc.LastChild()->InsertEndChild(*(doci.LastChild()));
-	this->doc.SaveFile();
+	if (i < 20) {
+		if (child)
+			doc.LastChild()->InsertBeforeChild(child, *(score.LastChild()));	
+		else
+			doc.LastChild()->InsertEndChild(*(score.LastChild()));
+		this->doc.SaveFile();
+	}
 
 }
 
