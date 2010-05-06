@@ -2,7 +2,6 @@
 #include <string.h>
 #include <iostream>
 #include <sstream>
-#include <SDL/SDL_net.h>
 
 using namespace std;
 
@@ -23,36 +22,70 @@ ScoreServeur &ScoreServeur::getInstance() {
 }
 
 int ScoreServeur::initSocket() {
-	int sock_err;
-	this->sock = socket(AF_INET, SOCK_STREAM, 0);
+	IPaddress ip;
+	TCPsocket sock;
+	SDLNet_SocketSet set;
+	char *message=NULL;
+	const char *host=NULL;
+	Uint32 ipaddr;
+	Uint16 port;
 
-	if(this->sock == -1)
+	if(SDLNet_Init()==-1)
 	{
-		return -1;
+		printf("SDLNet_Init: %s\n",SDLNet_GetError());
+		exit(2);
 	}
-	sin.sin_addr.s_addr = htonl(INADDR_ANY);
-	sin.sin_family = AF_INET;
-	sin.sin_port = htons(Constante::PORT);
-	sock_err = bind(sock, (sockaddr*)&sin, sizeof(sin));
 
-	if(sock_err == -1)
+	/* get the port from the commandline */
+	port=(Uint16)Constante::PORT;
+
+	/* Resolve the argument into an IPaddress type */
+	if(SDLNet_ResolveHost(&ip,NULL,port)==-1)
 	{
- 		return -1;
+		printf("SDLNet_ResolveHost: %s\n",SDLNet_GetError());
+		SDLNet_Quit();
+		exit(3);
 	}
-	sock_err = listen(this->sock, 5);
-	cout << "Serveur en écoute ..." << endl;
+
+	/* perform a byte endianess correction for the next printf */
+	ipaddr=SDL_SwapBE32(ip.host);
+
+	/* output the IP address nicely */
+	printf("IP Address : %d.%d.%d.%d\n",
+			ipaddr>>24,
+			(ipaddr>>16)&0xff,
+			(ipaddr>>8)&0xff,
+			ipaddr&0xff);
+
+	/* resolve the hostname for the IPaddress */
+	host=SDLNet_ResolveIP(&ip);
+
+	/* print out the hostname we got */
+	if(host)
+		printf("Hostname   : %s\n",host);
+	else
+		printf("Hostname   : N/A\n");
+
+	/* output the port number */
+	printf("Port       : %d\n",port);
+
+	/* open the server socket */
+	server=SDLNet_TCP_Open(&ip);
+	if(!server)
+	{
+		printf("SDLNet_TCP_Open: %s\n",SDLNet_GetError());
+		SDLNet_Quit();
+		exit(4);
+	}
 	return 0;
 }
 
 
 ScoreServeur::~ScoreServeur() {
-	close(this->sock);
+	SDLNet_TCP_Close(this->server);
+	SDLNet_Quit();
 }
 
-int ScoreServeur::acceptClient() {
-	this->addrlen = sizeof(this->addr);
-	return accept(this->sock, (struct sockaddr *)&(this->addr), &addrlen);
-}
 
 void ScoreServeur::chargeXml() {
 	FILE *f = fopen(Constante::PATHBESTSCORE, "r");
@@ -77,7 +110,7 @@ void ScoreServeur::startServer() {
 	TiXmlDocument *docScore = new TiXmlDocument();
 
 	is >> *docScore;
-
+	
 	ajouteScore(*docScore);
 
 	cout << "Meilleurs Scores : " << this->doc;
@@ -139,18 +172,3 @@ void ScoreServeur::ajouteScore(TiXmlNode &score) {
 
 }
 
-int ScoreServeur::ecrire(int sock, const char *buff) {
-	return send(sock, buff, strlen(buff), 0);
-}
-
-int ScoreServeur::lire(int sock, char *buff) {
-	char c;
-	int i=0;
-	recv(sock, &c, 1, 0);
-	while (c != '\0') {
-		recv(sock, &c, 1, 0);
-		buff[i];
-		i++;
-	}
-	return 0;
-}

@@ -118,8 +118,10 @@ bool Gestion::evoluer()
 		}
 	}
 	vector<ObjetVolant*>::iterator it;
-	for (it = this->obj.begin(); it != this->obj.end() && (*it)!=NULL ; it++)
+	for (it = this->obj.begin(); (it != this->obj.end()) && (*it != NULL); it++)	
 	{
+		if (*it == NULL)
+			cout << "NULL" << endl;
 		(*it)->avancer();
 		if(typeid(**it)==typeid(Vaisseau))
 		{
@@ -138,10 +140,8 @@ bool Gestion::evoluer()
 			std::cout << this->obj.size() << endl;
 			this->obj.erase(it);
 		}
-		else
-		{
+		else 
 			this->gestionCollision(it);
-		}
 	}
 	return false;
 }
