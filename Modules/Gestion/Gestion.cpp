@@ -128,8 +128,6 @@ bool Gestion::evoluer()
 //			L'objet est un vaisseau il test donc une éventuelle collision avec le sol
 			if((*it)->getCentre().getY()+(*it)->getTailleCote()/2 >= this->posSilo->getY())
 			{
-				std::cout << "Je suis un " << typeid(**it).name() << std::endl;
-				std::cout << "Je rencontre le sol mon Y est " << (*it)->getCentre().getY() << std::endl;
 				return true;
 			}
 		}

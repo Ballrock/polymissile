@@ -76,11 +76,9 @@ int ScoreClient::initSocket() {
 		SDL_Quit();
 		exit(7);
 	}
-	cout << "InitSocket Ok" << endl;
 }
 
 void ScoreClient::gereScoreJoueur() {
-	recuperationNomJoueur();
 	envoiScore();
 	recuperationTop();
 }
@@ -130,6 +128,8 @@ void ScoreClient::envoiScore() {
 
 	cout << "La partie est terminée, votre score est de : " << this->score << endl << endl;
 
+	recuperationNomJoueur();
+	cout << endl;
 	initSocket();
 	Communication::ecrire(sock, os.str().c_str());
 	Communication::lire(sock, &buff);
@@ -154,18 +154,18 @@ void ScoreClient::envoiScore() {
 		scores.push_back(buffScore);
 	}
 
+	cout << "    Noms   ";
+	for (int i=0; i < (maxLengthName - 4); i++)
+		cout << " ";
+	cout << "   Scores  ";
+	for (int i=0; i < (maxLengthName - 5); i++)
+		cout << " ";
+	cout << " " << endl << endl;
 	for (int i=0; i < maxLengthName + 8; i++)
 		cout << "_";
 	for (int i=0; i < maxLengthScore + 8; i++)
 		cout << "_";
 	cout << endl;
-	cout << "|   Noms   ";
-	for (int i=0; i < (maxLengthName - 4); i++)
-		cout << " ";
-	cout << "|  Scores  ";
-	for (int i=0; i < (maxLengthName - 5); i++)
-		cout << " ";
-	cout << "|" << endl;
 	for (it = names.begin(), it2 = scores.begin(); it != names.end(); it++, it2++) {
 		cout << "|   ";
 		cout << *it << "   ";
