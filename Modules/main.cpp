@@ -1,4 +1,5 @@
 #include "Interface/fenetre.h"
+#include "ScoreClient/ScoreClient.h"
 #include "SDL/SDL.h"
 #include "SDL/SDL_main.h"
 #include <unistd.h>
@@ -8,11 +9,11 @@ using namespace std;
 
 int main(int argc, char *argv[]) {
 	
-	char* nomJoueur = (char*) malloc(sizeof(char)*50);
-	int scoreFinal;
 
 	Fenetre *maFenetre = new Fenetre(600, 400);
-	scoreFinal = maFenetre->newWindows();
+	ScoreClient gestionScoreClient = ScoreClient(maFenetre->newWindows());
+	
+	gestionScoreClient.gereScoreJoueur();
 	
 
 	delete(maFenetre);
