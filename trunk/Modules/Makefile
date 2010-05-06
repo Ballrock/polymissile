@@ -19,7 +19,7 @@ Utiles=Utiles/Coordonnees.o Utiles/ObjetVolant.o Utiles/Missile.o Utiles/Vaissea
 Interface=Interface/Silo.o Interface/Sol.o Interface/fenetre.o 
 
 #all: ${EXEC}
-all: ScoreClient ScoreServeur Gestion TestInterface
+all:  Gestion TestInterface ScoreClient ScoreServeur
 
 ScoreClient: ScoreClient/main.o ScoreClient/ScoreClient.o Constante.o ${TinyXml}
 	${CPP} -o bin/testScoreClient $^ ${CFLAGS} -g 
