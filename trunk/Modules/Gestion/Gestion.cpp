@@ -146,10 +146,10 @@ bool Gestion::evoluer()
 	return false;
 }
 
-Gestion &Gestion::operator=(const Gestion &obj) {
+Gestion &Gestion::operator=(const Gestion &obj)
+{
 	this->posSilo = obj.posSilo;
 	this->limSol = obj.limSol;
 	this->score = obj.score;
 	return *this;
 }
-
