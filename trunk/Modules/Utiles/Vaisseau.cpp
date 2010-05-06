@@ -49,5 +49,12 @@ Vaisseau &Vaisseau::operator=(const Vaisseau &obj)
 
 void Vaisseau::paint(SDL_Surface *ecran) {
 	if (this->centre.getX() > this->tailleCote && this->centre.getY() > this->tailleCote && this->centre.getX() < 600 - this->tailleCote)
+	{
+		for (int i=(0-(this->tailleCote/2));i<=this->tailleCote/2;i++)
+		{		
+			Draw_Line(ecran, (this->centre.getX()+i), this->centre.getY(), (this->pente.getXWithY(0)+i), 0, this->couleurtrainee);	
+		}	
 		Draw_FillRect(ecran, (this->centre.getX() - (this->tailleCote/2)), (this->centre.getY() - (this->tailleCote/2)), Constante::TAILLEVAISSEAU, Constante::TAILLEVAISSEAU, this->couleurvaisseau);
+	}
+		
 }
