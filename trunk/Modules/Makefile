@@ -15,7 +15,7 @@ SRCWITHOUTMAIN=Utiles/Coordonnees.cpp Utiles/ObjetVolant.cpp Utiles/Missile.cpp 
 
 OBJ=$(SRC:.cpp=.o)
 
-OBJWITHOUTMAIN=$(SRCWITHOUTMOIN:.cpp=.o)
+OBJWITHOUTMAIN=$(SRCWITHOUTMAIN:.cpp=.o)
 
 TinyXml=TinyXml/tinyxml.o TinyXml/tinyxmlerror.o TinyXml/tinyxmlparser.o TinyXml/tinystr.o
 
@@ -41,7 +41,7 @@ TestInterface: Interface/main.o ${Interface} ${Utiles} Gestion/Gestion.o Constan
 %.o: %.cpp
 	@${CPP} -o $@ -c $< ${CFLAGS}
 
-${EXEC} : ${SRCWITHOUTMAIN} ${OBJWITHOUTMAIN}
+${EXEC} : ${OBJWITHOUTMAIN}
 	${CPP} -o ${DIRBIN}/${EXEC} $^ ${LDFLAGS} ${CFLAGS} -g
 
 clean:	
