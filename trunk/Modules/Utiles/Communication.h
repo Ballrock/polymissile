@@ -9,7 +9,7 @@ class Communication {
 public:
 
 	static char* lire(TCPsocket, char **);
-	static int ecrire(TCPsocket, char *);
+	static int ecrire(TCPsocket, const char *);
 
 };
 

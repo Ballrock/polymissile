@@ -49,7 +49,7 @@ char *Communication::lire(TCPsocket sock, char **buf) {
 }
 
 
-int Communication::ecrire(TCPsocket sock, char *buf) {
+int Communication::ecrire(TCPsocket sock, const char *buf) {
 	Uint32 len,result;
 
 	if(!buf || !strlen(buf))
