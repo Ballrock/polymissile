@@ -52,6 +52,8 @@ int Fenetre::newWindows()
 	ecran = SDL_SetVideoMode(this->longueurFenetre, this->hauteurFenetre, 32, SDL_SWSURFACE);
 	SDL_WM_SetCaption("PolyMissile", NULL);	
 
+	Constante::setTableColor(ecran);
+
 	timer = SDL_AddTimer(Constante::TIMETICK, evoluer, this->gestionJeu);
 
 	while (continuer) {

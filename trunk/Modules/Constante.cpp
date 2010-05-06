@@ -2,6 +2,7 @@
 
 const char Constante::ADRESSESERVEUR[] = "127.0.0.1";
 const char Constante::PATHBESTSCORE[] = "bestScores.xml";
+Uint32 Constante::couleurs[Constante::NB_COULEURS];
 
 void Constante::setTableColor(SDL_Surface *ecran)
 {

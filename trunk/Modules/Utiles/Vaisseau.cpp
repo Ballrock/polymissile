@@ -5,7 +5,7 @@
 #include <time.h>
 
 Vaisseau::Vaisseau(int tailleCote, int vitesse, Coordonnees &centre, Droite &pente):ObjetVolant(tailleCote, vitesse, centre, pente) {
-
+	srand (time(NULL));
 }
 
 Vaisseau::Vaisseau(const Vaisseau &obj):ObjetVolant(obj)
@@ -37,11 +37,9 @@ Vaisseau &Vaisseau::operator=(const Vaisseau &obj)
 }
 
 void Vaisseau::paint(SDL_Surface *ecran) {
-	Constante::setTableColor(ecran);	
-	srand (time(NULL));
-	int rdmcouleur=rand()%1;
+	int rdmcouleur = rand()%1;
 	Uint32 couleurvaisseau, couleurtrainee;
-	if (rdmcouleur == 0)
+	if (rdmcouleur >= 0 && rdmcouleur < 5)
 	{
 		couleurvaisseau=Constante::couleurs[Constante::C_ROUGE];
 		couleurtrainee=Constante::couleurs[Constante::C_ROUGE_FONCE];
