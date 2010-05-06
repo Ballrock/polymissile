@@ -106,14 +106,49 @@ void ScoreServeur::chargeXml() {
 
 void ScoreServeur::startServer() {
 	istringstream is;
-	ostringstream os;
+	SDLNet_SocketSet set;
+	TCPSocket sock;
+	ostringstream os = ostringstream("");
+	char *buff;
 	TiXmlDocument *docScore = new TiXmlDocument();
 
-	is >> *docScore;
+	while(1)
+	{
+		int numready,i;
+		set=create_sockset();
+		numready=SDLNet_CheckSockets(set, (Uint32)-1);
+		if(numready==-1)
+		{
+			printf("SDLNet_CheckSockets: %s\n",SDLNet_GetError());
+			break;
+		}
+		if(!numready)
+			continue;
+		if(SDLNet_SocketReady(server))
+		{
+			numready--;
+			/*printf("Connection...\n"); */
+			sock=SDLNet_TCP_Accept(server);
+			if(sock)
+			{
+				if(lire(sock, &buff))
+				{
+					os << buff;	
+					cout << os << endl;
+					is << os;
+					is >> *docScore;
+					ajouteScore(*docScore);
+					os.str("");
+					os << *docScore;
+					if (!ecrire(sock, os.str().c_str())) {
+						cout << "Erreur d'écriture !" << endl;
+					}
+				}
+				else
+					SDLNet_TCP_Close(sock);
+			}
+		}
 	
-	ajouteScore(*docScore);
-
-	cout << "Meilleurs Scores : " << this->doc;
 }	
 
 void ScoreServeur::ajouteScore(TiXmlNode &score) {

@@ -11,6 +11,10 @@
 #include <arpa/inet.h>
 #include <unistd.h>
 
+#include "../Utiles/Communication.h"
+#include <SDL/SDL.h>
+#include <SDL/SDL_net.h>
+
 using namespace std;
 
 
@@ -48,7 +52,6 @@ public:
 	void gereScoreJoueur();
 
 private:
-	int sock; //Socket pour l'intégration
 	TiXmlDocument doc; //Document XML
 	string *nomJoueur;
 	int score;
@@ -72,9 +75,6 @@ private:
 	 * Diverses fonctions gérant les sockets (pour l'intégration)
 	 */
 	int initSocket();
-	int ecrire(int, const char *);
-	int lire(int, char *);
-	sockaddr_in sin;
 
 };
 

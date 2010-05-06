@@ -10,7 +10,7 @@ ScoreClient::ScoreClient(int score) : score(score) {
 
 ScoreClient::~ScoreClient() {
 	delete this->nomJoueur;
-	close(this->sock);
+	
 }
 
 ScoreClient::ScoreClient(const ScoreClient &obj) : score(obj.score) {
@@ -97,8 +97,6 @@ void ScoreClient::envoiScore() {
 	is.str(string(buff));
 
 //	cout << is.str() << endl;
-	
-
 }
 
 void ScoreClient::recuperationTop() {
