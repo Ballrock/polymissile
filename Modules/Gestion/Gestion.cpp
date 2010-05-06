@@ -57,7 +57,8 @@ void Gestion::ajoutVaisseau()
 
 void Gestion::tirer(Coordonnees& point)
 {
-	if (point.getY() < this->posSilo->getY()) {
+	if (point.getY() < this->posSilo->getY())
+	{
 		/* Le point est dans la zone de jeu (au dessus du sol) */
 		Droite *tmp = new Droite(*(this->posSilo), point);
 		ObjetVolant *nouv = new Missile(Constante::TAILLEMISSILE, Constante::VITESSE, *(this->posSilo), *tmp);
@@ -117,7 +118,7 @@ bool Gestion::evoluer()
 		}
 	}
 	vector<ObjetVolant*>::iterator it;
-	for (it = this->obj.begin(); it != this->obj.end(); it++)	
+	for (it = this->obj.begin(); it != this->obj.end() && (*it)!=NULL ; it++)
 	{
 		(*it)->avancer();
 		if(typeid(**it)==typeid(Vaisseau))
@@ -132,12 +133,15 @@ bool Gestion::evoluer()
 		}
 		if((*it)->getCentre().getY() < 0 || (*it)->getCentre().getX() <=0 || (*it)->getCentre().getX() >= 600)
 		{
-			cout << "\t Je ne suis plus sur l'écran je dois disparaitre et je suis un" << typeid(**it).name() << endl;
-			cout << "X : " << (*it)->getCentre().getX() << " X : " << (*it)->getCentre().getY() << endl;
+//			cout << "\t Je ne suis plus sur l'écran je dois disparaitre et je suis un" << typeid(**it).name() << endl;
+//			cout << "X : " << (*it)->getCentre().getX() << " X : " << (*it)->getCentre().getY() << endl;
 			std::cout << this->obj.size() << endl;
 			this->obj.erase(it);
 		}
-		this->gestionCollision(it);
+		else
+		{
+			this->gestionCollision(it);
+		}
 	}
 	return false;
 }
