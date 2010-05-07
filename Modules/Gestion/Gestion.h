@@ -73,6 +73,7 @@ public:
 	bool evoluer();
 
 private:
+	void newCollision(vector<ObjetVolant*>::iterator cur, vector<ObjetVolant*>::iterator opp);
 
 };
 

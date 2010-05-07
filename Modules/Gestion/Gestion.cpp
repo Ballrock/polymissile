@@ -13,12 +13,13 @@
 
 using namespace std;
 
-void newCollision(vector<ObjetVolant*>* vec, vector<ObjetVolant*>::iterator cur, vector<ObjetVolant*>::iterator opp)
+void Gestion::newCollision(vector<ObjetVolant*>::iterator cur, vector<ObjetVolant*>::iterator opp)
 {
 	if(typeid(**cur)!=typeid(**opp))
 	{
-		vec->erase(cur);
-		vec->erase(opp);
+		this->obj.erase(cur);
+		this->obj.erase(opp);
+		this->score++;
 	}
 }
 
@@ -49,7 +50,7 @@ Gestion::~Gestion()
 
 void Gestion::ajoutVaisseau()
 {
-	Coordonnees *debut = new Coordonnees((int)(((double)rand() / ((double)RAND_MAX + 1))*600), 0);
+	Coordonnees *debut = new Coordonnees((int)(((double)rand() / ((double)RAND_MAX + 1))*600)-(Constante::TAILLEVAISSEAU/2 + 1), Constante::TAILLEVAISSEAU/2 +1);
 	Coordonnees *fin = new Coordonnees((int)((double)rand() / ((double)RAND_MAX + 1)*600), 400);
 	Droite *pente = new Droite(*fin, *debut);
 	this->addObjVol(new Vaisseau(Constante::TAILLEVAISSEAU, Constante::VITESSE, *debut, *pente));
@@ -98,7 +99,7 @@ void Gestion::gestionCollision(vector<ObjetVolant*>::iterator &curr)
 					&& ((curCoord->getX() - curTaille < oppCoord->getX() - oppTaille)
 					&& (curCoord->getX() + curTaille > oppCoord->getX() - oppTaille))))
 			{
-				newCollision(&this->obj, curr, opp);
+				newCollision(curr, opp);
 			}
 		}
 		opp++;
