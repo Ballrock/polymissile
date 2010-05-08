@@ -97,7 +97,6 @@ void ScoreServeur::chargeXml() {
 		this->doc.LinkEndChild(decl);
 		this->doc.LinkEndChild(en);
 		this->doc.SaveFile(fout);
-		fclose(fout);
 	}
 	this->doc = TiXmlDocument(Constante::PATHBESTSCORE);
 	this->doc.LoadFile();
