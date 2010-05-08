@@ -15,18 +15,10 @@ using namespace std;
 
 void Gestion::newCollision(vector<ObjetVolant*>::iterator cur, vector<ObjetVolant*>::iterator opp)
 {
-	if(*opp==NULL)
-		cout << "Opp NULL" << endl;
-	if(*cur==NULL)
-		cout << "Cur NULL" << endl;
 	if(typeid(**cur)!=typeid(**opp))
 	{
 		this->obj.erase(cur);
 		this->obj.erase(opp);
-		if(*opp==NULL)
-			cout << "Opp NULL" << endl;
-		if(*cur==NULL)
-			cout << "Cur NULL" << endl;
 		this->score++;
 	}
 }
@@ -79,12 +71,12 @@ void Gestion::gestionCollision(vector<ObjetVolant*>::iterator &curr)
 {
 	Coordonnees *curCoord = new Coordonnees((*curr)->getCentre());
 	int curTaille = (*curr)->getTailleCote()/2;
-	vector<ObjetVolant*>::iterator opp= this->obj.begin();
-	while(opp!=this->obj.end() && *opp!=NULL)
+	vector<ObjetVolant*>::iterator opp = this->obj.begin();
+	while(opp != this->obj.end() && *opp != NULL)
 	{
 		Coordonnees *oppCoord = new Coordonnees((*opp)->getCentre());
 		int oppTaille = (*opp)->getTailleCote()/2;
-		if(curr!=opp)
+		if(curr != opp)
 		{
 //			L'opposant est un autre objet que l'objet courant
 			if ((((curCoord->getY() + curTaille > oppCoord->getY() - oppTaille)
@@ -108,12 +100,12 @@ void Gestion::gestionCollision(vector<ObjetVolant*>::iterator &curr)
 					&& (curCoord->getX() + curTaille > oppCoord->getX() - oppTaille))))
 			{
 				newCollision(curr, opp);
-				if (*opp == NULL)
-							cout << "NULL" << endl;
 			}
 		}
+		delete(oppCoord);
 		opp++;
 	}
+	delete(curCoord);
 }
 
 bool Gestion::evoluer()
@@ -131,38 +123,26 @@ bool Gestion::evoluer()
 	vector<ObjetVolant*>::iterator it = this->obj.begin();
 	while((it != this->obj.end()) && (*it != NULL))
 	{
-		if (*it == NULL)
-			cout << "Avant avancer NULL" << endl;
 		(*it)->avancer();
-		if (*it == NULL)
-			cout << "Après avancer NULL" << endl;
-		if(typeid(**it)==typeid(Vaisseau))
+		if(typeid(**it) == typeid(Vaisseau))
 		{
 //			L'objet est un vaisseau il test donc une éventuelle collision avec le sol
-			if((*it)->getCentre().getY()+(*it)->getTailleCote()/2 >= this->posSilo->getY())
+			if((*it)->getCentre().getY() + (*it)->getTailleCote()/2 >= this->posSilo->getY())
 			{
 				return true;
 			}
 		}
-		if((*it)->getCentre().getY() < 0 || (*it)->getCentre().getX() <=0 || (*it)->getCentre().getX() >= 600)
+		if((*it)->getCentre().getY() < 0 || (*it)->getCentre().getX() <= 0 || (*it)->getCentre().getX() >= 600)
 		{
 //			cout << "\t Je ne suis plus sur l'écran je dois disparaitre et je suis un" << typeid(**it).name() << endl;
 //			cout << "X : " << (*it)->getCentre().getX() << " X : " << (*it)->getCentre().getY() << endl;
 //			std::cout << this->obj.size() << endl;
-			if (*it == NULL)
-				cout << "Avant Hors de l'écran NULL" << endl;
 			this->obj.erase(it);
-			if (*it == NULL)
-				cout << "Hors de l'écran NULL" << endl;
 		}
 		else
 		{
-			if (*it == NULL)
-				cout << "Avant collision NULL" << endl;
 			this->gestionCollision(it);
 		}
-		if (*it == NULL)
-			cout << "Avant incrémentation NULL" << endl;
 		it++;
 	}
 	return false;
