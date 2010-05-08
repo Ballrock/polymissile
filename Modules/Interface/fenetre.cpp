@@ -2,6 +2,7 @@
 #include <SDL/SDL.h>
 #include <iostream>
 #include <SDL/SDL_draw.h>
+#include <SDL/SDL_ttf.h>
 #include <vector>
 #include "../Utiles/ObjetVolant.h"
 
@@ -41,7 +42,6 @@ int Fenetre::newWindows()
 {
 	SDL_Surface *ecran = NULL;
 	SDL_Event event;
-	SDL_Rect position;
 	Coordonnees *click;
 	bool mouseClick = false;
 
@@ -91,11 +91,14 @@ int Fenetre::newWindows()
 	}
 
 	SDL_RemoveTimer(timer);
+
+	
 	SDL_Quit();
 	return this->gestionJeu->getScore();
 }
 
 void Fenetre::dessineAll(SDL_Surface *ecran) {
+	
 	vector<ObjetVolant*> *vectObj = this->gestionJeu->getObjetVolant();
 	vector<ObjetVolant*>::const_iterator it;
 	for (it = vectObj->begin(); it != vectObj->end(); it++) {
@@ -103,6 +106,19 @@ void Fenetre::dessineAll(SDL_Surface *ecran) {
 	}
 	this->silo->paint(ecran);
 	this->sol->paint(ecran);
+	//AFFICHAGE DU TEXTE	
+	TTF_Init();
+	this->police = TTF_OpenFont("arial.ttf", 14);	
+	TTF_SetFontStyle(police, TTF_STYLE_BOLD);
+	SDL_Color couleurTexte = {0, 0, 0};
+	sprintf(this->scoretext, "Score : %d", this->gestionJeu->getScore());
+	texte = TTF_RenderText_Blended(police, this->scoretext, couleurTexte);
+	this->position.x = 10;
+        this->position.y = 382;
+	SDL_BlitSurface(texte, NULL, ecran, &position);
+	TTF_CloseFont(police);
+	TTF_Quit();
+	
 }
 
 
