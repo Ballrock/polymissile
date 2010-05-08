@@ -41,7 +41,7 @@ protected:
 public:
 	/*!
 	 * \brief Constructeur
-	 * Ce constructeur prend en paramètre des coordonnées qui serviront à attribué la place du silo
+	 * Ce constructeur prend en paramètre des coordonnées qui serviront à attribuer la place du silo
 	 */
 	Gestion(Coordonnees &);
 	/*!
