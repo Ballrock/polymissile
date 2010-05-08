@@ -90,13 +90,13 @@ ScoreServeur::~ScoreServeur() {
 void ScoreServeur::chargeXml() {
 	FILE *f = fopen(Constante::PATHBESTSCORE, "r");
 	if (f == NULL) {
-		fclose(f);
 		FILE *fout = fopen(Constante::PATHBESTSCORE, "w+");
 		TiXmlDeclaration *decl = new TiXmlDeclaration("1.0", "", "");
 		TiXmlElement *en = new TiXmlElement("enregistrements");
 		this->doc.LinkEndChild(decl);
 		this->doc.LinkEndChild(en);
 		this->doc.SaveFile(fout);
+		fclose(fout);
 	}
 	this->doc = TiXmlDocument(Constante::PATHBESTSCORE);
 	this->doc.LoadFile();
