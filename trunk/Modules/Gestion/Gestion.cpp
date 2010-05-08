@@ -100,6 +100,7 @@ void Gestion::gestionCollision(vector<ObjetVolant*>::iterator &curr)
 					&& (curCoord->getX() + curTaille > oppCoord->getX() - oppTaille))))
 			{
 				newCollision(curr, opp);
+				this->score++;
 			}
 		}
 		delete(oppCoord);
