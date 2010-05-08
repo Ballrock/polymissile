@@ -49,7 +49,7 @@ public:
 	 */
 	Gestion(const Gestion&);
 	/*!
-	 * \brief Redéfinition de l'opérateur égale
+	 * \brief Redéfinition de l'opérateur égal
 	 */
 	Gestion &operator=(const Gestion &);
 	/*!
