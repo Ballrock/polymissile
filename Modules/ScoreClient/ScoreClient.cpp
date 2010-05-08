@@ -80,7 +80,6 @@ int ScoreClient::initSocket() {
 
 void ScoreClient::gereScoreJoueur() {
 	envoiScore();
-	recuperationTop();
 }
 
 void ScoreClient::recuperationNomJoueur() {
@@ -191,6 +190,3 @@ void ScoreClient::envoiScore() {
 //	cout << is.str() << endl;
 }
 
-void ScoreClient::recuperationTop() {
-
-}
