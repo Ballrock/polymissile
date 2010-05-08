@@ -50,7 +50,7 @@ Gestion::~Gestion()
 
 void Gestion::ajoutVaisseau()
 {
-	Coordonnees *debut = new Coordonnees((Constante::TAILLEVAISSEAU/2 + 1)+(rand() % (600 - (Constante::TAILLEVAISSEAU/2 + 1))), Constante::TAILLEVAISSEAU/2 +1);
+	Coordonnees *debut = new Coordonnees((Constante::TAILLEVAISSEAU/2 + 1)+(rand() % (600 - 2*(Constante::TAILLEVAISSEAU/2 + 1))), Constante::TAILLEVAISSEAU/2 +1);
 	Coordonnees *fin = new Coordonnees((int)((double)rand() / ((double)RAND_MAX + 1)*600), 400);
 	Droite *pente = new Droite(*fin, *debut);
 	this->addObjVol(new Vaisseau(Constante::TAILLEVAISSEAU, Constante::VITESSE, *debut, *pente));
