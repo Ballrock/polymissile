@@ -5,6 +5,8 @@
 #include "Sol.h"
 #include "../Constante.h"
 #include "Silo.h"
+#include <SDL/SDL_ttf.h>
+#include <SDL/SDL.h>
 
 /*!
  * \file Fenetre.h
@@ -65,7 +67,13 @@ private:
 	Gestion *gestionJeu; 
 	Sol *sol;
 	Silo *silo;
-
+	
+	//TTF
+	SDL_Surface *texte;
+	SDL_Rect position;
+	TTF_Font *police;
+	char scoretext[];
+	
 };
 
 
