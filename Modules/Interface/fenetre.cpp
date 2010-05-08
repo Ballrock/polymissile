@@ -113,7 +113,7 @@ void Fenetre::dessineAll(SDL_Surface *ecran) {
 	SDL_Color couleurTexte = {0, 0, 0};
 	sprintf(this->scoretext, "Score : %d", this->gestionJeu->getScore());
 	texte = TTF_RenderText_Blended(police, this->scoretext, couleurTexte);
-	this->position.x = 10;
+	this->position.x = 490;
         this->position.y = 382;
 	SDL_BlitSurface(texte, NULL, ecran, &position);
 	
