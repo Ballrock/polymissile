@@ -46,7 +46,9 @@ int Fenetre::newWindows()
 	bool mouseClick = false;
 
 	SDL_Init(SDL_INIT_VIDEO | SDL_INIT_TIMER);
-
+	TTF_Init();
+	this->police = TTF_OpenFont("arial.ttf", 14);	
+	TTF_SetFontStyle(this->police, TTF_STYLE_BOLD);
 	SDL_TimerID timer;
 
 	ecran = SDL_SetVideoMode(this->longueurFenetre, this->hauteurFenetre, 32, SDL_SWSURFACE);
@@ -91,8 +93,8 @@ int Fenetre::newWindows()
 	}
 
 	SDL_RemoveTimer(timer);
-
-	
+	TTF_CloseFont(this->police);
+	TTF_Quit();
 	SDL_Quit();
 	return this->gestionJeu->getScore();
 }
@@ -107,17 +109,13 @@ void Fenetre::dessineAll(SDL_Surface *ecran) {
 	this->silo->paint(ecran);
 	this->sol->paint(ecran);
 	//AFFICHAGE DU TEXTE	
-	TTF_Init();
-	this->police = TTF_OpenFont("arial.ttf", 14);	
-	TTF_SetFontStyle(police, TTF_STYLE_BOLD);
+	
 	SDL_Color couleurTexte = {0, 0, 0};
 	sprintf(this->scoretext, "Score : %d", this->gestionJeu->getScore());
 	texte = TTF_RenderText_Blended(police, this->scoretext, couleurTexte);
 	this->position.x = 10;
         this->position.y = 382;
 	SDL_BlitSurface(texte, NULL, ecran, &position);
-	TTF_CloseFont(police);
-	TTF_Quit();
 	
 }
 
