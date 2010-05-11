@@ -29,7 +29,7 @@ ScoreClient: ScoreClient/main.o ScoreClient/ScoreClient.o Constante.o ${TinyXml}
 	${CPP} -o bin/testScoreClient $^ ${CFLAGS} ${LDFLAGS} -g 
 
 ScoreServeur: ScoreServeur/main.o ScoreServeur/ScoreServeur.o Constante.o ${TinyXml} Utiles/Communication.o 
-	${CPP} -o bin/testScoreServeur $^ ${CFLAGS} ${LDFLAGS} -g
+	${CPP} -o bin/ScoreServeur $^ ${CFLAGS} ${LDFLAGS} -g
 
 Gestion: Gestion/main.o Gestion/Gestion.o Constante.o ${Utiles} ${Interface}
 	${CPP} -o bin/testGestion $^ ${CFLAGS} ${LDFLAGS} -g
