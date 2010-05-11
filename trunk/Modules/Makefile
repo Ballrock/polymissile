@@ -1,9 +1,8 @@
 #Commande du compilateur
 CPP=g++ 
 #Linker
-LDFLAGS=$(shell sdl-config --libs -static)
+LDFLAGS=$(shell sdl-config --libs)
 CFLAGS=$(shell sdl-config --cflags) -DTIXML_USE_STL
-LDDIR=$(shell sdl-config --exec-prefix)/lib
 #Repertoire des Binaries
 DIRBIN=bin
 #Nom du programme
