@@ -6,9 +6,12 @@
 
 using namespace std;
 
+int ObjetVolant::idTotal = 0;
+
 ObjetVolant::ObjetVolant(int tailleCote, int vitesse, Coordonnees &centre, Droite &pente):tailleCote(tailleCote), vitesse(vitesse), pente(pente), centre(centre), xRestant(0.0), yRestant(0.0)
 {
-
+	this->id = ObjetVolant::idTotal;
+	ObjetVolant::idTotal++;
 }
 
 ObjetVolant::ObjetVolant(const ObjetVolant &obj):tailleCote(obj.tailleCote), vitesse(obj.vitesse), centre(obj.centre), pente(obj.pente)

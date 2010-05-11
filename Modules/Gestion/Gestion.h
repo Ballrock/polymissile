@@ -61,6 +61,9 @@ public:
 	int inline getTimer() { return this->timer; }
 	inline Coordonnees* getPosSilo() { return this->posSilo; }
 	inline vector<ObjetVolant*> *getObjetVolant() { return &(this->obj); }
+	
+	vector<ObjetVolant *>::iterator supprimeObjVolant(int);
+
 	/*!
 	 * \brief Fonction de tir
 	 * La fonction reçoit en paramétres les coordonnées du clic et construit avec un nouvel objet missile
@@ -72,8 +75,6 @@ public:
 	 */
 	bool evoluer();
 
-private:
-	void newCollision(vector<ObjetVolant*>::iterator cur, vector<ObjetVolant*>::iterator opp);
 
 };
 

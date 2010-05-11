@@ -55,6 +55,10 @@ public:
 	 * Cette fonction doit être redéfinie dans les classes filles
 	 */
 	virtual void avancer() = 0;
+	/*!
+	 * \brief Accesseur sur id
+	 */
+	inline int getId() { return this->id; }
 
 protected:
 	int tailleCote;
@@ -63,6 +67,10 @@ protected:
 	Droite pente;
 	float xRestant;
 	float yRestant;
+	int id;
+
+private:
+	static int idTotal;
 
 };
 

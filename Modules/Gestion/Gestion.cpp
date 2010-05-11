@@ -13,15 +13,6 @@
 
 using namespace std;
 
-void Gestion::newCollision(vector<ObjetVolant*>::iterator cur, vector<ObjetVolant*>::iterator opp)
-{
-	if(typeid(**cur)!=typeid(**opp))
-	{
-		this->obj.erase(cur);
-		this->obj.erase(opp);
-		this->score++;
-	}
-}
 
 Gestion::Gestion(Coordonnees &posSilo)
 {
@@ -67,12 +58,23 @@ void Gestion::tirer(Coordonnees& point)
 	}
 }
 
+vector<ObjetVolant *>::iterator Gestion::supprimeObjVolant(int id) {
+	vector<ObjetVolant *>::iterator it;
+	for (it = this->obj.begin(); it != this->obj.end(); it++) {
+		if ((*it)->getId() == id) {
+			return this->obj.erase(it);
+		}
+	}
+	return this->obj.end();
+}
+
 void Gestion::gestionCollision(vector<ObjetVolant*>::iterator &curr)
 {
 	Coordonnees *curCoord = new Coordonnees((*curr)->getCentre());
 	int curTaille = (*curr)->getTailleCote()/2;
+	int id1, id2;
 	vector<ObjetVolant*>::iterator opp = this->obj.begin();
-	while(opp != this->obj.end() && *opp != NULL)
+	while(opp != this->obj.end())
 	{
 		Coordonnees *oppCoord = new Coordonnees((*opp)->getCentre());
 		int oppTaille = (*opp)->getTailleCote()/2;
@@ -99,8 +101,15 @@ void Gestion::gestionCollision(vector<ObjetVolant*>::iterator &curr)
 					&& ((curCoord->getX() - curTaille < oppCoord->getX() - oppTaille)
 					&& (curCoord->getX() + curTaille > oppCoord->getX() - oppTaille))))
 			{
-				newCollision(curr, opp);
-				this->score++;
+				if(typeid(**curr)!=typeid(**opp))
+				{
+					id1 =  (*curr)->getId();
+					id2 =  (*opp)->getId();
+					supprimeObjVolant(id1);
+					supprimeObjVolant(id2);
+					this->score++;
+					break;
+				}
 			}
 		}
 		delete(oppCoord);
