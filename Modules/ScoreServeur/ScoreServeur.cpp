@@ -131,12 +131,11 @@ void ScoreServeur::startServer() {
 			sock=SDLNet_TCP_Accept(server);
 			if(sock)
 			{
-				cout << "oksock" << endl;
 				if(Communication::lire(sock, &buff))
 				{
 					os.str("");
 					os << buff;	
-					cout << os.str() << endl;
+					cout << "Enregistrement : " <<  os.str() << endl;
 					is.str(os.str());
 					is >> *docScore;
 					ajouteScore(*docScore);
