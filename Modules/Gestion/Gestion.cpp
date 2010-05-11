@@ -111,6 +111,9 @@ void Gestion::gestionCollision(vector<ObjetVolant*>::iterator &curr)
 
 bool Gestion::evoluer()
 {
+	int i;
+	vector<ObjetVolant*>::iterator temp;
+	vector<ObjetVolant*>::iterator it;
 	this->timer += Constante::TIMETICK;
 	if((this->timer - 1000)>0)
 	{
@@ -121,8 +124,8 @@ bool Gestion::evoluer()
 			this->ajoutVaisseau();
 		}
 	}
-	vector<ObjetVolant*>::iterator it = this->obj.begin();
-	while((it != this->obj.end()) && (*it != NULL))
+	it = this->obj.begin();
+	for (i = 0; i < this->obj.size(); i++) 
 	{
 		(*it)->avancer();
 		if(typeid(**it) == typeid(Vaisseau))
