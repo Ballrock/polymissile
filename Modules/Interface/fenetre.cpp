@@ -29,7 +29,7 @@ Fenetre::Fenetre(const Fenetre &obj) {
 }
 
 Fenetre::~Fenetre() {
-	SDL_VideoQuit();
+	SDL_Quit();
 	delete(this->sol);
 	delete(this->gestionJeu);
 }
