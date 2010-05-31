@@ -53,6 +53,11 @@ private:
 	 * Ajoute un score (s'il fait parti des meilleurs)
 	 */
 	void ajouteScore(TiXmlNode &score);
+	
+	/*
+	 * Retourne la taille du document XML
+	 */
+	int getSize(TiXmlNode *n);
 
 	int initSocket();
 	static int ecrire(int, const char*);

@@ -72,7 +72,7 @@ private:
 	SDL_Surface *texte;
 	SDL_Rect position;
 	TTF_Font *police;
-	char scoretext[];
+	char *scoretext;
 	
 };
 
