@@ -35,7 +35,7 @@ Gestion::Gestion(const Gestion &obj)
 
 Gestion::~Gestion()
 {
-	free(this->posSilo);
+	delete(this->posSilo);
 	this->obj.clear();
 }
 

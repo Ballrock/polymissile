@@ -22,6 +22,7 @@ Fenetre::Fenetre(int longueur=600, int hauteur=400) : longueurFenetre(longueur),
 	temp->setY(hauteur - Constante::TAILLESOL);
 	this->silo = new Silo(*(temp));
 	this->gestionJeu = new Gestion(*(temp));
+	this->scoretext = (char *) malloc(sizeof(char)*100);
 	delete(temp);
 }
 
@@ -29,8 +30,9 @@ Fenetre::Fenetre(const Fenetre &obj) {
 }
 
 Fenetre::~Fenetre() {
-	SDL_Quit();
+	free(scoretext);
 	delete(this->sol);
+	delete(this->silo);
 	delete(this->gestionJeu);
 }
 
@@ -94,6 +96,7 @@ int Fenetre::newWindows()
 
 	SDL_RemoveTimer(timer);
 	TTF_CloseFont(this->police);
+	SDL_FreeSurface(texte);
 	TTF_Quit();
 	SDL_Quit();
 	return this->gestionJeu->getScore();

@@ -184,8 +184,19 @@ void ScoreServeur::ajouteScore(TiXmlNode &score) {
 			doc.LastChild()->InsertBeforeChild(child, *(score.LastChild()));	
 		else
 			doc.LastChild()->InsertEndChild(*(score.LastChild()));
+		if(getSize(doc.LastChild()) > 20)
+			doc.LastChild()->RemoveChild(doc.LastChild()->LastChild());
 		this->doc.SaveFile();
 	}
 
 }
 
+
+int ScoreServeur::getSize(TiXmlNode *n) {
+	TiXmlNode *child = NULL;
+	int i=0;
+	while (child = n->IterateChildren(child)) {
+		i++;
+	}
+	return i;
+}
