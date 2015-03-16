@@ -1,0 +1,1 @@
+The aim of this project is to develop a missil command like game in C++ with the SDL library
